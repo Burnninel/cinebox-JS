@@ -3,7 +3,8 @@
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
 ## [Unreleased]
-- Planejar expansão do components `CardItem` para incluir mais detalhes e interatividade
+- Planejar expansão do components `CardItem` para incluir mais detalhes e interatividade -- Feito [0.4.0]
+- Iniciar implementação do sistema de roteamento para navegação SPA
 
 ## [0.1.0] - 12/07/2025
 ### Added
@@ -11,7 +12,7 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Layout inicial do `<header>` responsivo com imagens e ícones SVG.
 - Conteúdo construído com HTML e CSS puro, sem JavaScript.
 
-## [0.2.0] - 14/07/2025
+## [0.2.0] - 12/07/2025
 ### Added
 - Criada a `section` principal da página `explore` (index.html) contendo:
   - Header com título `<h1>` e campo de busca `<input>` (pesquisar filmes).
