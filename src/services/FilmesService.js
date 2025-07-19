@@ -2,7 +2,11 @@ import { requestApi } from "../helpers/apiHelpers.js";
 
 const API_URL = "http://localhost:8888/filme";
 
-export function fetchAllFilmes() {
+export function fetchAllFilmes(pesquisar = null) {
+  if (pesquisar) {
+      return requestApi(`${API_URL}?pesquisar=${pesquisar}`, "GET");
+  }
+
   return requestApi(API_URL, "GET");
 }
 
