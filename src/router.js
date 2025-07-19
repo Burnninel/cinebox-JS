@@ -9,9 +9,10 @@ function router() {
   const path = window.location.hash || "";
   const page = routes[path];
 
+  app.replaceChildren();
+
   if (page) {
-    app.innerHTML = "";
-    app.insertAdjacentHTML('afterbegin', page());
+    app.appendChild(page());
   } else {
     app.innerHTML = "<h2>Página não encontrada</h2>";
   }

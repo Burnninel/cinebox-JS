@@ -35,3 +35,6 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Added
 - Estrutura base de roteamento com hash e renderização da página Home.
 - Criada a pasta `/pages` e o componente inicial `Home.js`.
+- Componentes passaram a criar e retornar elementos DOM ao invés de strings HTML.
+  - Antes: componentes retornavam strings com HTML (direto no `return`).
+  - Agora: componentes criam e retornam elementos DOM (`createElement` com `innerHTML`).
