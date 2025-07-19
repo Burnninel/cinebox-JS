@@ -1,9 +1,9 @@
 import { CardItem } from "./Card.js";
 import { IconSearch } from "../../public/assets/icons/icons.js";
-import { getFilmes } from "../services/FilmesService.js";
+import { fetchAllFilmes } from "../services/filmesService.js";
 
 export async function SectionFilmes(titulo) {
-  const {data: filmes} = await getFilmes();
+  const { data: filmes } = await fetchAllFilmes();
   const cardListHTML = filmes.map((card) => CardItem(card)).join("");
 
   const section = document.createElement("section");

@@ -3,8 +3,7 @@
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
 ## [Unreleased]
-- Planejar expansão do components `CardItem` para incluir mais detalhes e interatividade -- Feito [0.4.0]
-- Iniciar implementação do sistema de roteamento para navegação SPA
+- Refatorar o services/filmesService.js;
 
 ## [0.1.0] - 12/07/2025
 ### Added
@@ -44,3 +43,9 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Estrutura `base` de integração com a API no componente `SectionFilmes` (Home).
   - Antes: Os filmes eram definidos em um array local estático (array).
   - Agora: Os filmes são obtidos da API através do serviço `getFilmes()`.
+- Expandi serviço base `filmeService.js` com funções para consumo da API de filmes (Payload estático).
+  - `fetchAllFilmes`: busca todos os filmes cadastrados.
+  - `fetchFilmeById`: retorna detalhes de um filme via ID.
+  - `fetchFilmesByUser`: retorna lista de filmes associados ao usuário autenticado.
+  - `createNewFilme`: envia requisição POST para cadastrar um novo filme com dados simulados.
+  - `toggleFilmeFavorite`: envia requisição POST para favoritar ou desfavoritar um filme.
