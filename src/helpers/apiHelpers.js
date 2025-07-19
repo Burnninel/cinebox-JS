@@ -1,4 +1,4 @@
-export async function requestApi(url, method, body = null) {
+export async function apiRequest(url, method, body = null) {
   try {
     const response = await fetch(`${url}`, {
       method: method,

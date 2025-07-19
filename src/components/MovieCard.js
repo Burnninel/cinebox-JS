@@ -1,6 +1,6 @@
 import { IconStarComplete } from "/public/assets/icons/icons.js";
 
-export function CardFilme({
+export function MovieCard({
   titulo,
   categoria,
   ano_de_lancamento,
