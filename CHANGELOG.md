@@ -3,7 +3,8 @@
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
 ## [Unreleased]
-- Refatorar o services/filmesService.js;
+- Concluido: Refatorar o services/filmesService.js -> Inclui o Helper ();
+- Próximo: Implementar opão de pesquisa por filme;
 
 ## [0.1.0] - 12/07/2025
 ### Added
@@ -49,3 +50,6 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
   - `fetchFilmesByUser`: retorna lista de filmes associados ao usuário autenticado.
   - `createNewFilme`: envia requisição POST para cadastrar um novo filme com dados simulados.
   - `toggleFilmeFavorite`: envia requisição POST para favoritar ou desfavoritar um filme.
+
+### Changed
+- Refatora chamadas à API criando helper genérico `requestApi` para centralizar fetch, headers e tratamento básico.

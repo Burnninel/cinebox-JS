@@ -1,6 +1,6 @@
 import { CardItem } from "./Card.js";
 import { IconSearch } from "../../public/assets/icons/icons.js";
-import { fetchAllFilmes } from "../services/filmesService.js";
+import { fetchAllFilmes } from "/src/services/filmesService.js";
 
 export async function SectionFilmes(titulo) {
   const { data: filmes } = await fetchAllFilmes();
