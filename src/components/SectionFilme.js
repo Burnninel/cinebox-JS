@@ -1,10 +1,10 @@
-import { CardItem } from "./Card.js";
+import { CardFilme } from "./CardFilme.js";
 import { IconSearch } from "../../public/assets/icons/icons.js";
-import { fetchAllFilmes } from "/src/services/filmesService.js";
+import { fetchAllFilmes } from "/src/services/filmeService.js";
 
-export async function SectionFilmes(titulo) {
+export async function SectionFilme(titulo) {
   const { data: filmes } = await fetchAllFilmes();
-  const cardListHTML = filmes.map((card) => CardItem(card)).join("");
+  const cardListHTML = filmes.map((card) => CardFilme(card)).join("");
 
   const section = document.createElement("section");
   section.className = "explore";
@@ -15,7 +15,7 @@ export async function SectionFilmes(titulo) {
         </div>
         <div class="explore__search">
           ${IconSearch()}
-            <input type="text" placeholder="Pesquisar filme" />
+          <input type="text" placeholder="Pesquisar filme" />
         </div>
       </header>
       <ul class="explore__card-list">
