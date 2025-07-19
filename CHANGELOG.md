@@ -38,3 +38,9 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Componentes passaram a criar e retornar elementos DOM ao invés de strings HTML.
   - Antes: componentes retornavam strings com HTML (direto no `return`).
   - Agora: componentes criam e retornam elementos DOM (`createElement` com `innerHTML`).
+
+## [0.6.0] - 18/07/2025
+### Added
+- Estrutura `base` de integração com a API no componente `SectionFilmes` (Home).
+  - Antes: Os filmes eram definidos em um array local estático (array).
+  - Agora: Os filmes são obtidos da API através do serviço `getFilmes()`.

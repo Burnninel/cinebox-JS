@@ -4,7 +4,7 @@ const routes = {
   "": Home,
 };
 
-function router() {
+async function router() {
   const app = document.querySelector(".app");
   const path = window.location.hash || "";
   const page = routes[path];
@@ -12,7 +12,8 @@ function router() {
   app.replaceChildren();
 
   if (page) {
-    app.appendChild(page());
+    const content = await page();
+    app.appendChild(content);
   } else {
     app.innerHTML = "<h2>Página não encontrada</h2>";
   }

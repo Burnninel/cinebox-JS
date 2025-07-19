@@ -1,17 +1,23 @@
 import { IconStarComplete } from "/public/assets/icons/icons.js";
 
-export function CardItem({ src, alt, title, genre, year, score }) {
+export function CardItem({
+  titulo,
+  categoria,
+  ano_de_lancamento,
+  media_avaliacoes,
+  imagem,
+}) {
   return `
         <li class="card">
-            <img src="${src}" alt="${alt}" class="card__image">
+            <img src="../../public/assets/img/${imagem}" alt="${imagem}" class="card__image">
             <div class="card__rating">
-                <span class="card__rating-score">${score}</span>
+                <span class="card__rating-score">${media_avaliacoes}</span>
                 <span class="card__rating-scale"> /5</span>
                 ${IconStarComplete()}
             </div>
             <div class="card__info">
-                <h2 class="card__title">${title}</h2>
-                <span class="card__genre">${genre} • ${year}</span>
+                <h2 class="card__title">${titulo}</h2>
+                <span class="card__genre">${categoria} • ${ano_de_lancamento}</span>
             </div>
         </li>
     `;
