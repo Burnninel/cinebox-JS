@@ -30,3 +30,8 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
   - O header está fixo nesse componente, mas com título dinâmico (preenchido no `main.js`).
   - Estrutura sob análise para possível alteração futura.
 - Removida a marcação da section no `index.html`, agora possui apenas o `<main class="app">`.
+
+## [0.5.0] - 18/07/2025
+### Added
+- Estrutura base de roteamento com hash e renderização da página Home.
+- Criada a pasta `/pages` e o componente inicial `Home.js`.

@@ -1,6 +1,10 @@
-import { Header } from "/src/components/Header.js";
-import { SectionFilmes } from "./components/SectionFilmes.js";
+import "./router.js";
 
-document.body.insertAdjacentHTML("afterbegin", Header());
+// import { Header } from "/src/components/Header.js";
+// import { SectionFilmes } from "./components/SectionFilmes.js";
 
-document.querySelector(".app").insertAdjacentHTML("afterbegin", SectionFilmes('Explorar'));
+// document.body.insertAdjacentHTML("afterbegin", Header());
+
+// document.querySelector(".app").insertAdjacentHTML("afterbegin", SectionFilmes('Explorar'));
+
+// console.log(window.location.pathname);
