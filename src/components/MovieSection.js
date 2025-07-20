@@ -18,7 +18,7 @@ export async function MovieSection(titulo) {
             <button class="explore__search-button" id="searchTerm">
                 ${IconSearch()}
             </button>
-          <input type="text" value="saldk" placeholder="Pesquisar filme" id="inputSearch" />
+          <input type="text" placeholder="Pesquisar filme" id="inputSearch" />
         </div>
       </header>
       <ul class="explore__card-list" id="movieList">
