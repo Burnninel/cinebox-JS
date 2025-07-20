@@ -36,6 +36,14 @@
   flex-shrink: 0;
 }
 
+.explore__search-button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .explore__card-list {
   display: flex;
   flex-wrap: wrap;

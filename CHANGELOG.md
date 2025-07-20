@@ -6,8 +6,16 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Changed
 - Refatoração do `services/filmeService.js` para incluir helper genérico `requestApi`.
 - Implementa opção de pesquisa por filme no serviço `fetchAllFilmes`.
+- Implementa busca de filmes utilizando os dados do campo de entrada (Interação do usuario).
+
 ### Added
-- Implementar busca de filmes utilizando os dados do campo de entrada (Interação do usuario);
+- Criar pagina de filme não encontrado.
+
+## [0.1.1] - 19/07/2025
+### Added
+- Implementa opção de pesquisa de filmes.
+  - Adaptação do `movieService` para aceitar termo de busca como parâmetro.
+  - Ajusta o `MovieSection` para capturar os dados do input e enviar para o `movieService`.
 
 ## [0.1.0] - 18/07/2025
 ### Added

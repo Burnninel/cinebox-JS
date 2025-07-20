@@ -14,14 +14,35 @@ export async function MovieSection(titulo) {
             <h1>${titulo}</h1>
         </div>
         <div class="explore__search">
-          ${IconSearch()}
-          <input type="text" placeholder="Pesquisar filme" />
+            <button class="explore__search-button" id="searchTerm">
+                ${IconSearch()}
+            </button>
+          <input type="text" placeholder="Pesquisar filme" id="inputSearch" />
         </div>
       </header>
-      <ul class="explore__card-list">
+      <ul class="explore__card-list" id="movieList">
           ${cardListHTML}
       </ul>
   `;
+
+  const btn = section.querySelector("#searchTerm");
+  const input = section.querySelector("#inputSearch");
+  const ul = section.querySelector("#movieList");
+
+  async function search() {
+    const searchTerm = input.value;
+    const { data: filteredMovies } = await fetchAllMovies(searchTerm);
+    const newListHTML = filteredMovies.map((card) => MovieCard(card)).join("");
+
+    ul.innerHTML = newListHTML;
+  }
+
+  btn.addEventListener("click", search);
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      search();
+    }
+  });
 
   return section;
 }
