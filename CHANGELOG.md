@@ -7,9 +7,18 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Refatoração do `services/filmeService.js` para incluir helper genérico `requestApi`.
 - Implementa opção de pesquisa por filme no serviço `fetchAllFilmes`.
 - Implementa busca de filmes utilizando os dados do campo de entrada (Interação do usuario).
+- Pagina de filme não encontrado implementada.
 
 ### Added
-- Criar pagina de filme não encontrado.
+
+- Em análise...
+
+## [0.1.2] - 19/07/2025
+### Added
+- Componente `EmptyMovieMessage` para exibir mensagem quando a pesquisa não retorna filmes.
+ - Estilização do componente `EmptyMovieMessage` adicionada em `css/section`.
+- Validação implementada no `MovieSection` para mostrar `EmptyMovieMessage` caso não haja resultados na pesquisa.
+
 
 ## [0.1.1] - 19/07/2025
 ### Added
