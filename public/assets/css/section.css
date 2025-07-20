@@ -125,8 +125,27 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1.4rem;
+  padding: 0.8rem 1rem;
   z-index: 1;
+}
+
+.card__sinopse {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  color: var(--gray-200);
+  max-height: 0;
+  opacity: 0;
+  font-size: 0.6rem;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.card:hover .card__sinopse {
+  max-height: 2.8rem;
+  opacity: 1;
 }
 
 .card__rating {
@@ -167,7 +186,7 @@
 }
 
 .card__title {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 0;
 }
 

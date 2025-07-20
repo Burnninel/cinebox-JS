@@ -5,7 +5,6 @@ import { fetchAllMovies } from "/src/services/movieService.js";
 
 export async function MovieSection(titulo) {
   const { data: filmes } = await fetchAllMovies();
-  const cardListHTML = filmes.map((card) => MovieCard(card)).join("");
 
   const section = document.createElement("section");
   section.className = "explore";
@@ -22,13 +21,18 @@ export async function MovieSection(titulo) {
         </div>
       </header>
       <ul class="explore__card-list" id="movieList">
-          ${cardListHTML}
       </ul>
   `;
 
+  const cardList = filmes.map((card) => MovieCard(card));
+  const movieList = section.querySelector("#movieList");
+
+  cardList.forEach((cardElement) => {
+    movieList.appendChild(cardElement);
+  });
+
   const searchButton = section.querySelector("#searchTerm");
   const searchInput = section.querySelector("#inputSearch");
-  const movieList = section.querySelector("#movieList");
 
   async function search() {
     const searchTerm = searchInput.value;
@@ -36,18 +40,14 @@ export async function MovieSection(titulo) {
 
     const existingEmptyMessage = section.querySelector(".no-results");
     if (existingEmptyMessage) existingEmptyMessage.remove();
+    movieList.replaceChildren();
 
     if (filteredMovies.length === 0) {
-      movieList.style.display = "none";
-      const emptyMessageElement = EmptyMovieMessage(searchTerm);
-      section.append(emptyMessageElement);
+      renderEmptyMessage(section, movieList, searchTerm);
       return;
     }
 
-    const newListHTML = filteredMovies.map((card) => MovieCard(card)).join("");
-
-    movieList.style.display = "flex";
-    movieList.innerHTML = newListHTML;
+    renderMovies(movieList, filteredMovies)
   }
 
   searchButton.addEventListener("click", search);
@@ -58,4 +58,16 @@ export async function MovieSection(titulo) {
   });
 
   return section;
+}
+
+function renderMovies(movieList, movies) {
+  movieList.replaceChildren();
+  movies.forEach((card) => movieList.appendChild(MovieCard(card)));
+  movieList.style.display = "flex";
+}
+
+function renderEmptyMessage(sectionElement, movieListElement, term) {
+  movieListElement.style.display = "none";
+  const emptyMessage = EmptyMovieMessage(term);
+  sectionElement.appendChild(emptyMessage);
 }
