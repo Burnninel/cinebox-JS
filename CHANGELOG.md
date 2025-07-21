@@ -10,15 +10,32 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pagina de filme não encontrado implementada.
 
 ### Added
+- Implementar estrutura basica para pagina de autenticação com login e registrar.
 
-- Em análise...
+## [0.2.0] - 20/07/2025
+### Added
+- Ferramenta Vite adicionada como bundler e dev server para o projeto Cinebox.
+- Script de inicialização com Vite configurado no `package.json`.
+- Organização dos arquivos em `src/assets`, incluindo CSS, imagens e ícones.
+
+### Changed
+- Estrutura do projeto ajustada para seguir padrão Vite:
+  - `index.html` movido para a raiz do projeto.
+  - Imports de CSS passa para o arquivo `main.js` (antes era no index.html).
+- Substituição do uso do Live Server pelo servidor do Vite.
+
+### Removed
+- Pasta `public` removida do projeto, com seus arquivos migrados para `src/assets`.
+
+### Purpose
+- Executar o servidor local com Vite e permitir rotas sem hash (`#`), facilitando a navegação limpa e moderna no navegador.
+
 
 ## [0.1.2] - 19/07/2025
 ### Added
 - Componente `EmptyMovieMessage` para exibir mensagem quando a pesquisa não retorna filmes.
  - Estilização do componente `EmptyMovieMessage` adicionada em `css/section`.
 - Validação implementada no `MovieSection` para mostrar `EmptyMovieMessage` caso não haja resultados na pesquisa.
-
 
 ## [0.1.1] - 19/07/2025
 ### Added

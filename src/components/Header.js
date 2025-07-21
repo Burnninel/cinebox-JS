@@ -2,7 +2,7 @@ import {
   IconLogo,
   IconPopcorn,
   IconMovie,
-} from "/public/assets/icons/icons.js";
+} from "/src/assets/icons/icons.js";
 
 export function Header() {
   const header = document.createElement("header");

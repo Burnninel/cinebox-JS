@@ -1,4 +1,4 @@
-import { IconMovie } from "/public/assets/icons/icons.js";
+import { IconMovie } from "/src/assets/icons/icons";
 
 export function EmptyMovieMessage(searchTerm) {
   const element = document.createElement("div");

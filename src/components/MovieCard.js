@@ -1,4 +1,4 @@
-import { IconStarComplete } from "/public/assets/icons/icons.js";
+import { IconStarComplete } from "/src/assets/icons/icons.js";
 
 export function MovieCard({
   titulo,
@@ -12,7 +12,7 @@ export function MovieCard({
   card.className = "card";
 
   const img = `
-    <img src="../../public/assets/img/${imagem}" alt="${imagem}" class="card__image">
+    <img src="/src/assets/img/${imagem}" alt="${imagem}" class="card__image">
   `;
 
   const rating = `

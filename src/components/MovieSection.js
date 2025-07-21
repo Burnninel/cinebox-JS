@@ -1,6 +1,6 @@
 import { MovieCard } from "./MovieCard.js";
 import { EmptyMovieMessage } from "./EmptyMovieMessage.js";
-import { IconSearch } from "../../public/assets/icons/icons.js";
+import { IconSearch } from "../assets/icons/icons.js";
 import { fetchAllMovies } from "/src/services/movieService.js";
 
 export async function MovieSection(titulo) {
