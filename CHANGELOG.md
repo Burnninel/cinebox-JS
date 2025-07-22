@@ -12,6 +12,15 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Added
 - Implementar estrutura basica para pagina de autenticação com login e registrar.
 
+## [0.3.0] - 21/07/2025
+
+### Added
+- Página de autenticação básica (`pages/Auth`) com estrutura de layout dividida.
+- Componente visual `AuthLayout` criado em `components/Form`.
+- Estrutura visual do banner lateral com imagem, logo e texto descritivo.
+- Classes de estilo iniciais para `.auth-banner`, com foco em responsividade, alinhamento e visual agradável.
+
+
 ## [0.2.0] - 20/07/2025
 ### Added
 - Ferramenta Vite adicionada como bundler e dev server para o projeto Cinebox.

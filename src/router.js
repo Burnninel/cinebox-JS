@@ -1,13 +1,17 @@
 import { Home } from "./pages/Home.js";
+import { Auth } from "./pages/Auth.js";
 
 const routes = {
-  "": Home,
+  "/": Home,
+  "/auth": Auth
 };
 
 async function router() {
   const app = document.querySelector(".app");
-  const path = window.location.hash || "";
+  const path = window.location.pathname || "";
   const page = routes[path];
+
+  console.log(path);
 
   app.replaceChildren();
 
