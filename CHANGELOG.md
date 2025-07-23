@@ -12,6 +12,14 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Added
 - Implementar estrutura basica para pagina de autenticação com login e registrar.
 
+## [0.3.1] - 23/07/2025
+
+### Added
+- Inclusão da estrtura base do formulario do layout de autenticação.
+- Adição do toggle visual para alternar entre Login e Cadastro (botões estilizados, sem funcionalidade ainda).
+- Estilos CSS para `.auth-form`, `.auth-toggle`, inputs e botões, garantindo alinhamento, espaçamento e visual consistente com o banner lateral.
+
+
 ## [0.3.0] - 21/07/2025
 
 ### Added
