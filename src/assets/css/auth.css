@@ -134,7 +134,57 @@
   cursor: pointer;
 }
 
-.auth-form__title, 
+.auth-form__title,
 .auth-form__submit {
   margin: 1rem;
 }
+
+@media (max-width: 1280px) {
+  .auth-banner,
+  .auth-form {
+    width: 50%;
+    min-width: 20rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .auth-banner {
+    display: none;
+  }
+
+  .auth-banner__logo--s {
+  display: block !important;
+  height: 40px;
+  width: 40px;
+}
+
+  .auth-form {
+    width: 100%;
+  }
+
+  .auth-toggle__button {
+    width: 6rem;
+    height: 1.8rem;
+    font-size: 0.7rem;
+  }
+
+  .auth-form__form {
+    min-width: 16rem;
+  }
+
+  .auth-form__title,
+  .auth-form__submit {
+    margin: 0.5rem;
+  }
+
+  .auth-form__title {
+    font-size: 1.2rem;
+  }
+
+  .auth-form__input,
+  .auth-form__submit {
+    height: 2rem;
+    font-size: 0.7rem;
+  }
+}
+
