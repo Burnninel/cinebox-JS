@@ -75,6 +75,7 @@
   margin: 1rem 0;
   background-color: #ffffff0a;
   border-radius: 10px;
+  gap: 2px;
 }
 
 .auth-toggle__button {
@@ -85,6 +86,12 @@
   background-color: transparent;
   border: none;
   outline: none;
+  cursor: pointer;
+}
+
+.auth-toggle__button:hover {
+  background-color: #ffffff09;
+  border-radius: 6px;
 }
 
 .auth-toggle__button--active {
@@ -152,16 +159,11 @@
     display: none;
   }
 
-  .auth-banner__logo--s {
-  display: block !important;
-  height: 40px;
-  width: 40px;
-}
-
   .auth-form {
     width: 100%;
-  }
+    overflow: auto;
 
+  }
   .auth-toggle__button {
     width: 6rem;
     height: 1.8rem;

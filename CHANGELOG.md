@@ -8,9 +8,21 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Implementa opção de pesquisa por filme no serviço `fetchAllFilmes`.
 - Implementa busca de filmes utilizando os dados do campo de entrada (Interação do usuario).
 - Pagina de filme não encontrado implementada.
+- Implementada estrutura basica para pagina de autenticação com login e registrar.
+- Interavitidade (toggle de forms) da pagina de autenticação;
 
 ### Added
-- Implementar estrutura basica para pagina de autenticação com login e registrar.
+
+- Em analise...
+
+## [0.3.3] - 24/07/2025
+
+### Added
+- Refatorado o componente `AuthLayout` para aceitar configuração dinâmica dos formulários.
+- Implementada alternância entre os formulários de login e cadastro via botão toggle.
+- Adicionados identificadores únicos nos inputs de cada formulário.
+- Atualizado `Auth.js` para passar os dados de formulários via props para `AuthLayout`.
+- Ajustes simples no css dos botões com inclusão do hover.
 
 ## [0.3.2] - 24/07/2025
 
