@@ -13,7 +13,24 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
 ### Added
 
-- Em analise...
+- Retornar os erros de validação nos inputs conforme resposta da API.
+
+## [0.3.4] - 26/07/2025
+
+### Added
+- Criada função `setupAuth` para lidar com a captura e envio de dados dos inputs de autenticação.
+- Implementado armazenamento do token de autenticação em cookie com tempo de expiração de 1 dia (Estrutura inicial).
+- Adicionada lógica para remoção do cookie anterior antes de salvar um novo token.
+- Criado `loginService` para centralizar a requisição de autenticação via (helper) `apiRequest`.
+
+### Changed
+- Atualizado componente `AuthLayout` para receber os formulários de login e cadastro de forma dinâmica via objeto `forms`.
+- Inputs dos formulários agora são renderizados com base em uma lista de configuração, facilitando manutenção e expansão futura.
+
+## [0.3.4] - 24/07/2025
+
+### Added
+- Refatorado o componente `AuthLayout` para aceitar configuração dinâmica dos formulários.
 
 ## [0.3.3] - 24/07/2025
 

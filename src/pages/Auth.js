@@ -1,32 +1,36 @@
 import { Form } from "/src/components/AuthLayout.js";
 
-export function Auth() {
+export async function Auth() {
   const fragment = document.createDocumentFragment();
 
-  fragment.appendChild(
-    Form({
-      forms: {
-        login: {
-          title: "Acesse sua conta",
-          submitText: "Entrar",
-          inputs: [
-            { type: "text", placeholder: "E-mail", id: "login-email" },
-            { type: "password", placeholder: "Senha", id: "login-password" },
-          ],
-        },
-        signup : {
-          title: "Crie sua conta",
-          submitText: "Criar",
-          inputs: [
-            { type: "text", placeholder: "E-mail", id: "signup-email" },
-            { type: "text", placeholder: "Nome", id: "signup-name" },
-            { type: "password", placeholder: "Senha", id: "signup-password" },
-            { type: "password", placeholder: "Confirmar Senha", id: "signup-confirm-password" },
-          ],
-        },
+  const sectionForm = await Form({
+    forms: {
+      login: {
+        title: "Acesse sua conta",
+        submitText: "Entrar",
+        inputs: [
+          { type: "text", placeholder: "E-mail", id: "email" },
+          { type: "password", placeholder: "Senha", id: "senha" },
+        ],
       },
-    })
-  );
+      signup: {
+        title: "Crie sua conta",
+        submitText: "Criar",
+        inputs: [
+          { type: "text", placeholder: "Nome", id: "nome" },
+          { type: "text", placeholder: "E-mail", id: "email" },
+          { type: "password", placeholder: "Senha", id: "senha" },
+          {
+            type: "password",
+            placeholder: "Confirmar Senha",
+            id: "confirmar_senha",
+          },
+        ],
+      },
+    },
+  });
+
+  fragment.appendChild(sectionForm);
 
   return fragment;
 }

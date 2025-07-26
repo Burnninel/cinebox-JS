@@ -1,6 +1,7 @@
 import { IconLogo } from "/src/assets/icons/icons.js";
+import { login } from "/src/services/authService.js";
 
-export function Form({ forms }) {
+export async function Form({ forms }) {
   let activeFormKey = "login";
 
   const section = document.createElement("section");
@@ -51,10 +52,11 @@ export function Form({ forms }) {
     formContainer.innerHTML = `
         <h1 class="auth-form__title">${title}</h1>  
         ${inputsHTML}
-        <button type="submit" class="auth-form__submit">${submitText}</button>
+        <button type="submit" class="auth-form__submit" data-form="${activeFormKey}">${submitText}</button>
     `;
 
     updateToggleStyle();
+    setupAuth(inputs);
   }
 
   function updateToggleStyle() {
@@ -64,6 +66,25 @@ export function Form({ forms }) {
         "auth-toggle__button--active",
         btn.dataset.form === activeFormKey
       );
+    });
+  }
+
+  async function setupAuth(inputs) {
+    const submitButton = authContainer.querySelector(".auth-form__submit");
+
+    submitButton.addEventListener("click", async () => {
+      const formData = {};
+
+      inputs.forEach((input) => {
+        const inputElement = authContainer.querySelector(`#${input.id}`);
+        formData[input.id] = inputElement.value;
+      });
+
+      const formType = submitButton.dataset.form;
+      const { data: authenticatedUser } = await login(formType, formData);
+
+      document.cookie = "token=; path=/; max-age=0";
+      document.cookie = `token=${authenticatedUser.token}; path=/; max-age=86400`;
     });
   }
 
@@ -87,56 +108,3 @@ export function Form({ forms }) {
 
   return section;
 }
-
-// const inputsHTML = inputs
-//   .map(
-//     ({ type = "text", placeholder = "", id = "" }) =>
-//       `<input type="${type}" class="auth-form__input" placeholder="${placeholder}" id="${id}">`
-//   )
-//   .join("\n");
-
-// BACKUP
-
-//   import { IconLogo } from "/src/assets/icons/icons.js";
-
-// export function Form({ forms }) {
-//   const section = document.createElement("section");
-//   section.className = "auth";
-
-//   const authBanner = `
-//     <div class="auth-banner">
-//         <img
-//           src="src/assets/img/login.png"
-//           alt="Imagem ilustrativa do banner de login"
-//           class="auth-banner__image"
-//         >
-//         <div class="auth-banner__logo">
-//             ${IconLogo()}
-//          </div>
-//         <div class="auth-banner__info">
-//             <h1 class="auth-banner__title">ab filmes</h1>
-//             <p class="auth-banner__description">
-//               O guia definitivo para os amantes de cinemas
-//             </p>
-//         </div>
-//     </div>
-//   `;
-
-//   const authForm = `
-//     <div class="auth-form">
-//         <div class="auth-toggle">
-//             <button class="auth-toggle__button auth-toggle__button--active">Login</button>
-//             <button class="auth-toggle__button">Cadastre</button>
-//         </div>
-//         <form class="auth-form__form">
-//             <h1 class="auth-form__title">Xablau</h1>
-//             <input type="text" class="auth-form__input" placeholder="nome" id="nome">
-//             <button type="submit" class="auth-form__submit">Xablau</button>
-//         </form>
-//     </div>
-//   `;
-
-//   section.innerHTML = (authBanner + authForm).trim();
-
-//   return section;
-// }
