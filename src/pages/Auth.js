@@ -1,9 +1,9 @@
-import { Form } from "/src/components/AuthLayout.js";
+import { AuthLayout } from "/src/components/AuthLayout.js";
 
 export async function Auth() {
-  const fragment = document.createDocumentFragment();
+  const authFragment = document.createDocumentFragment();
 
-  const sectionForm = await Form({
+  const authSection = await AuthLayout({
     forms: {
       login: {
         title: "Acesse sua conta",
@@ -30,7 +30,7 @@ export async function Auth() {
     },
   });
 
-  fragment.appendChild(sectionForm);
+  authFragment.appendChild(authSection);
 
-  return fragment;
+  return authFragment;
 }

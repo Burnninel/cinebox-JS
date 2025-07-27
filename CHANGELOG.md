@@ -11,7 +11,19 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Retorna erros de validação da API no front.
 
 ### Added
-- Melhorar estrutura do AuthLayout, separando responsabilidades e deixando o componente mais limpo.
+- Adicionar mensagens de sucesso na autenticação usando bootstrap.
+
+## [0.3.6] - 27/07/2025
+
+### Changed
+- Refatoração da função `handleAuthForm` no `AuthHandler` para melhorar o gerenciamento de erros:
+  - `removeErrors` agora recebe `authContainer` para buscar inputs dentro do escopo correto.
+  - Ajustes nas funções de exibição e limpeza de erros para manter o encapsulamento.
+- Separação mais clara das responsabilidades entre `AuthLayout` (interface) e `AuthHandler` (lógica e manipulação de eventos).
+- Refatoração na função `Auth` para melhoria dos nomes de variáveis:
+  - `fragment` renomeado para `authFragment` para maior clareza.
+  - `sectionForm` renomeado para `authSection` para refletir melhor o conteúdo.
+  - Nenhuma alteração funcional, apenas melhorias semânticas para facilitar manutenção e leitura.
 
 ## [0.3.5] - 27/07/2025
 

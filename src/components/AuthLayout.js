@@ -1,7 +1,7 @@
 import { IconLogo } from "/src/assets/icons/icons.js";
-import { login } from "/src/services/authService.js";
+import { handleAuthForm } from "/src/components/AuthHandler.js";
 
-export async function Form({ forms }) {
+export async function AuthLayout({ forms }) {
   let activeFormKey = "login";
 
   const section = document.createElement("section");
@@ -56,7 +56,7 @@ export async function Form({ forms }) {
     `;
 
     updateToggleStyle();
-    setupAuth(inputs);
+    handleAuthForm(authContainer, inputs);
   }
 
   function updateToggleStyle() {
@@ -66,70 +66,6 @@ export async function Form({ forms }) {
         "auth-toggle__button--active",
         btn.dataset.form === activeFormKey
       );
-    });
-  }
-
-  function clearFieldError(input) {
-    const nextSibling = input.nextElementSibling;
-
-    if (nextSibling?.classList.contains("auth-form__span-error")) {
-      nextSibling.remove();
-    }
-
-    input.classList.remove("auth-form__input-error");
-  }
-
-  function showFieldError(input, message) {
-    const nextSibling = input.nextElementSibling;
-
-    if (nextSibling?.classList.contains("auth-form__span-error")) {
-      nextSibling.textContent = message;
-    } else {
-      const errorSpan = document.createElement("span");
-      errorSpan.className = "auth-form__span-error";
-      errorSpan.textContent = message;
-
-      input.classList.add("auth-form__input-error");
-      input.insertAdjacentElement("afterend", errorSpan);
-    }
-  }
-
-  function removeErrors(formData) {
-    Object.keys(formData).forEach((fieldId) => {
-      const input = document.getElementById(fieldId);
-      if (input) clearFieldError(input);
-    });
-  }
-
-  function setErrors(errors) {
-    Object.entries(errors).forEach(([fieldId, message]) => {
-      const input = document.getElementById(fieldId);
-      if (input) showFieldError(input, message);
-    });
-  }
-
-  async function setupAuth(inputs) {
-    const submitButton = authContainer.querySelector(".auth-form__submit");
-
-    submitButton.addEventListener("click", async () => {
-      const formData = {};
-
-      inputs.forEach(({ id }) => {
-        const inputElement = authContainer.querySelector(`#${id}`);
-        formData[id] = inputElement?.value || "";
-      });
-
-      try {
-        const formType = submitButton.dataset.form;
-        const { data: authenticatedUser } = await login(formType, formData);
-
-        removeErrors(formData);
-
-        document.cookie = "token=; path=/; max-age=0";
-        document.cookie = `token=${authenticatedUser.token}; path=/; max-age=86400`;
-      } catch (error) {
-        setErrors(error.errors || {});
-      }
     });
   }
 
