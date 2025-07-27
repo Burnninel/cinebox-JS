@@ -69,22 +69,67 @@ export async function Form({ forms }) {
     });
   }
 
+  function clearFieldError(input) {
+    const nextSibling = input.nextElementSibling;
+
+    if (nextSibling?.classList.contains("auth-form__span-error")) {
+      nextSibling.remove();
+    }
+
+    input.classList.remove("auth-form__input-error");
+  }
+
+  function showFieldError(input, message) {
+    const nextSibling = input.nextElementSibling;
+
+    if (nextSibling?.classList.contains("auth-form__span-error")) {
+      nextSibling.textContent = message;
+    } else {
+      const errorSpan = document.createElement("span");
+      errorSpan.className = "auth-form__span-error";
+      errorSpan.textContent = message;
+
+      input.classList.add("auth-form__input-error");
+      input.insertAdjacentElement("afterend", errorSpan);
+    }
+  }
+
+  function removeErrors(formData) {
+    Object.keys(formData).forEach((fieldId) => {
+      const input = document.getElementById(fieldId);
+      if (input) clearFieldError(input);
+    });
+  }
+
+  function setErrors(errors) {
+    Object.entries(errors).forEach(([fieldId, message]) => {
+      const input = document.getElementById(fieldId);
+      if (input) showFieldError(input, message);
+    });
+  }
+
   async function setupAuth(inputs) {
     const submitButton = authContainer.querySelector(".auth-form__submit");
 
     submitButton.addEventListener("click", async () => {
       const formData = {};
 
-      inputs.forEach((input) => {
-        const inputElement = authContainer.querySelector(`#${input.id}`);
-        formData[input.id] = inputElement.value;
+      inputs.forEach(({ id }) => {
+        const inputElement = authContainer.querySelector(`#${id}`);
+        formData[id] = inputElement?.value || "";
       });
 
-      const formType = submitButton.dataset.form;
-      const { data: authenticatedUser } = await login(formType, formData);
+      try {
+        const formType = submitButton.dataset.form;
+        const { data: authenticatedUser } = await login(formType, formData);
 
-      document.cookie = "token=; path=/; max-age=0";
-      document.cookie = `token=${authenticatedUser.token}; path=/; max-age=86400`;
+        removeErrors(formData);
+
+        document.cookie = "token=; path=/; max-age=0";
+        document.cookie = `token=${authenticatedUser.token}; path=/; max-age=86400`;
+      } catch (error) {
+        setErrors(error.errors || {});
+      }
     });
   }
 

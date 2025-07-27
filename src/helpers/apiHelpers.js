@@ -10,14 +10,14 @@ export async function apiRequest(url, method, body = null) {
       body: body ? JSON.stringify(body) : null,
     });
 
+    const responseData = await response.json();
+
     if (!response.ok) {
-      throw new Error(`Erro ao buscar filme: ${response.statusText}`);
+      throw responseData;
     }
 
-    const data = await response.json();
-    return data;
+    return responseData;
   } catch (error) {
-    console.error(error);
-    return null;
+    throw error;
   }
 }

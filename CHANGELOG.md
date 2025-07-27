@@ -4,16 +4,27 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
 ## [Unreleased]
 ### Changed
-- Refatoração do `services/filmeService.js` para incluir helper genérico `requestApi`.
-- Implementa opção de pesquisa por filme no serviço `fetchAllFilmes`.
-- Implementa busca de filmes utilizando os dados do campo de entrada (Interação do usuario).
 - Pagina de filme não encontrado implementada.
 - Implementada estrutura basica para pagina de autenticação com login e registrar.
-- Interavitidade (toggle de forms) da pagina de autenticação;
+- Interavitidade (toggle de forms) da pagina de autenticação.
+- Envia a requisição de autenticação para a API.
+- Retorna erros de validação da API no front.
 
 ### Added
+- Melhorar estrutura do AuthLayout, separando responsabilidades e deixando o componente mais limpo.
 
-- Retornar os erros de validação nos inputs conforme resposta da API.
+## [0.3.5] - 27/07/2025
+
+### Added
+- Exibição de mensagens de erro nos campos inválidos do formulário de login/cadastro.
+- Limpeza automática dos erros ao tentar novo envio.
+
+### Changed
+- Função `setupAuth` agora lida com respostas de erro e invoca renderização das mensagens.
+- Lógica de remoção do cookie antigo (`token`) antes de adicionar um novo.
+
+### CSS
+- Adicionado feedback visual com borda vermelha (input) e texto auxiliar (span) nos inputs com erro.
 
 ## [0.3.4] - 26/07/2025
 

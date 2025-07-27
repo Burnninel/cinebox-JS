@@ -129,6 +129,18 @@
   box-sizing: border-box;
 }
 
+.auth-form__input-error {
+  border-color: #7b010e;
+}
+
+.auth-form__span-error {
+  width: 100%;
+  color: #7b010e;
+  font-size: 0.5rem;
+  text-align: start;
+}
+
+
 .auth-form__submit {
   all: unset;
   width: 100%;
