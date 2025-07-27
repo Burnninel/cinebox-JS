@@ -12,6 +12,7 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
 ### Added
 - Adicionar mensagens de sucesso na autenticação usando bootstrap.
+  - Instala Bootstrap e configura importação seletiva (evita aplicação de estilização padrão).
 
 ## [0.3.6] - 27/07/2025
 
