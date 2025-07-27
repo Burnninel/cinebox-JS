@@ -4,6 +4,19 @@ export async function handleAuthForm(authContainer, inputs) {
   const submitButton = authContainer.querySelector(".auth-form__submit");
 
   submitButton.addEventListener("click", async () => {
+    await submitForm();
+  });
+
+  inputs.forEach(({ id }) => {
+    const inputElement = authContainer.querySelector(`#${id}`);
+    inputElement?.addEventListener("keydown", async (event) => {
+      if (event.key === "Enter") {
+        await submitForm();
+      }
+    });
+  });
+
+  async function submitForm() {
     const formData = {};
 
     inputs.forEach(({ id }) => {
@@ -22,7 +35,7 @@ export async function handleAuthForm(authContainer, inputs) {
     } catch (error) {
       setErrors(error.errors || {});
     }
-  });
+  }
 }
 
 function clearFieldError(input) {
