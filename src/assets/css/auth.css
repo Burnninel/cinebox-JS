@@ -103,6 +103,7 @@
 .auth-form__title {
   font-family: "Winky Rough", sans-serif;
   width: 100%;
+  font-size: 1.6rem;
   text-align: start;
   color: var(--gray-100);
   margin: 0;

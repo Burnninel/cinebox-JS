@@ -10,8 +10,8 @@ export async function MovieSection(titulo) {
   section.className = "explore";
   section.innerHTML = `
       <header class="explore-header">
-        <div class="explore__title">
-            <h1>${titulo}</h1>
+        <div>
+            <h1 class="explore__title">${titulo}</h1>
         </div>
         <div class="explore__search">
             <button class="explore__search-button" id="searchTerm">
