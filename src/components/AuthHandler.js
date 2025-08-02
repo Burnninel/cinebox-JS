@@ -1,5 +1,6 @@
 import { login } from "/src/services/authService.js";
 import { ToastContainer } from "./ToastContainer";
+import { navigateTo } from "/src/router.js";
 
 export async function handleAuthForm(authContainer, inputs) {
   const submitButton = authContainer.querySelector(".auth-form__submit");
@@ -33,14 +34,18 @@ export async function handleAuthForm(authContainer, inputs) {
 
     try {
       const formType = submitButton.dataset.form;
-      const data = await login(formType, formData);
-      const authenticatedUser = data.response;
+      const response = await login(formType, formData);
+      const authenticatedUser = response.data;
 
       clearAllFormErrors(authContainer, formData);
-      toastContainer.showToast({ message: data.message, type: "success" });
-
+      toastContainer.showToast({ message: response.message, type: "success" });
+      
       document.cookie = "token=; path=/; max-age=0";
       document.cookie = `token=${authenticatedUser.token}; path=/; max-age=86400`;
+
+      setTimeout(() => {
+        navigateTo("/");
+      }, 1000);
     } catch (error) {
       if (error.errors == 0) {
         clearAllFormErrors(authContainer, formData);

@@ -11,8 +11,6 @@ async function router() {
   const path = window.location.pathname || "";
   const page = routes[path];
 
-  console.log(path);
-
   app.replaceChildren();
 
   if (page) {
@@ -23,5 +21,10 @@ async function router() {
   }
 }
 
-window.addEventListener("hashchange", router);
+export function navigateTo(path) {
+  window.history.pushState({}, "", path);
+  router();
+}
+
+window.addEventListener("popstate", router);
 window.addEventListener("load", router);

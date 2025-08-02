@@ -18,10 +18,13 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Added
 - Componente `Loading` com overlay e spinner do Bootstrap.
 - Funções `showLoading` e `hideLoading` para controlar a exibição do carregamento.
+- Redirecionamento automático com `navigateTo('/')` ao finalizar o login com sucesso.
+- Delay de 1 segundo antes da navegação para garantir o armazenamento do token nos cookies e troca suave.
 
 ### Changed
 - Fluxo de autenticação (`handleAuthForm`): agora exibe o loading ao enviar os dados e o oculta após a resposta da API.
 - Adicionado uso de `finally` para garantir que o loading seja ocultado mesmo em caso de erro.
+- A navegação agora é feita via SPA (sem recarregar a página), melhorando a fluidez da experiência do usuário.
 
 ## [0.3.7] - 01/08/2025
 
