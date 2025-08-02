@@ -24,9 +24,13 @@ export async function handleAuthForm(authContainer, inputs) {
     inputs.forEach(({ id }) => {
       const inputElement = authContainer.querySelector(`#${id}`);
       formData[id] = inputElement?.value || "";
-      inputElement?.addEventListener("input", () => removeInputErrorMessage(inputElement));
+      inputElement?.addEventListener("input", () =>
+        removeInputErrorMessage(inputElement)
+      );
     });
-    
+
+    showLoading();
+
     try {
       const formType = submitButton.dataset.form;
       const data = await login(formType, formData);
@@ -38,12 +42,14 @@ export async function handleAuthForm(authContainer, inputs) {
       document.cookie = "token=; path=/; max-age=0";
       document.cookie = `token=${authenticatedUser.token}; path=/; max-age=86400`;
     } catch (error) {
-      if(error.errors == 0) {
+      if (error.errors == 0) {
         clearAllFormErrors(authContainer, formData);
         toastContainer.showToast({ message: error.message, type: "error" });
       }
 
       setErrors(error.errors || {});
+    } finally {
+      hideLoading();
     }
   }
 }
@@ -85,4 +91,12 @@ function clearAllFormErrors(authContainer, formData) {
     const input = authContainer.querySelector(`#${fieldId}`);
     if (input) removeInputErrorMessage(input);
   });
+}
+
+function showLoading() {
+  document.getElementById("loading").classList.remove("hidden");
+}
+
+function hideLoading() {
+  document.getElementById("loading").classList.add("hidden");
 }

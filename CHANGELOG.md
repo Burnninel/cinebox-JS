@@ -4,15 +4,24 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
 ## [Unreleased]
 ### Changed
-- Pagina de filme não encontrado implementada.
-- Implementada estrutura basica para pagina de autenticação com login e registrar.
-- Interavitidade (toggle de forms) da pagina de autenticação.
+
 - Envia a requisição de autenticação para a API.
 - Retorna erros de validação da API no front.
+- Toasts de validação.
+- Spinners de carregamento aguardando o back.
 
 ### Added
-- Adicionar mensagens de sucesso na autenticação usando bootstrap.
-  - Instala Bootstrap e configura importação seletiva (evita aplicação de estilização padrão).
+- Finalizar pagina de autencicação.
+
+## [0.3.8] - 01/08/2025
+
+### Added
+- Componente `Loading` com overlay e spinner do Bootstrap.
+- Funções `showLoading` e `hideLoading` para controlar a exibição do carregamento.
+
+### Changed
+- Fluxo de autenticação (`handleAuthForm`): agora exibe o loading ao enviar os dados e o oculta após a resposta da API.
+- Adicionado uso de `finally` para garantir que o loading seja ocultado mesmo em caso de erro.
 
 ## [0.3.7] - 01/08/2025
 

@@ -1,4 +1,5 @@
 import { AuthLayout } from "/src/components/AuthLayout.js";
+import { Loading } from "/src/components/Loading.js";
 
 export async function Auth() {
   const authFragment = document.createDocumentFragment();
@@ -31,6 +32,7 @@ export async function Auth() {
   });
 
   authFragment.appendChild(authSection);
+  authFragment.appendChild(Loading());
 
   return authFragment;
 }
