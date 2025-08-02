@@ -3,7 +3,6 @@ import { ToastContainer } from "./ToastContainer";
 
 export async function handleAuthForm(authContainer, inputs) {
   const submitButton = authContainer.querySelector(".auth-form__submit");
-
   const toastContainer = ToastContainer();
 
   submitButton.addEventListener("click", async () => {
@@ -25,29 +24,31 @@ export async function handleAuthForm(authContainer, inputs) {
     inputs.forEach(({ id }) => {
       const inputElement = authContainer.querySelector(`#${id}`);
       formData[id] = inputElement?.value || "";
+      inputElement?.addEventListener("input", () => removeInputErrorMessage(inputElement));
     });
-
+    
     try {
       const formType = submitButton.dataset.form;
-      const { data: authenticatedUser } = await login(formType, formData);
+      const data = await login(formType, formData);
+      const authenticatedUser = data.response;
 
-      removeErrors(authContainer, formData, toastContainer);
-      toastContainer.showToast({ message: "Conectado com sucesso!", type: "success" });
+      clearAllFormErrors(authContainer, formData);
+      toastContainer.showToast({ message: data.message, type: "success" });
 
       document.cookie = "token=; path=/; max-age=0";
       document.cookie = `token=${authenticatedUser.token}; path=/; max-age=86400`;
     } catch (error) {
       if(error.errors == 0) {
-        removeErrors(authContainer, formData, toastContainer);
+        clearAllFormErrors(authContainer, formData);
         toastContainer.showToast({ message: error.message, type: "error" });
       }
 
-      setErrors(error.errors || {}, toastContainer);
+      setErrors(error.errors || {});
     }
   }
 }
 
-function clearFieldError(input) {
+function removeInputErrorMessage(input) {
   const nextSibling = input.nextElementSibling;
 
   if (nextSibling?.classList.contains("auth-form__span-error")) {
@@ -79,9 +80,9 @@ function setErrors(errors) {
   });
 }
 
-function removeErrors(authContainer, formData) {
+function clearAllFormErrors(authContainer, formData) {
   Object.keys(formData).forEach((fieldId) => {
     const input = authContainer.querySelector(`#${fieldId}`);
-    if (input) clearFieldError(input);
+    if (input) removeInputErrorMessage(input);
   });
 }
