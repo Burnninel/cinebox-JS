@@ -13,6 +13,27 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Added
 - Finalizar pagina de autencicação.
 
+-> commitar  - changelog
+
+-> validacao front ent
+
+## [0.3.9] - 02/08/2025
+
+### Added
+- Página `Signup` criada com formulário de cadastro independente.
+- Rota `/signup` adicionada no roteador para exibir a nova tela.
+- Redirecionamento automático para `/login` após cadastro concluído.
+- Botão para alternar entre login e cadastro agora redireciona entre rotas.
+- Estrutura de componentes atualizada para refletir a separação de contextos (login vs. cadastro).
+
+### Changed
+- `Auth.js` foi renomeado para `Login.js` para refletir melhor sua responsabilidade.
+- `AuthLayout` ajustado para trabalhar com um único formulário por vez, com base no `formType` fornecida.
+- Lógica de alternância interna de formulário removida (foi substituída por navegação entre rotas).
+
+### Removed
+- Alternância dinâmica entre formulários de login e cadastro dentro da mesma página.
+
 ## [0.3.8] - 01/08/2025
 
 ### Added

@@ -1,8 +1,9 @@
 import { IconLogo } from "/src/assets/icons/icons.js";
 import { handleAuthForm } from "/src/components/AuthHandler.js";
+import { navigateTo } from "/src/router.js";
 
 export async function AuthLayout({ forms }) {
-  let activeFormKey = "login";
+  const formType = Object.keys(forms)[0];
 
   const section = document.createElement("section");
   section.className = "auth";
@@ -40,7 +41,7 @@ export async function AuthLayout({ forms }) {
   formContainer.className = "auth-form__form";
 
   function renderForm() {
-    const { title, submitText, inputs } = forms[activeFormKey];
+    const { title, submitText, inputs } = forms[formType];
 
     const inputsHTML = inputs
       .map(
@@ -52,7 +53,7 @@ export async function AuthLayout({ forms }) {
     formContainer.innerHTML = `
         <h1 class="auth-form__title">${title}</h1>  
         ${inputsHTML}
-        <button type="submit" class="auth-form__submit" data-form="${activeFormKey}">${submitText}</button>
+        <button type="submit" class="auth-form__submit" data-form="${formType}">${submitText}</button>
     `;
 
     updateToggleStyle();
@@ -64,7 +65,7 @@ export async function AuthLayout({ forms }) {
     buttons.forEach((btn) => {
       btn.classList.toggle(
         "auth-toggle__button--active",
-        btn.dataset.form === activeFormKey
+        btn.dataset.form === formType
       );
     });
   }
@@ -74,11 +75,7 @@ export async function AuthLayout({ forms }) {
 
   authContainer.querySelectorAll(".auth-toggle__button").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const formType = btn.dataset.form;
-      if (formType !== activeFormKey) {
-        activeFormKey = formType;
-        renderForm();
-      }
+      navigateTo(`/${btn.dataset.form}`);
     });
   });
 

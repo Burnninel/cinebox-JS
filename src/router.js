@@ -1,9 +1,11 @@
 import { Home } from "./pages/Home.js";
-import { Auth } from "./pages/Auth.js";
+import { Login } from "./pages/Login.js";
+import { Signup } from "./pages/Signup.js";
 
 const routes = {
   "/": Home,
-  "/auth": Auth
+  "/login": Login,
+  "/signup": Signup
 };
 
 async function router() {

@@ -44,7 +44,11 @@ export async function handleAuthForm(authContainer, inputs) {
       document.cookie = `token=${authenticatedUser.token}; path=/; max-age=86400`;
 
       setTimeout(() => {
-        navigateTo("/");
+        if(formType === 'login') {
+          navigateTo("/");
+        } else {
+          navigateTo("/login");
+        }
       }, 1000);
     } catch (error) {
       if (error.errors == 0) {
