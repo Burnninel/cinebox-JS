@@ -19,6 +19,9 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Added
 - Sistema de **toasts personalizados** com suporte a diferentes tipos (`success`, `error`) e botão de fechamento.
 - Remoção automática do toast após transição de desaparecimento (`transitionend`).
+- Integração do `ToastContainer` ao `AuthHandler.js`.
+- Exibição de toast de sucesso ao login bem-sucedido.
+- Exibição de toast de erro ao ocorrer falha na autenticação.
 
 ### CSS
 - Estilização dos toasts com fundo colorido por tipo (`.toast--success`, `.toast--error`).

@@ -1,7 +1,10 @@
 import { login } from "/src/services/authService.js";
+import { ToastContainer } from "./ToastContainer";
 
 export async function handleAuthForm(authContainer, inputs) {
   const submitButton = authContainer.querySelector(".auth-form__submit");
+
+  const toastContainer = ToastContainer();
 
   submitButton.addEventListener("click", async () => {
     await submitForm();
@@ -28,12 +31,18 @@ export async function handleAuthForm(authContainer, inputs) {
       const formType = submitButton.dataset.form;
       const { data: authenticatedUser } = await login(formType, formData);
 
-      removeErrors(authContainer, formData);
+      removeErrors(authContainer, formData, toastContainer);
+      toastContainer.showToast({ message: "Conectado com sucesso!", type: "success" });
 
       document.cookie = "token=; path=/; max-age=0";
       document.cookie = `token=${authenticatedUser.token}; path=/; max-age=86400`;
     } catch (error) {
-      setErrors(error.errors || {});
+      if(error.errors == 0) {
+        removeErrors(authContainer, formData, toastContainer);
+        toastContainer.showToast({ message: error.message, type: "error" });
+      }
+
+      setErrors(error.errors || {}, toastContainer);
     }
   }
 }
