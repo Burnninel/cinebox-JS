@@ -1,0 +1,44 @@
+.toast {
+  max-width: 18rem;
+}
+
+.toast__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.toast__message {
+  color: var(--gray-100);
+  font-size: 0.8rem;
+  letter-spacing: 0.8px;
+  font-weight: 400;
+}
+
+.btn-close {
+  font-size: 0.55rem;
+}
+
+.toast.fade {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.toast.fade.show {
+  opacity: 1;
+}
+
+.toast.fade:not(.show) {
+  opacity: 0;
+  display: block !important;
+}
+
+.toast--error {
+  background-color: #d81515;
+}
+
+.toast--success {
+  background-color: #15a215;
+}

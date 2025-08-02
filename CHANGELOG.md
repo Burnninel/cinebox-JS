@@ -14,6 +14,17 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Adicionar mensagens de sucesso na autenticação usando bootstrap.
   - Instala Bootstrap e configura importação seletiva (evita aplicação de estilização padrão).
 
+## [0.3.7] - 01/08/2025
+
+### Added
+- Sistema de **toasts personalizados** com suporte a diferentes tipos (`success`, `error`) e botão de fechamento.
+- Remoção automática do toast após transição de desaparecimento (`transitionend`).
+
+### CSS
+- Estilização dos toasts com fundo colorido por tipo (`.toast--success`, `.toast--error`).
+- Estilo responsivo e compacto com tamanho máximo (`max-width`) e alinhamento de conteúdo interno (`toast__body`, `toast__message`).
+- Transição suave de opacidade entre os estados `.fade`, `.fade.show` e `.fade:not(.show)`.
+
 ## [0.3.6] - 27/07/2025
 
 ### Changed
