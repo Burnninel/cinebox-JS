@@ -50,15 +50,9 @@ export async function handleAuthForm(authContainer, inputs) {
       document.cookie = "token=; path=/; max-age=0";
       document.cookie = `token=${authenticatedUser.token}; path=/; max-age=86400`;
 
-      setTimeout(() => {
-        if(formType === 'login') {
-          navigateTo("/");
-        } else {
-          navigateTo("/login");
-        }
-      }, 1000);
+      navigateTo(formType === 'login' ? "/" : "/login");
     } catch (error) {
-      if (error.errors == 0) {
+      if (!error.errors || Object.keys(error.errors).length === 0) {
         clearAllFormErrors(authContainer, formData);
         toastContainer.showToast({ message: error.message, type: "error" });
       }
