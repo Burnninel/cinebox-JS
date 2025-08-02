@@ -1,4 +1,4 @@
-import { login } from "/src/services/authService.js";
+import { handleAuthRequest, validateLogin } from "/src/services/authService.js";
 import { ToastContainer } from "./ToastContainer";
 import { navigateTo } from "/src/router.js";
 
@@ -27,14 +27,21 @@ export async function handleAuthForm(authContainer, inputs) {
       formData[id] = inputElement?.value || "";
       inputElement?.addEventListener("input", () =>
         removeInputErrorMessage(inputElement)
-      );
-    });
+    );
+  });
+  
+    const validationErrors = validateLogin(formData);
+
+    if(Object.keys(validationErrors).length !== 0) {
+      setErrors(validationErrors)
+      return;
+    }
 
     showLoading();
 
     try {
       const formType = submitButton.dataset.form;
-      const response = await login(formType, formData);
+      const response = await handleAuthRequest(formType, formData);
       const authenticatedUser = response.data;
 
       clearAllFormErrors(authContainer, formData);

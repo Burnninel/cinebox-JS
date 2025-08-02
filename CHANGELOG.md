@@ -3,19 +3,28 @@
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
 ## [Unreleased]
-### Changed
-
+### Added
 - Envia a requisição de autenticação para a API.
 - Retorna erros de validação da API no front.
 - Toasts de validação.
 - Spinners de carregamento aguardando o back.
+- Utils para validação do frontend.
+
+### Next Add
+- Expandir o Utils para o Signup
+
+## [0.4.0] - 02/08/2025 - **Implementa validação do frontend (Utils)**
 
 ### Added
-- Finalizar pagina de autencicação.
+- Módulo `validateForm` criado em `utils/` para centralizar regras de validação no frontend.
+- Função `validateLogin` implementada no `authService` para definir regras específicas do formulário de login.
+- Validação de campos no formulário de login antes de enviar dados para a API, reduzindo chamadas desnecessárias.
 
--> commitar  - changelog
+### Changed
+- `authService.js` renomeou a função `login` para `handleAuthRequest`, tornando-a mais genérica para login e cadastro.
+- `AuthHandler` atualizado para utilizar a validação no client-side antes da submissão.
+- Estrutura do componente `AuthHandler` reorganizada para remover e exibir erros dinamicamente com base nas validações **`frontend`**.
 
--> validacao front ent
 
 ## [0.3.9] - 02/08/2025
 
@@ -127,7 +136,7 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Adição do toggle visual para alternar entre Login e Cadastro (botões estilizados, sem funcionalidade ainda).
 - Estilos CSS para `.auth-form`, `.auth-toggle`, inputs e botões, garantindo alinhamento, espaçamento e visual consistente com o banner lateral.
 
-## [0.3.0] - 21/07/2025
+## [0.3.0] - 21/07/2025 - **Implementa estrutura de autenticação**
 
 ### Added
 - Página de autenticação básica (`pages/Auth`) com estrutura de layout dividida.
@@ -136,7 +145,7 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Classes de estilo iniciais para `.auth-banner`, com foco em responsividade, alinhamento e visual agradável.
 
 
-## [0.2.0] - 20/07/2025
+## [0.2.0] - 20/07/2025 -  **Adiciona Vite no projeto**
 ### Added
 - Ferramenta Vite adicionada como bundler e dev server para o projeto Cinebox.
 - Script de inicialização com Vite configurado no `package.json`.
@@ -154,7 +163,6 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Purpose
 - Executar o servidor local com Vite e permitir rotas sem hash (`#`), facilitando a navegação limpa e moderna no navegador.
 
-
 ## [0.1.2] - 19/07/2025
 ### Added
 - Componente `EmptyMovieMessage` para exibir mensagem quando a pesquisa não retorna filmes.
@@ -167,7 +175,8 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
   - Adaptação do `movieService` para aceitar termo de busca como parâmetro.
   - Ajusta o `MovieSection` para capturar os dados do input e enviar para o `movieService`.
 
-## [0.1.0] - 18/07/2025
+
+## [0.1.0] - 18/07/2025 -  **Implementa conexão com a API (Back-end)**
 ### Added
 - Integração base com API no componente `SectionFilmes` (Home).
   - Os filmes, antes estáticos em array local, agora são obtidos via API.
@@ -205,7 +214,7 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
   - Header com título `<h1>` e campo de busca `<input>` para pesquisar filmes.
   - Corpo da section com lista `<ul>` para exibir cards de filmes.
 
-## [0.0.1] - 12/07/2025
+## [0.0.1] - 12/07/2025 -  **Estrutura inicial do projeto**
 ### Added
 - Estrutura base do projeto criada em `public/assets` com `index.html` e `css/styles.css`.
 - Layout inicial do `<header>` responsivo com imagens e ícones SVG.
