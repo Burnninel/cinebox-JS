@@ -9,9 +9,23 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Toasts de validação.
 - Spinners de carregamento aguardando o back.
 - Utils para validação do frontend.
+- Expandir o Utils para o Signup
+- Cria a pagina meus filmes
 
 ### Next Add
-- Expandir o Utils para o Signup
+- Implementar botão de criar filme no `MovieSection`
+
+## [0.5.0] - 03/08/2025 - **Implementa página "`MyMovies`"**
+
+### Added
+- Página `MyMovies` criada em `pages/` com listagem dos filmes do usuário autenticado.
+- Integração do `MyMovies` com o service `fetchMoviesByUser` para carregar dados diretamente da API.
+- Suporte a listagem dinâmica reutilizando o componente `MovieSection`.
+
+### Changed
+- `MovieSection` agora recebe os filmes por parâmetro ao invés de buscar diretamente via `fetchAllMovies`, tornando-o reutilizável com diferentes fontes de dados.
+- Página `Home` atualizada para realizar a chamada de API (`fetchAllMovies`) diretamente e passar os dados para o `MovieSection`.
+
 
 ## [0.4.1] - 02/08/2025
 

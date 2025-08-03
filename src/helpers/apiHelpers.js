@@ -5,7 +5,7 @@ export async function apiRequest(url, method, body = null) {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ODQsIm5vbWUiOiJicnVubyIsImVtYWlsIjoiYnJuQGVtYWlsLmNvbSIsImlhdCI6MTc1Mjg5NjE4NiwiZXhwIjoxNzUyODk5Nzg2fQ.8I8kTxFfFxvcWfOcxccdRrES9MvSjgs3LwQ7fwzTxtk",
+          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibm9tZSI6ImJydW5vIiwiZW1haWwiOiJicnVub0BnbWFpbC5jb20iLCJpYXQiOjE3NTQxODkwMDYsImV4cCI6MTc1NDE5MjYwNn0.kpmOe2jIcg6SoocSt7NCujVzGWpBnSnpQLCEHzoWYHU",
       },
       body: body ? JSON.stringify(body) : null,
     });

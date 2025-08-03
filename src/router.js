@@ -1,11 +1,13 @@
 import { Home } from "./pages/Home.js";
 import { Login } from "./pages/Login.js";
 import { Signup } from "./pages/Signup.js";
+import { MyMovies } from "./pages/MyMovies.js";
 
 const routes = {
   "/": Home,
   "/login": Login,
-  "/signup": Signup
+  "/signup": Signup,
+  "/meus-filmes": MyMovies,
 };
 
 async function router() {

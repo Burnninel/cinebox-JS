@@ -1,14 +1,14 @@
 import { Header } from "/src/components/Header.js";
 import { MovieSection } from "../components/MovieSection.js";
-import { fetchAllMovies } from "/src/services/movieService.js";
+import { fetchMoviesByUser } from "/src/services/movieService.js";
 
-export async function Home() {
+export async function MyMovies() {
   const fragment = document.createDocumentFragment();
-  const { data: filmes } = await fetchAllMovies();
+  const { data: { filmes } } = await fetchMoviesByUser();
 
   fragment.appendChild(Header());
 
-  const section = await MovieSection("Explorar", filmes);
+  const section = await MovieSection("Meus Filmes", filmes);
   fragment.appendChild(section);
 
   return fragment;

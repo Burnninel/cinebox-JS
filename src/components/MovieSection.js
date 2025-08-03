@@ -3,9 +3,7 @@ import { EmptyMovieMessage } from "./EmptyMovieMessage.js";
 import { IconSearch } from "../assets/icons/icons.js";
 import { fetchAllMovies } from "/src/services/movieService.js";
 
-export async function MovieSection(titulo) {
-  const { data: filmes } = await fetchAllMovies();
-
+export async function MovieSection(titulo, filmes) {
   const section = document.createElement("section");
   section.className = "explore";
   section.innerHTML = `
