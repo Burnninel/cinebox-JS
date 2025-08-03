@@ -15,6 +15,18 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Next Add
 - Implementar botão de criar filme no `MovieSection`
 
+## [0.5.1] - 03/08/2025 - **Pega token dinâmico do cookie no frontend**
+
+### Added
+- Extração dinâmica do token de autenticação do cookie no frontend para uso nas requisições.
+- Criação do helper `cookieHelpers.js` com função `getCookieValue` para extrair valores de cookies.
+
+### Changed
+- Refatoração do helper `apiRequest` para aceitar token como parâmetro dinâmico.
+- Headers agora são montados dinamicamente com ou sem token.
+- `apiRequest` ajustado para não enviar body em requisições GET.
+- MyMovies agora utiliza token extraído dos cookies.
+
 ## [0.5.0] - 03/08/2025 - **Implementa página "`MyMovies`"**
 
 ### Added

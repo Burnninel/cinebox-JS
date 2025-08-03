@@ -14,8 +14,8 @@ export async function fetchMovieById(id) {
   return apiRequest(`${API_URL}/${id}`, "GET");
 }
 
-export async function fetchMoviesByUser() {
-  return apiRequest(`${API_URL}/meus-filmes`, "GET");
+export async function fetchMoviesByUser(token) {
+  return apiRequest(`${API_URL}/meus-filmes`, "GET", null, token);
 }
 
 export async function createNewMovie() {
