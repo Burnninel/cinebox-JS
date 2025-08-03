@@ -57,7 +57,7 @@ export async function AuthLayout({ forms }) {
     `;
 
     updateToggleStyle();
-    handleAuthForm(authContainer, inputs);
+    handleAuthForm(authContainer, inputs, formType);
   }
 
   function updateToggleStyle() {

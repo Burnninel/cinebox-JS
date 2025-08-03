@@ -15,3 +15,19 @@ export function validateLogin(formData) {
 
   return validateForm(formData, validationRules);
 }
+
+export function validateSignup(formData) {
+  const validationRules = {
+    nome: { required: true, minLength: 5 },
+    email: { required: true, email: true },
+    senha: {
+      required: true,
+      minLength: 8,
+      maxLength: 24,
+      strong: true,
+      confirmed: true,
+    },
+  };
+
+  return validateForm(formData, validationRules);
+}

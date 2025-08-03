@@ -1,8 +1,8 @@
-import { handleAuthRequest, validateLogin } from "/src/services/authService.js";
+import { handleAuthRequest, validateLogin, validateSignup } from "/src/services/authService.js";
 import { ToastContainer } from "./ToastContainer";
 import { navigateTo } from "/src/router.js";
 
-export async function handleAuthForm(authContainer, inputs) {
+export async function handleAuthForm(authContainer, inputs, formType) {
   const submitButton = authContainer.querySelector(".auth-form__submit");
   const toastContainer = ToastContainer();
 
@@ -30,7 +30,10 @@ export async function handleAuthForm(authContainer, inputs) {
     );
   });
   
-    const validationErrors = validateLogin(formData);
+
+    const validationErrors = formType === 'login' 
+    ? validateLogin(formData)
+    : validateSignup(formData)
 
     if(Object.keys(validationErrors).length !== 0) {
       setErrors(validationErrors)

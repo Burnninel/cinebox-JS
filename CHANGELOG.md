@@ -13,6 +13,19 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Next Add
 - Expandir o Utils para o Signup
 
+## [0.4.1] - 02/08/2025
+
+### Added
+- Função `validateSignup` adicionada ao `authService` para aplicar regras específicas do formulário de cadastro (`signup`).
+- Suporte às novas regras de validação no módulo `validateForm`: `minLength`, `maxLength`, `strong` (caracteres especiais) e `confirmed` (campos com confirmação).
+- Helper `setErrorOnce` criado em `helpers/` para registrar apenas a primeira mensagem de erro por campo.
+
+### Changed
+- `validateForm` ajustado para aplicar múltiplas regras por campo e evitar sobrescrita de erros.
+- `AuthHandler` atualizado para utilizar `validateSignup` ao lidar com o formulário de cadastro (`signup`).
+- `AuthLayout` atualizado para enviar o `formType` ao `AuthHandler`.
+- Mensagens de erro padronizadas com textos mais diretos e claros.
+
 ## [0.4.0] - 02/08/2025 - **Implementa validação do frontend (Utils)**
 
 ### Added
