@@ -15,7 +15,19 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Next Add
 - Implementar botão de criar filme no `MovieSection`
 
-## [0.5.1] - 03/08/2025 - **Pega token dinâmico do cookie no frontend**
+## [0.5.2] - 06/08/2025
+
+### Added
+- Botão "`Novo`" para adicionar filme, exibido apenas na rota `/meus-filmes`.
+- Ícone `IconCreate` incluído no botão de adicionar filme.
+- Responsividade da área de ações (`explore__actions`) com ajuste de layout via CSS.
+
+### Changed
+- Refatoração do componente `MovieSection` para aceitar renderização condicional baseada na rota atual.
+- Organização da seção de header para melhor suporte a múltiplas ações (busca + criação).
+
+## [0.5.1] - 03/08/2025 
+*Inclui token dinâmico buscando do cookie no frontend*
 
 ### Added
 - Extração dinâmica do token de autenticação do cookie no frontend para uso nas requisições.

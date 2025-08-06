@@ -1,21 +1,38 @@
 import { MovieCard } from "./MovieCard.js";
 import { EmptyMovieMessage } from "./EmptyMovieMessage.js";
-import { IconSearch } from "../assets/icons/icons.js";
+import { IconSearch, IconCreate } from "../assets/icons/icons.js";
 import { fetchAllMovies } from "/src/services/movieService.js";
 
 export async function MovieSection(titulo, filmes) {
   const section = document.createElement("section");
   section.className = "explore";
+
+  const isMyMoviesPage = window.location.pathname === "/meus-filmes";
+
   section.innerHTML = `
       <header class="explore-header">
         <div>
             <h1 class="explore__title">${titulo}</h1>
         </div>
-        <div class="explore__search">
-            <button class="explore__search-button" id="searchTerm">
-                ${IconSearch()}
-            </button>
-          <input type="text" placeholder="Pesquisar filme" id="inputSearch" />
+        <div class="expore__actions">
+          <div class="explore__search">
+              <button class="explore__search-button" id="searchTerm">
+                  ${IconSearch()}
+              </button>
+            <input type="text" placeholder="Pesquisar filme" id="inputSearch" />
+          </div>
+          ${
+            isMyMoviesPage
+              ? `
+            <hr class="explore__divider">
+            <div class="explore__add">
+              <button class="explore__add-button">
+                ${IconCreate()} Novo 
+              </button>
+            </div>
+          `
+              : ""
+          }
         </div>
       </header>
       <ul class="explore__card-list" id="movieList">
@@ -45,7 +62,7 @@ export async function MovieSection(titulo, filmes) {
       return;
     }
 
-    renderMovies(movieList, filteredMovies)
+    renderMovies(movieList, filteredMovies);
   }
 
   searchButton.addEventListener("click", search);

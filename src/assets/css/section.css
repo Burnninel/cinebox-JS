@@ -21,6 +21,11 @@
   margin: 0;
 }
 
+.expore__actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
 .explore__search {
   display: flex;
   width: 100%;
@@ -41,15 +46,43 @@
   font-size: 0.8rem;
   border: none;
   outline: none;
-  flex-shrink: 0;
 }
 
-.explore__search-button {
+.explore__search-button,
+.explore__add-button {
   display: flex;
   align-items: center;
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.explore__divider {
+  border: 0.1px solid var(--gray-400);
+  margin: 4px 0;
+  padding: 0;
+}
+
+.explore__add {
+  display: flex;
+  max-width: 200px;
+  background-color: #892ccd;
+  border-radius: 6px;
+  border: 1px solid #1e1e31;
+}
+
+.explore__add-button {
+  height: 100%;
+  width: 100%;
+  padding: 0.6rem 0.95rem;
+  font-size: 0.9rem;
+  color: var(--gray-100);
+}
+
+.explore__add-button svg {
+  height: 0.7rem;
+  margin-right: 0.6rem;
+  fill: var(--gray-100);
 }
 
 .explore__card-list {
@@ -243,6 +276,18 @@
     font-size: 0.7rem;
   }
 
+  .explore__title {
+    font-size: 1.4rem;
+  }
+
+  .explore__search {
+    max-width: 170px;
+  }
+
+  .explore__add-button {
+    font-size: 0.7rem;
+  }
+
   .card__genre {
     font-size: 0.6rem;
   }
@@ -253,18 +298,34 @@
     padding: 0.5rem 1rem;
   }
 
+  .explore-header {
+    flex-direction: column;
+  }
+
+  .explore__title {
+    margin-bottom: 1rem;
+  }
+
   .explore__search {
-    max-width: 120px;
+    font-size: 0.8rem;
     padding: 0.3rem;
     gap: 0.2rem;
   }
 
   .explore__search svg {
-    height: 0.6rem;
+    height: 0.8rem;
   }
 
   .explore__search input {
-    font-size: 0.45rem;
+    font-size: 0.55rem;
+  }
+
+  .explore__add svg {
+    height: 0.6rem;
+  }
+
+  .explore__add-button {
+    font-size: 0.6rem;
   }
 
   .card {
