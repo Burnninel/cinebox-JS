@@ -16,6 +16,16 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Next Add
 - Ajustar redirecionamentos (Explorar e Meus-Filmes) do header
 
+## [0.5.4] - 07/08/2025 - **Reorganização da estrutura de componentes**
+
+### Changed
+- Estrutura de pastas de `components/` reorganizada para melhorar a manutenção e escalabilidade do projeto.
+- Criadas as pastas:
+  - `components/common/` para componentes reutilizáveis (`ToastContainer`, `Loading`, `Header`).
+  - `components/auth/` para componentes relacionados à autenticação (`AuthHandler`, `AuthLayout`).
+  - `components/movies/` para componentes relacionados a filmes (`MovieCard`, `MovieSection`, `EmptyMovieMessage`).
+- Ajustados todos os imports para refletir a nova organização de pastas.
+
 
 ## [0.5.3] - 07/08/2025
 

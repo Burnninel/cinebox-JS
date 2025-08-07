@@ -1,5 +1,5 @@
-import { Header } from "/src/components/Header.js";
-import { MovieSection } from "/src/components/MovieSection.js";
+import { Header } from "/src/components/common/Header.js";
+import { MovieSection } from "/src/components/movies/MovieSection.js";
 import { fetchAllMovies } from "/src/services/movieService.js";
 
 export async function Home() {

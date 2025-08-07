@@ -1,5 +1,5 @@
-import { AuthLayout } from "/src/components/AuthLayout.js";
-import { Loading } from "/src/components/Loading.js";
+import { AuthLayout } from "/src/components/auth/AuthLayout.js";
+import { Loading } from "/src/components/common/Loading.js";
 
 export async function Signup() {
   const authFragment = document.createDocumentFragment();

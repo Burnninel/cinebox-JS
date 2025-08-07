@@ -1,5 +1,5 @@
 import { IconLogo } from "/src/assets/icons/icons.js";
-import { handleAuthForm } from "/src/components/AuthHandler.js";
+import { handleAuthForm } from "/src/components/auth/AuthHandler.js";
 import { navigateTo } from "/src/router.js";
 
 export async function AuthLayout({ forms }) {

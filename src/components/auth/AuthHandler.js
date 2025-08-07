@@ -1,5 +1,5 @@
 import { handleAuthRequest, validateLogin, validateSignup } from "/src/services/authService.js";
-import { ToastContainer } from "/src/components/ToastContainer.js";
+import { ToastContainer } from "/src/components/common/ToastContainer.js";
 import { navigateTo } from "/src/router.js";
 
 export async function handleAuthForm(authContainer, inputs, formType) {
