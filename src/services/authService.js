@@ -1,4 +1,4 @@
-import { apiRequest } from "../helpers/apiHelpers.js";
+import { apiRequest } from "/src/helpers/apiHelpers.js";
 import { validateForm } from "/src/utils/validateForm.js";
 
 const API_URL = "http://localhost:8888";

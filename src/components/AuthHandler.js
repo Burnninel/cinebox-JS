@@ -1,5 +1,5 @@
 import { handleAuthRequest, validateLogin, validateSignup } from "/src/services/authService.js";
-import { ToastContainer } from "./ToastContainer";
+import { ToastContainer } from "/src/components/ToastContainer.js";
 import { navigateTo } from "/src/router.js";
 
 export async function handleAuthForm(authContainer, inputs, formType) {
@@ -53,7 +53,7 @@ export async function handleAuthForm(authContainer, inputs, formType) {
       document.cookie = "token=; path=/; max-age=0";
       document.cookie = `token=${authenticatedUser.token}; path=/; max-age=86400`;
 
-      navigateTo(formType === 'login' ? "/" : "/login");
+      navigateTo(formType === 'login' ? "/meus-filmes" : "/login");
     } catch (error) {
       if (!error.errors || Object.keys(error.errors).length === 0) {
         clearAllFormErrors(authContainer, formData);

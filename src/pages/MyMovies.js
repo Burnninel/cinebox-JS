@@ -1,5 +1,5 @@
 import { Header } from "/src/components/Header.js";
-import { MovieSection } from "../components/MovieSection.js";
+import { MovieSection } from "/src/components/MovieSection.js";
 import { fetchMoviesByUser } from "/src/services/movieService.js";
 import { getCookieValue } from "/src/helpers/cookieHelpers.js";
 

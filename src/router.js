@@ -1,7 +1,7 @@
-import { Home } from "./pages/Home.js";
-import { Login } from "./pages/Login.js";
-import { Signup } from "./pages/Signup.js";
-import { MyMovies } from "./pages/MyMovies.js";
+import { Home } from "/src/pages/Home.js";
+import { Login } from "/src/pages/Login.js";
+import { Signup } from "/src/pages/Signup.js";
+import { MyMovies } from "/src/pages/MyMovies.js";
 
 const routes = {
   "/": Home,

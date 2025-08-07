@@ -1,4 +1,4 @@
-import { apiRequest } from "../helpers/apiHelpers.js";
+import { apiRequest } from "/src/helpers/apiHelpers.js";
 
 const API_URL = "http://localhost:8888/filme";
 

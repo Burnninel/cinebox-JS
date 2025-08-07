@@ -11,9 +11,17 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Utils para validação do frontend.
 - Expandir o Utils para o Signup
 - Cria a pagina meus filmes
+- Implementar botão de criar filme no `MovieSection`
 
 ### Next Add
-- Implementar botão de criar filme no `MovieSection`
+- Ajustar redirecionamentos (Explorar e Meus-Filmes) do header
+
+
+## [0.5.3] - 07/08/2025
+
+### Changed
+- O componente `AuthHandler.js` foi ajustado para redirecionar o usuário autenticado para `/meus-filmes` após o login, em vez de redirecionar para `/`.
+- Todos os imports do projeto foram padronizados para utilizar caminhos absolutos a partir da raiz `/src`.
 
 ## [0.5.2] - 06/08/2025
 
