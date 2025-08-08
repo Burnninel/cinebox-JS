@@ -95,7 +95,7 @@
 }
 
 .auth-toggle__button--active {
-  color: #a85fdd;
+  color: var(--purple-light);
   background-color: #ffffff09;
   border-radius: 6px;
 }
@@ -131,16 +131,15 @@
 }
 
 .auth-form__input-error {
-  border-color: #7b010e;
+  border-color: var(--form-error);
 }
 
 .auth-form__span-error {
   width: 100%;
-  color: #7b010e;
+  color: var(--form-error);
   font-size: 0.5rem;
   text-align: start;
 }
-
 
 .auth-form__submit {
   all: unset;
@@ -149,7 +148,7 @@
   font-size: 0.75rem;
   text-align: center;
   color: var(--gray-100);
-  background-color: #892ccd;
+  background-color: var(--purple-dark);
   border-radius: 6px;
   cursor: pointer;
 }

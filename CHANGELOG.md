@@ -4,8 +4,6 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
 ## [Unreleased]
 ### Added
-- Envia a requisição de autenticação para a API.
-- Retorna erros de validação da API no front.
 - Toasts de validação.
 - Spinners de carregamento aguardando o back.
 - Utils para validação do frontend.
@@ -16,7 +14,21 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Next Add
 - Ajustar redirecionamentos (Explorar e Meus-Filmes) do header
 
-## [0.5.4] - 07/08/2025 - **Reorganização da estrutura de componentes**
+
+## [0.6.1] - 07/08/2025 - **Reorganização da estrutura de CSS**
+
+### Changed
+- Estrutura de pastas do `css/` reorganizada para melhor separação e manutenção alinhada aos components.
+- Criadas as pastas:
+  - `css/base/` estilos gerais do projeto (`base`, `colors`).
+  - `css/common/` estilização para componentes reutilizáveis (`toast`, `loading`, `header`).
+  - `css/auth/` estilização do componente de autenticação (`auth`).
+  - `css/movies/` estilização do componentes de filmes (`movieCard`, `movieSection`).
+    - Antes era um único arquivo `section`.
+  - Arquivos `styles.css` e `bootstrap-custom.scss` mantidos na raiz da pasta `/css/`.
+- Ajustes nos imports de CSS para uso de caminhos absolutos e refletindo a nova estrutura de pastas.
+
+## [0.6.0] - 07/08/2025 - **Reorganização da estrutura de componentes**
 
 ### Changed
 - Estrutura de pastas de `components/` reorganizada para melhorar a manutenção e escalabilidade do projeto.
@@ -25,7 +37,6 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
   - `components/auth/` para componentes relacionados à autenticação (`AuthHandler`, `AuthLayout`).
   - `components/movies/` para componentes relacionados a filmes (`MovieCard`, `MovieSection`, `EmptyMovieMessage`).
 - Ajustados todos os imports para refletir a nova organização de pastas.
-
 
 ## [0.5.3] - 07/08/2025
 

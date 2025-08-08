@@ -34,7 +34,7 @@
 }
 
 .global-header__btn:hover {
-  background-color: var(--gray-600);
+  background-color: #ffffff09;
 }
 
 .global-header__btn svg,

@@ -1,0 +1,151 @@
+.card {
+  position: relative;
+  width: calc(20% - 0.5rem);
+  aspect-ratio: 2 / 3;
+  min-height: 16rem;
+  list-style: none;
+  border-radius: 12px;
+  margin-bottom: 0.2rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  transition: background 0.3s ease;
+}
+
+.card__image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.6;
+  inset: 0;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .card__image {
+  transform: scale(1.1);
+}
+
+.card:hover::before {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.4));
+}
+
+.card__info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.8rem 1rem;
+  z-index: 1;
+}
+
+.card__sinopse {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  color: var(--gray-200);
+  max-height: 0;
+  opacity: 0;
+  font-size: 0.6rem;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.card:hover .card__sinopse {
+  max-height: 2.8rem;
+  opacity: 1;
+}
+
+.card__rating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: "Winky Rough", sans-serif;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  background-color: #000000a9;
+  border-radius: 16px;
+  padding: 10px 12px;
+  gap: 3px;
+  z-index: 1;
+}
+
+.card__rating-score {
+  font-size: 1rem;
+  color: var(--white) !important;
+}
+
+.card__rating-scale {
+  font-size: 0.6rem;
+  color: var(--gray-200);
+  align-self: flex-end;
+}
+
+.card__rating-score,
+.card__rating-scale {
+  line-height: 1;
+}
+
+.card__rating-star {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 4px;
+}
+
+.card__title {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.card__genre {
+  color: var(--gray-200);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+
+  .card {
+    width: calc(25% - 0.5rem);
+  }
+
+  .card__title {
+    font-size: 0.8rem;
+  }
+
+  .card__genre {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 728px) {
+  .card {
+    width: calc(33.3% - 0.4rem);
+  }
+
+  .card__title {
+    font-size: 0.7rem;
+  }
+
+  .card__genre {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: calc(50% - 0.3rem);
+  }
+}

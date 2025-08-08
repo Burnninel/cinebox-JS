@@ -36,9 +36,9 @@
 }
 
 .toast--error {
-  background-color: #d81515;
+  background-color: var(--toast-error);
 }
 
 .toast--success {
-  background-color: #15a215;
+  background-color:  var(--toast-success);
 }

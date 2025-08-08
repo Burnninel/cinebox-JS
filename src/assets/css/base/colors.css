@@ -1,5 +1,6 @@
 :root {
   --white: #ffffff;
+
   --gray-100: #e4e5ec;
   --gray-200: #b5b6c9;
   --gray-300: #7a7b9f;
@@ -7,4 +8,12 @@
   --gray-500: #1a1b2d;
   --gray-600: #131320;
   --gray-700: #020515FB;
+
+  --toast-error: #D81515;
+  --toast-success: #15A215;
+
+  --purple-light: #A85FDD;
+  --purple-dark: #892CCD;
+
+  --form-error:  #7B010E;
 }
