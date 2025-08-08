@@ -4,7 +4,7 @@ import { Signup } from "/src/pages/Signup.js";
 import { MyMovies } from "/src/pages/MyMovies.js";
 
 const routes = {
-  "/": Home,
+  "/explorar": Home,
   "/login": Login,
   "/signup": Signup,
   "/meus-filmes": MyMovies,
@@ -12,7 +12,12 @@ const routes = {
 
 async function router() {
   const app = document.querySelector(".app");
-  const path = window.location.pathname || "";
+  
+  if (window.location.pathname === "/") {
+    history.replaceState({}, "", "/explorar");
+  }
+  
+  const path = window.location.pathname;
   const page = routes[path];
 
   app.replaceChildren();

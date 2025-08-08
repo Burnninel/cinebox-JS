@@ -14,6 +14,13 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Next Add
 - Ajustar redirecionamentos (Explorar e Meus-Filmes) do header
 
+## [0.6.2] - 07/08/2025 - **Redirecionamento automático e navegação no header**
+
+### Changed
+- No `router`, adicionada verificação para redirecionar da rota raiz `/` para `/explorar` usando `history.replaceState`.
+- No componente `Header`, botões do menu (Explorar, Meus Filmes e Entrar) agora usam `navigateTo` para navegação SPA sem reload.
+- Botões do header recebem atributo `data-form` para definir a rota dinamicamente.
+- Código do header simplificado para adicionar eventos de clique em lote, melhorando a manutenção.
 
 ## [0.6.1] - 07/08/2025 - **Reorganização da estrutura de CSS**
 
