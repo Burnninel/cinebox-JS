@@ -11,6 +11,17 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 ### Next Add
 - Criar pagina de cadastro o filme
 
+
+## [0.6.4] - 08/08/2025 - **Ativação dinâmica do botão ativo no Header**
+
+### Added
+- Função `setActiveButton` criada para gerenciar a classe `global-header__btn--active` conforme rota atual.
+- Atualização da classe ativa após navegação via clique nos botões do header.
+- Limpeza da classe ativa antes de aplicar ao botão correto.
+
+### CSS
+- Estilização CSS aprimorada para `.global-header__btn--active` e seus SVGs (`svg path`) para melhor destaque visual.
+
 ## [0.6.3] - 08/08/2025 - **Proteção de Rotas Privadas e Uso do Loading no Carregamento**
 
 ### Added

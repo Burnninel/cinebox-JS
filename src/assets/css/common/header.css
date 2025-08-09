@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 0.8rem;
 }
 
 .global-header__btn {
@@ -24,9 +24,9 @@
   justify-content: center;
   color: var(--gray-300);
   background-color: transparent;
-  height: 2.5rem;
-  padding: 0.9rem;
-  font-size: 1.2rem;
+  height: 3rem;
+  padding: 1rem;
+  font-size: 1.1rem;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -35,6 +35,12 @@
 
 .global-header__btn:hover {
   background-color: #ffffff09;
+}
+
+.global-header__btn--active, .global-header__btn--active svg path {
+  background-color: #ffffff09;
+  color: var(--purple-light);
+  fill: var(--purple-light);
 }
 
 .global-header__btn svg,
