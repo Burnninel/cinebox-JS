@@ -8,8 +8,13 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Implementar botão de criar filme no `MovieSection`.
 - Ajustar redirecionamentos (Explorar e Meus-Filmes) do header.
 
-### Next Add
-- Criar pagina de cadastro o filme
+### Next feature
+- Criar pagina de cadastro o filme.
+
+### Pending / Roadmap (Backend)
+- Consultar dados do usuário via token.
+- Verificar validade do token.
+- Pesquisar filme por usuario.
 
 
 ## [0.6.4] - 08/08/2025 - **Ativação dinâmica do botão ativo no Header**
