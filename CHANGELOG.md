@@ -17,6 +17,13 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 
 
+## [0.7.0] - 09/08/2025 -  **Implementa estrtura base da rota "`/filme/novo`"**
+
+### Added
+- Page `NewMovie` para cadastro de filmes.
+- Componente `AddMovie` com estrutura base.
+- Rota `/filme/novo` adicionada ao `router` com proteção para usuários autenticados.
+
 ## [0.6.4] - 08/08/2025 - **Ativação dinâmica do botão ativo no Header**
 
 ### Added
@@ -166,7 +173,7 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Adicionado uso de `finally` para garantir que o loading seja ocultado mesmo em caso de erro.
 - A navegação agora é feita via SPA (sem recarregar a página), melhorando a fluidez da experiência do usuário.
 
-## [0.3.7] - 01/08/2025
+## [0.3.7] - 01/08/2025 - **Adiciona Bootstrap ao projeto**
 
 ### Added
 - Sistema de **toasts personalizados** com suporte a diferentes tipos (`success`, `error`) e botão de fechamento.

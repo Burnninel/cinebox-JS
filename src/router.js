@@ -8,12 +8,14 @@ import { Home } from "/src/pages/Home.js";
 import { Login } from "/src/pages/Login.js";
 import { Signup } from "/src/pages/Signup.js";
 import { MyMovies } from "/src/pages/MyMovies.js";
+import { NewMovie } from "/src/pages/NewMovie.js";
 
 const routes = {
   "/explorar": { component: Home, private: false },
   "/login": { component: Login, private: false },
   "/signup": { component: Signup, private: false },
   "/meus-filmes": { component: MyMovies, private: true },
+  "/filme/novo": { component: NewMovie, private: true },
 };
 
 async function router() {
