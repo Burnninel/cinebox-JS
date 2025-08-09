@@ -4,15 +4,22 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
 ## [Unreleased]
 ### Added
-- Toasts de validação.
-- Spinners de carregamento aguardando o back.
-- Utils para validação do frontend.
-- Expandir o Utils para o Signup
-- Cria a pagina meus filmes
-- Implementar botão de criar filme no `MovieSection`
+- Cria a pagina meus filmes.
+- Implementar botão de criar filme no `MovieSection`.
+- Ajustar redirecionamentos (Explorar e Meus-Filmes) do header.
 
 ### Next Add
-- Ajustar redirecionamentos (Explorar e Meus-Filmes) do header
+- Criar pagina de cadastro o filme
+
+## [0.6.3] - 08/08/2025 - **Proteção de Rotas Privadas e Uso do Loading no Carregamento**
+
+### Added
+- Suporte a metadado `private` nas rotas para exigir autenticação.
+- Redirecionamento automático para `/login` quando o usuário acessa rotas privadas sem token.
+
+### Changed
+- `router` agora utiliza `async/await` para carregar páginas de forma assíncrona.
+- Envolvimento do carregamento das páginas em `try/catch/finally` com uso do componente `Loading`.
 
 ## [0.6.2] - 07/08/2025 - **Redirecionamento automático e navegação no header**
 

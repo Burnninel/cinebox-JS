@@ -1,4 +1,5 @@
 import { handleAuthRequest, validateLogin, validateSignup } from "/src/services/authService.js";
+import { showLoading, hideLoading } from "/src/components/common/Loading.js";
 import { ToastContainer } from "/src/components/common/ToastContainer.js";
 import { navigateTo } from "/src/router.js";
 
@@ -104,12 +105,4 @@ function clearAllFormErrors(authContainer, formData) {
     const input = authContainer.querySelector(`#${fieldId}`);
     if (input) removeInputErrorMessage(input);
   });
-}
-
-function showLoading() {
-  document.getElementById("loading").classList.remove("hidden");
-}
-
-function hideLoading() {
-  document.getElementById("loading").classList.add("hidden");
 }

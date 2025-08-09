@@ -1,7 +1,6 @@
 import { IconLogo, IconPopcorn, IconMovie } from "/src/assets/icons/icons.js";
 import { navigateTo } from "/src/router.js";
 
-
 export function Header() {
   const header = document.createElement("header");
   header.className = "global-header";
