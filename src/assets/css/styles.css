@@ -6,7 +6,8 @@
 @import url('/src/assets/css/common/header.css');
 @import url('/src/assets/css/common/toast.css');
 @import url('/src/assets/css/common/loading.css');
+@import url('/src/assets/css/common/input.css');
 @import url('/src/assets/css/movies/movieSection.css');
 @import url('/src/assets/css/movies/movieCard.css');
+@import url('/src/assets/css/movies/addMovie.css');
 @import url('/src/assets/css/auth/auth.css');
-
