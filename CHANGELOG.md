@@ -16,6 +16,21 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Verificar validade do token.
 - Pesquisar filme por usuario.
 
+## [0.7.2] - 14/08/2025 - **Criação do component `Input` e estilização CSS**
+
+### Added
+- Component `Input` para criar campos de formulário com ícone integrado de forma padronizada e reutilizável.
+- Suporte a parâmetros:
+  - `icon`: SVG ou elemento HTML para ser exibido ao lado do input.
+  - `atributtes`: objeto com atributos a serem aplicados no `<input>` (id, placeholder, type, etc.).
+- Estrutura flexível, permitindo inputs full-width ou agrupados lado a lado (`form-box__input`).
+- CSS associado para estilização:
+  - `.form__field`: container flexível, altura padronizada, borda e radius.
+  - `.form__input-icon`: área do ícone com altura 100% e alinhamento central.
+  - `.form__input`: input com altura total do container, sem borda, fundo transparente e cor padrão.
+  - `.form-box__input`: suporte para inputs lado a lado com espaçamento consistente.
+- Criado para **organizar, padronizar e facilitar a reutilização** de campos de formulário em toda a aplicação.
+
 ## [0.7.1] - 14/08/2025 - **Criação do helper `createElement` para manipulação de DOM**
 
 ### Added
