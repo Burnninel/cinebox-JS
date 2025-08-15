@@ -16,6 +16,18 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Verificar validade do token.
 - Pesquisar filme por usuario.
 
+## [0.7.1] - 14/08/2025 - **Criação do helper `createElement` para manipulação de DOM**
+
+### Added
+- Função utilitária `createElement` para criar elementos HTML dinâmico de forma padronizada e simplificada.
+- Suporte aos seguintes parâmetros:
+  - `tag`: Tipo de elemento a ser criado (`div`, `span`, etc.).
+  - `className`: Classes CSS aplicadas ao elemento.
+  - `textContent`: Texto interno do elemento.
+  - `innerHTML`: Conteúdo HTML interno do elemento.
+  - `attributes`: Objeto com pares chave/valor para definir atributos personalizados (`id`, `type`, `placeholder`, etc.).
+  - `children`: Lista de elementos filhos para serem anexados.
+- Criado para tornar o código mais **organizado, estruturável e reaproveitável**, evitando múltiplas chamadas diretas a `document.createElement` espalhadas pelo projeto.
 
 ## [0.7.0] - 09/08/2025 -  **Implementa estrtura base da rota "`/filme/novo`"**
 
