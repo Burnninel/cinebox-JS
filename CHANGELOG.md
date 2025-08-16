@@ -16,6 +16,12 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Verificar validade do token.
 - Pesquisar filme por usuario.
 
+## [0.7.6] - 15/08/2025 - **Refatoração do component `MovieCard`**
+
+### Changed
+- Refatorado `MovieCard` para utilizar `createElement` e `htmlToElement` em vez de `innerHTML`.
+- Extraído o bloco de avaliação (`rating`) para função auxiliar `createRating`, tornando o componente mais limpo e legível.
+- Mantida a estrutura e funcionalidades originais.
 
 ## [0.7.5] - 15/08/2025 - **Refatoração do component `MovieSection`**
 
