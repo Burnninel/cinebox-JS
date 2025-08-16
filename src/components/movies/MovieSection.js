@@ -3,95 +3,93 @@ import { EmptyMovieMessage } from "/src/components/movies/EmptyMovieMessage.js";
 import { IconSearch, IconCreate } from "/src/assets/icons/icons.js";
 import { fetchAllMovies } from "/src/services/movieService.js";
 import { navigateTo } from "/src/router.js";
+import { createElement } from "/src/helpers/createElement.js";
+import { htmlToElement } from "/src/helpers/htmlToElement.js";
+
+function createSearchInput() {
+  return createElement({
+    tag: "div",
+    className: "explore__search",
+    children: [
+      createElement({
+        tag: "button",
+        className: "explore__search-button",
+        children: [htmlToElement(IconSearch())],
+      }),
+      createElement({
+        tag: "input",
+        attributes: { type: "text", placeholder: "Pesquisar filme" },
+      }),
+    ],
+  });
+}
+
+function createAddButton() {
+  return createElement({
+    tag: "div",
+    className: "explore__add",
+    children: [
+      createElement({
+        tag: "button",
+        className: "explore__add-button",
+        children: [htmlToElement(IconCreate()), createElement({ tag: "span", textContent: "Novo" })],
+      }),
+    ],
+  });
+}
 
 export async function MovieSection(titulo, filmes) {
-	const section = document.createElement("section");
-	section.className = "explore";
-
+	const section = createElement({ tag: "section", className: "explore" });
 	const isMyMoviesPage = window.location.pathname === "/meus-filmes";
 
-	section.innerHTML = `
-      <header class="explore-header">
-        <div>
-            <h1 class="explore__title">${titulo}</h1>
-        </div>
-        <div class="expore__actions">
-          <div class="explore__search">
-              <button class="explore__search-button" id="searchTerm">
-                  ${IconSearch()}
-              </button>
-            <input type="text" placeholder="Pesquisar filme" id="inputSearch" />
-          </div>
-          ${
-				isMyMoviesPage
-					? `
-                    <hr class="explore__divider">
-                    <div class="explore__add">
-                    <button class="explore__add-button">
-                        ${IconCreate()} Novo 
-                    </button>
-                    </div>
-                `
-					: ""
-			}
-        </div>
-      </header>
-      <ul class="explore__card-list" id="movieList">
-      </ul>
-  `;
+	const header = createElement({
+    tag: "header",
+    className: "explore-header",
+    children: [
+      createElement({
+        tag: "div",
+        children: [createElement({ tag: "h1", className: "explore__title", textContent: titulo })],
+      }),
+      createElement({
+        tag: "div",
+        className: "expore__actions",
+        children: [
+          createSearchInput(),
+          isMyMoviesPage ? createElement({ tag: "hr", className: "explore__divider" }) : null,
+          isMyMoviesPage ? createAddButton() : null,
+        ],
+      }),
+    ],
+  });
 
-	const cardList = filmes.map((card) => MovieCard(card));
-	const movieList = section.querySelector("#movieList");
+  const movieList = createElement({ tag: "ul", className: "explore__card-list" });
+  section.append(header, movieList);
 
-	cardList.forEach((cardElement) => {
-		movieList.appendChild(cardElement);
-	});
+  filmes.forEach((movie) => movieList.appendChild(MovieCard(movie)));
 
-	if (isMyMoviesPage) {
-		section
-			.querySelector(".explore__add-button")
-			.addEventListener("click", () => {
-				navigateTo(`/filme/novo`);
-			});
-	}
+  if (isMyMoviesPage) {
+    section.querySelector(".explore__add-button")
+      .addEventListener("click", () => navigateTo("/filme/novo"));
+  }
 
-	const searchButton = section.querySelector("#searchTerm");
-	const searchInput = section.querySelector("#inputSearch");
+  const [searchButton, searchInput] = section.querySelectorAll(".explore__search button, .explore__search input");
 
-	async function search() {
-		const searchTerm = searchInput.value;
-		const { data: filteredMovies } = await fetchAllMovies(searchTerm);
+  async function search() {
+    const term = searchInput.value;
+    const { data: filteredMovies } = await fetchAllMovies(term);
+    
+    const existingEmptyMessage = section.querySelector(".no-results");
+    if (existingEmptyMessage) existingEmptyMessage.remove();
+   
+    movieList.replaceChildren();
+    movieList.style.display = filteredMovies.length ? "flex" : "none";
 
-		const existingEmptyMessage = section.querySelector(".no-results");
-		if (existingEmptyMessage) existingEmptyMessage.remove();
-		movieList.replaceChildren();
+    if (!filteredMovies.length) section.appendChild(EmptyMovieMessage(term));
+    else filteredMovies.forEach((movie) => movieList.appendChild(MovieCard(movie)));
+  }
 
-		if (filteredMovies.length === 0) {
-			renderEmptyMessage(section, movieList, searchTerm);
-			return;
-		}
+  searchButton.addEventListener("click", search);
+  searchInput.addEventListener("keydown", (e) => e.key === "Enter" && search());
 
-		renderMovies(movieList, filteredMovies);
-	}
-
-	searchButton.addEventListener("click", search);
-	searchInput.addEventListener("keydown", (event) => {
-		if (event.key === "Enter") {
-			search();
-		}
-	});
-
-	return section;
-}
-
-function renderMovies(movieList, movies) {
-	movieList.replaceChildren();
-	movies.forEach((card) => movieList.appendChild(MovieCard(card)));
-	movieList.style.display = "flex";
-}
-
-function renderEmptyMessage(sectionElement, movieListElement, term) {
-	movieListElement.style.display = "none";
-	const emptyMessage = EmptyMovieMessage(term);
-	sectionElement.appendChild(emptyMessage);
+  return section;
 }

@@ -17,6 +17,21 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 
 
+## [0.7.5] - 15/08/2025 - **Refatoração do component `MovieSection`**
+
+### Changed
+- Substituído `innerHTML` por components `createElement` + `htmlToElement` para criar elementos dinamicamente.
+- Criadas funções auxiliares:
+  - `createSearchInput()` para a barra de pesquisa.
+  - `createAddButton()` para o botão "Novo" na página `/meus-filmes`.
+- Reduzida duplicação de código no `header` e melhorada a modularidade.
+- Evitado uso de IDs duplicados, usando seletores mais específicos para inputs e botões.
+- Listener do botão “Novo” mantido apenas para a página `/meus-filmes`.
+- Lógica de busca reorganizada:
+  - Substituído `replaceChildren` para limpar a lista antes de renderizar.
+  - Definido `display: flex` ou `none` dependendo se há resultados.
+  - Inserção condicional de mensagem vazia (`EmptyMovieMessage`) quando não há resultados.
+
 ## [0.7.4] - 15/08/2025 - **Criação do component `AddMovie` e novos ícones**
 
 ### Added
