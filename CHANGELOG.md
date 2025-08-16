@@ -16,6 +16,12 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Verificar validade do token.
 - Pesquisar filme por usuario.
 
+## [0.7.3] - 15/08/2025
+
+### Added
+- Função `htmlToElement` para converter strings HTML em elementos DOM.
+- Criado para **facilitar a inserção de SVGs ou trechos HTML dinâmicos** em componentes, garantindo reutilização e padronização.
+
 ## [0.7.2] - 14/08/2025 - **Criação do component `Input` e estilização CSS**
 
 ### Added
