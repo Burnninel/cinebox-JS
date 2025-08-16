@@ -2,9 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 40px;
+  position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+  min-height: 4rem;
+  background-color: var(--gray-700);
   border-bottom: 1px var(--gray-500) solid;
   padding: 1rem 1.5rem;
+	z-index: 1000;
 }
 
 .global-header__logo svg {

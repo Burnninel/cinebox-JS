@@ -16,11 +16,42 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Verificar validade do token.
 - Pesquisar filme por usuario.
 
+
+## [0.7.4] - 15/08/2025 - **Criação do component `AddMovie` e novos ícones**
+
+### Added
+- Component `AddMovie` para criar formulário de cadastro de filmes, incluindo:
+  - Upload de imagem (`IconUpload`).
+  - Campos de input reutilizando o component `Input` (`Título`, `Diretor`, `Ano`, `Categoria`).
+  - Área para sinopse (`textarea`).
+  - Botões de ação `Cancelar` e `Salvar`.
+- Novos ícones adicionados para utilização no formulário:
+  - `IconUpload`
+  - `IconTicket`
+  - `IconCalendar`
+
+## CSS
+- CSS associado para estilização completa do formulário (`movie-form` e suas classes filhas).
+- Layout responsivo, mantendo proporção entre upload e formulário em telas menores.
+- Alterado `.global-header` para **header fixo** no topo da página:
+  - `position: fixed; top: 0; left: 0; right: 0; z-index: 1000;`
+  - Fundo definido como `var(--gray-700)` para contraste com o conteúdo.
+  - Aumentada a `min-height` para 4rem, garantindo consistência visual.
+- Alterado `body` para incluir `html` e `min-height: 100vh`, permitindo altura mínima de tela completa sem forçar overflow.
+- Adicionado `section` com:
+  - `min-height: 100vh` para garantir que cada seção ocupe toda a altura da tela.
+  - `padding-top: 4rem` para compensar o header fixo.
+  - `box-sizing: border-box` para cálculo consistente de padding e border.
+- Criada classe `.app` com `height: 100%` e `display: flex` em coluna, permitindo layout flexível e alinhamento vertical do conteúdo.
+
 ## [0.7.3] - 15/08/2025
 
 ### Added
 - Função `htmlToElement` para converter strings HTML em elementos DOM.
 - Criado para **facilitar a inserção de SVGs ou trechos HTML dinâmicos** em componentes, garantindo reutilização e padronização.
+
+### Fixed
+- Renomeado o parâmetro `atributtes` para `attributes` no component `Input`.
 
 ## [0.7.2] - 14/08/2025 - **Criação do component `Input` e estilização CSS**
 

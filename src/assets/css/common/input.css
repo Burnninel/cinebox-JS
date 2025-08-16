@@ -6,7 +6,6 @@
   padding-left: 0.7rem;
   font-size: 0.75rem;
   background-color: transparent;
-  margin: 0.4rem 0;
   border: 1px solid var(--gray-600);
   border-radius: 6px;
 }
@@ -21,11 +20,6 @@
   height: 1rem;
   margin-right: 0.8rem;
   fill: var(--gray-300);
-}
-
-.form-box__input {
-  display: flex;
-  gap: 1rem;
 }
 
 .form__input {
