@@ -40,6 +40,7 @@
 
 .explore__search svg {
   height: 1.2rem;
+  fill: var(--gray-200);
 }
 
 .explore__search input {
@@ -123,20 +124,12 @@
 
 
 @media (max-width: 1024px) {
-  .explore {
-    padding: 0.5rem 3rem;
-  }
-
   .explore__card-list {
     gap: 0.6rem;
   }
 }
 
 @media (max-width: 728px) {
-  .explore {
-    padding: 0.5rem 2rem;
-  }
-
   .explore__card-list {
     gap: 0.6rem;
   }
@@ -154,11 +147,7 @@
   }
 }
 
-@media (max-width: 480px) {
-  .explore {
-    padding: 0.5rem 1rem;
-  }
-
+@media (max-width: 540px) {
   .explore-header {
     flex-direction: column;
   }

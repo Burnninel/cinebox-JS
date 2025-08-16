@@ -82,6 +82,13 @@
   z-index: 1;
 }
 
+.card__rating svg {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 4px;
+  fill: var(--white);
+}
+
 .card__rating-score {
   font-size: 1rem;
   color: var(--white) !important;
@@ -96,12 +103,6 @@
 .card__rating-score,
 .card__rating-scale {
   line-height: 1;
-}
-
-.card__rating-star {
-  width: 1rem;
-  height: 1rem;
-  margin-left: 4px;
 }
 
 .card__title {
