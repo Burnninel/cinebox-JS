@@ -2,14 +2,15 @@ import { MovieCard } from "/src/components/movies/MovieCard.js";
 import { EmptyMovieMessage } from "/src/components/movies/EmptyMovieMessage.js";
 import { IconSearch, IconCreate } from "/src/assets/icons/icons.js";
 import { fetchAllMovies } from "/src/services/movieService.js";
+import { navigateTo } from "/src/router.js";
 
 export async function MovieSection(titulo, filmes) {
-  const section = document.createElement("section");
-  section.className = "explore";
+	const section = document.createElement("section");
+	section.className = "explore";
 
-  const isMyMoviesPage = window.location.pathname === "/meus-filmes";
+	const isMyMoviesPage = window.location.pathname === "/meus-filmes";
 
-  section.innerHTML = `
+	section.innerHTML = `
       <header class="explore-header">
         <div>
             <h1 class="explore__title">${titulo}</h1>
@@ -22,67 +23,75 @@ export async function MovieSection(titulo, filmes) {
             <input type="text" placeholder="Pesquisar filme" id="inputSearch" />
           </div>
           ${
-            isMyMoviesPage
-              ? `
-            <hr class="explore__divider">
-            <div class="explore__add">
-              <button class="explore__add-button">
-                ${IconCreate()} Novo 
-              </button>
-            </div>
-          `
-              : ""
-          }
+				isMyMoviesPage
+					? `
+                    <hr class="explore__divider">
+                    <div class="explore__add">
+                    <button class="explore__add-button">
+                        ${IconCreate()} Novo 
+                    </button>
+                    </div>
+                `
+					: ""
+			}
         </div>
       </header>
       <ul class="explore__card-list" id="movieList">
       </ul>
   `;
 
-  const cardList = filmes.map((card) => MovieCard(card));
-  const movieList = section.querySelector("#movieList");
+	const cardList = filmes.map((card) => MovieCard(card));
+	const movieList = section.querySelector("#movieList");
 
-  cardList.forEach((cardElement) => {
-    movieList.appendChild(cardElement);
-  });
+	cardList.forEach((cardElement) => {
+		movieList.appendChild(cardElement);
+	});
 
-  const searchButton = section.querySelector("#searchTerm");
-  const searchInput = section.querySelector("#inputSearch");
+	if (isMyMoviesPage) {
+		section
+			.querySelector(".explore__add-button")
+			.addEventListener("click", () => {
+				navigateTo(`/filme/novo`);
+			});
+	}
 
-  async function search() {
-    const searchTerm = searchInput.value;
-    const { data: filteredMovies } = await fetchAllMovies(searchTerm);
+	const searchButton = section.querySelector("#searchTerm");
+	const searchInput = section.querySelector("#inputSearch");
 
-    const existingEmptyMessage = section.querySelector(".no-results");
-    if (existingEmptyMessage) existingEmptyMessage.remove();
-    movieList.replaceChildren();
+	async function search() {
+		const searchTerm = searchInput.value;
+		const { data: filteredMovies } = await fetchAllMovies(searchTerm);
 
-    if (filteredMovies.length === 0) {
-      renderEmptyMessage(section, movieList, searchTerm);
-      return;
-    }
+		const existingEmptyMessage = section.querySelector(".no-results");
+		if (existingEmptyMessage) existingEmptyMessage.remove();
+		movieList.replaceChildren();
 
-    renderMovies(movieList, filteredMovies);
-  }
+		if (filteredMovies.length === 0) {
+			renderEmptyMessage(section, movieList, searchTerm);
+			return;
+		}
 
-  searchButton.addEventListener("click", search);
-  searchInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      search();
-    }
-  });
+		renderMovies(movieList, filteredMovies);
+	}
 
-  return section;
+	searchButton.addEventListener("click", search);
+	searchInput.addEventListener("keydown", (event) => {
+		if (event.key === "Enter") {
+			search();
+		}
+	});
+
+	return section;
 }
 
 function renderMovies(movieList, movies) {
-  movieList.replaceChildren();
-  movies.forEach((card) => movieList.appendChild(MovieCard(card)));
-  movieList.style.display = "flex";
+	movieList.replaceChildren();
+	movies.forEach((card) => movieList.appendChild(MovieCard(card)));
+	movieList.style.display = "flex";
 }
 
 function renderEmptyMessage(sectionElement, movieListElement, term) {
-  movieListElement.style.display = "none";
-  const emptyMessage = EmptyMovieMessage(term);
-  sectionElement.appendChild(emptyMessage);
+	movieListElement.style.display = "none";
+	const emptyMessage = EmptyMovieMessage(term);
+	sectionElement.appendChild(emptyMessage);
 }
