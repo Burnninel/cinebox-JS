@@ -8,9 +8,7 @@ body, html {
 
 section {
 	min-height: 100vh;
-	padding-top: 4rem;
 	box-sizing: border-box;
-
 }
 
 .app {

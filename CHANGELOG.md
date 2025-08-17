@@ -16,6 +16,24 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Verificar validade do token.
 - Pesquisar filme por usuario.
 
+## [0.7.7] - 16/08/2025 - **Refatoração do `AuthLayout`**
+
+### Added
+- Funções `createAuthBanner` e `createToggleButtons` criadas para separar a lógica de construção do layout.
+- Função `renderInputs` adicionada para gerar inputs dinamicamente a partir do objeto `forms`.
+- Toggle buttons agora usam `<nav>` para melhorar semântica e acessibilidade.
+- Novos ícones adicionados para utilização no formulário:
+  - `IconMail`
+  - `IconUser`
+  - `IconPassword`
+
+### Changed
+- Substituição de HTML via template strings (`innerHTML`) por elementos DOM usando `createElement` e `htmlToElement`.
+- Uso do componente `Input()` para encapsular inputs com ícones.
+- Pages `Login` e `Signup` atualizadas para importar e renderizar os ícones nos inputs.
+- No `AuthHandler`, inputs agora utilizam o wrapper `.form__field` para setagem e remoção de erros.
+- Funções `removeInputErrorMessage` e `showFieldError` atualizadas para manipular o wrapper, garantindo consistência visual.
+
 ## [0.7.6] - 15/08/2025 - **Refatoração do component `MovieCard`**
 
 ### Changed

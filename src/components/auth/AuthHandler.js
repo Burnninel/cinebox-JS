@@ -69,17 +69,19 @@ export async function handleAuthForm(authContainer, inputs, formType) {
 }
 
 function removeInputErrorMessage(input) {
-  const nextSibling = input.nextElementSibling;
+  const fieldWrapper = input.closest(".form__field");
+  const nextSibling = fieldWrapper.nextElementSibling;
 
   if (nextSibling?.classList.contains("auth-form__span-error")) {
     nextSibling.remove();
   }
 
-  input.classList.remove("auth-form__input-error");
+  fieldWrapper.classList.remove("auth-form__input-error");
 }
 
 function showFieldError(input, message) {
-  const nextSibling = input.nextElementSibling;
+  const fieldWrapper = input.closest(".form__field");
+  const nextSibling = fieldWrapper.nextElementSibling;
 
   if (nextSibling?.classList.contains("auth-form__span-error")) {
     nextSibling.textContent = message;
@@ -88,8 +90,8 @@ function showFieldError(input, message) {
     errorSpan.className = "auth-form__span-error";
     errorSpan.textContent = message;
 
-    input.classList.add("auth-form__input-error");
-    input.insertAdjacentElement("afterend", errorSpan);
+    fieldWrapper.classList.add("auth-form__input-error");
+    fieldWrapper.insertAdjacentElement("afterend", errorSpan);
   }
 }
 

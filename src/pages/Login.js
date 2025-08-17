@@ -1,5 +1,6 @@
 import { AuthLayout } from "/src/components/auth/AuthLayout.js";
 import { Loading } from "/src/components/common/Loading.js";
+import { IconPassword, IconMail } from "/src/assets/icons/icons.js";
 
 export async function Login() {
   const authFragment = document.createDocumentFragment();
@@ -10,8 +11,8 @@ export async function Login() {
         title: "Acesse sua conta",
         submitText: "Entrar",
         inputs: [
-          { type: "text", placeholder: "E-mail", id: "email" },
-          { type: "password", placeholder: "Senha", id: "senha" },
+          { icon: IconMail, type: "text", placeholder: "E-mail", id: "email" },
+          { icon: IconPassword, type: "password", placeholder: "Senha", id: "senha" },
         ],
       },
     },
