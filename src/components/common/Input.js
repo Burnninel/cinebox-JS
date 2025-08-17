@@ -2,7 +2,7 @@ import { createElement } from "../../helpers/createElement.js";
 import { htmlToElement } from "/src/helpers/htmlToElement.js";
 
 export function Input({ icon, attributes = {} }) {
-	const div = createElement({
+	return createElement({
 		tag: "div",
 		className: `form__field`,
 		children: [
@@ -18,6 +18,4 @@ export function Input({ icon, attributes = {} }) {
 			}),
 		],	
 	});
-
-    return div;
 }

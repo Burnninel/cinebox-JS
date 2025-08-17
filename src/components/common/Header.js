@@ -1,52 +1,77 @@
 import { IconLogo, IconPopcorn, IconMovie } from "/src/assets/icons/icons.js";
 import { navigateTo } from "/src/router.js";
+import { createElement } from "/src/helpers/createElement.js";
+import { htmlToElement } from "/src/helpers/htmlToElement.js";
+
+const buttonsConfig = [
+	{ icon: IconPopcorn(), label: "Explorar", form: "explorar" },
+	{ icon: IconMovie(), label: "Meus Filmes", form: "meus-filmes" },
+	{ label: "Entrar", form: "login" },
+];
+
+function createButton({ icon, label, form }) {
+	return createElement({
+		tag: "button",
+		className: "global-header__btn",
+		attributes: { "data-form": form },
+		children: icon
+			? [
+					htmlToElement(icon),
+					createElement({ tag: "span", textContent: label }),
+			  ]
+			: [createElement({ tag: "span", textContent: label })],
+	});
+}
 
 export function Header() {
-  const header = document.createElement("header");
-  header.className = "global-header";
-  header.innerHTML = `
-      <div class="global-header__logo">
-          ${IconLogo()}
-      </div>
-      <nav class="global-header__navbar">
-          <button class="global-header__btn" data-form="explorar">
-              ${IconPopcorn()}
-              <span>Explorar</span>
-          </button>
-          <button class="global-header__btn" data-form="meus-filmes">
-              ${IconMovie()}
-              <span>Meus Filmes</span>
-          </button>
-      </nav>
-      <div class="global-header__login">
-          <button class="global-header__btn" data-form="login">Entrar</button>
-      </div>
-  `;
+	const logo = createElement({
+		tag: "div",
+		className: "global-header__logo",
+		children: [htmlToElement(IconLogo())],
+	});
 
-  function setActiveButton() {
-    const buttons = header.querySelectorAll(".global-header__btn");
-    buttons.forEach((btn) =>
-      btn.classList.remove("global-header__btn--active")
-    );
+	const buttons = buttonsConfig.map(createButton);
 
-    const path = window.location.pathname.replace(/^\/+|\/+$/g, "");
-    const activeBtn = Array.from(buttons).find((btn) =>
-      path.startsWith(btn.dataset.form)
-    );
+	const navbar = createElement({
+		tag: "nav",
+		className: "global-header__navbar",
+		children: buttons.filter((btn) => btn.dataset.form !== "login"),
+	});
 
-    if (activeBtn) {
-      activeBtn.classList.add("global-header__btn--active");
-    }
-  }
+	const loginContainer = createElement({
+		tag: "div",
+		className: "global-header__login",
+		children: buttons.filter((btn) => btn.dataset.form === "login"),
+	});
 
-  header.querySelectorAll(".global-header__btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      navigateTo(`/${btn.dataset.form}`);
-      setActiveButton();
-    });
-  });
+	const header = createElement({
+		tag: "header",
+		className: "global-header",
+		children: [logo, navbar, loginContainer],
+	});
 
-  setActiveButton();
+	setupHeaderNavigation(buttons);
 
-  return header;
+	return header;
+}
+
+function setupHeaderNavigation(buttons) {
+	const setActiveButton = () => {
+		const path = window.location.pathname.replace(/^\/+|\/+$/g, "");
+		buttons.forEach((btn) => {
+			btn.classList.toggle(
+				"global-header__btn--active",
+				path.startsWith(btn.dataset.form)
+			);
+		});
+	};
+
+	buttons.forEach((btn) =>
+		btn.addEventListener("click", () => {
+			navigateTo(`/${btn.dataset.form}`);
+			setActiveButton();
+		})
+	);
+
+	setActiveButton();
 }

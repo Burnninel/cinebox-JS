@@ -6,7 +6,8 @@ export async function Home() {
   const fragment = document.createDocumentFragment();
   const { data: filmes } = await fetchAllMovies();
 
-  fragment.appendChild(Header());
+  const header = Header();
+  fragment.appendChild(header);
 
   const section = await MovieSection("Explorar", filmes);
   fragment.appendChild(section);
