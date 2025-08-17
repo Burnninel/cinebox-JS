@@ -16,6 +16,23 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Verificar validade do token.
 - Pesquisar filme por usuario.
 
+## [0.7.8] - 17/08/2025 - **Refatoração dos components `/common` usando `createElement`**
+
+### Changed
+- Refatorado `Header` para substituir `innerHTML` por `createElement` e `htmlToElement`:
+  - Configuração de botões movida para `buttonsConfig`.
+  - Função `createButton` criada para gerar botões dinamicamente.
+  - Lógica de navegação e ativação de botões isolada em `setupHeaderNavigation`.
+  - Mantida semântica e funcionalidades originais.
+- Refatorado `Loading`:
+  - Substituído `innerHTML` por `createElement` para criar a estrutura do overlay e spinner.
+  - Funções `showLoading` e `hideLoading` mantidas para controle da visibilidade.
+- Refatorado `ToastContainer`:
+  - Substituído `innerHTML` por `createElement` para criar o container e toasts.
+  - `createToastElement` recebe objeto `{ message, type }` e retorna o elemento do toast.
+  - Lógica de exibição e remoção do toast via Bootstrap mantida.
+- refatorado `Input`, removendo a variável e usando diretamente o `return`.
+
 ## [0.7.7] - 16/08/2025 - **Refatoração do `AuthLayout`**
 
 ### Added
