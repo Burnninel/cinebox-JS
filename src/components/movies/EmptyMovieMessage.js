@@ -1,27 +1,34 @@
 import { IconMovie } from "/src/assets/icons/icons";
+import { createElement } from "/src/helpers/createElement.js";
+import { htmlToElement } from "/src/helpers/htmlToElement.js";
 
 export function EmptyMovieMessage(searchTerm) {
-  const element = document.createElement("div");
-  element.className = "no-results";
+	const element = createElement({ tag: "div", className: "no-results" });
 
-  const icon = `
-    <div class="no-results__icon">
-        ${IconMovie()}
-    </div>
-  `;
+	const icon = createElement({
+		tag: "div",
+		className: "no-results__icon",
+		children: [htmlToElement(IconMovie())],
+	});
 
-  const message = `
-    <div class="no-results__message-group">
-        <p class="no-results__message">
-            Nenhum filme encontrado com "<span class="no-results__value">${searchTerm}</span>"
-        </p>
-        <p class="no-results__message-secondary">
-            Que tal tentar outra busca?
-        </p>
-    </div>
-  `;
+	const message = createElement({
+		tag: "div",
+		className: "no-results__message-group",
+		children: [
+			createElement({
+				tag: "p",
+				className: "no-results__message",
+				innerHTML: `Nenhum filme encontrado com "<span class="no-results__value">${searchTerm}</span>"`,
+			}),
+			createElement({
+				tag: "p",
+				className: "no-results__message-secondary",
+				textContent: "Que tal tentar outra busca?",
+			}),
+		],
+	});
 
-  element.innerHTML = (icon + message).trim();
+    element.append(icon, message);
 
-  return element;
+	return element;
 }

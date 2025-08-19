@@ -7,14 +7,25 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Cria a pagina meus filmes.
 - Implementar botão de criar filme no `MovieSection`.
 - Ajustar redirecionamentos (Explorar e Meus-Filmes) do header.
+- Cria pagina de cadastro do filme.
 
 ### Next feature
-- Criar pagina de cadastro o filme.
+- Criar validação da pagina de cadastro do filme.
 
 ### Pending / Roadmap (Backend)
 - Consultar dados do usuário via token.
 - Verificar validade do token.
 - Pesquisar filme por usuario.
+
+## [0.7.9] - 18/08/2025 - **Refatoração do `EmptyMovieMessage`**
+
+### Changed
+- Substituição de `innerHTML` por criação estruturada via `createElement` e `htmlToElement`.
+- Estrutura do layout agora montada com elementos e filhos explícitos, em vez de concatenação de strings.
+
+### CSS
+- Estilos do componente movidos de `css/movie/movieSection.css` para `css/movie/emptyMovieMessage.css`.
+- Import do novo CSS adicionado em `css/styles.css`.
 
 ## [0.7.8] - 17/08/2025 - **Refatoração dos components `/common` usando `createElement`**
 
