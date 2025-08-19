@@ -40,8 +40,8 @@ function createInputGroup({ icon, id, placeholder }) {
 }
 
 function renderFormInputs(fields) {
-	const halfFields = fields.filter(f => f.half).map(createInputGroup);
-	const fullFields = fields.filter(f => !f.half).map(createInputGroup);
+	const halfFields = fields.filter((f) => f.half).map(createInputGroup);
+	const fullFields = fields.filter((f) => !f.half).map(createInputGroup);
 
 	const elements = [...fullFields];
 
@@ -59,9 +59,15 @@ function renderFormInputs(fields) {
 
 function createTextArea(attributes) {
 	return createElement({
-		tag: "textarea",
-		className: "movie-form__textarea",
-		attributes,
+		tag: "div",
+		className: "form__group",
+		children: [
+			createElement({
+				tag: "textarea",
+				className: "movie-form__textarea",
+				attributes,
+			}),
+		],
 	});
 }
 
