@@ -17,6 +17,19 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Verificar validade do token.
 - Pesquisar filme por usuario.
 
+## [0.7.10] - 19/08/2025 - **Refatoração do AddMovie**
+
+### Changed
+- Inputs encapsulados em `div.form__group` para preservar layout, gap e posicionamento CSS, garantindo renderização correta dos erros de validação.
+
+### Refactor
+- Criação das funções:
+  - `createInputGroup`: abstrai a criação de cada input com ícone e atributos, isolando responsabilidade.
+  - `renderFormInputs`: gera dinamicamente inputs completos e metade-metade (half fields), centralizando lógica de layout de formulário.
+  - `createUpload` e `createTextArea`: mantidas para modularidade e separação de responsabilidades.
+- Formulário reorganizado para maior reutilização e manutenção: inputs e campos de meio layout tratados de forma dinâmica.
+- Integração com `handleAddMovie` preservada para submissão e eventos do formulário.
+
 ## [0.7.9] - 18/08/2025 - **Refatoração do `EmptyMovieMessage`**
 
 ### Changed

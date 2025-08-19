@@ -8,12 +8,10 @@ import {
 import { Input } from "/src/components/common/Input.js";
 import { createElement } from "/src/helpers/createElement.js";
 import { htmlToElement } from "/src/helpers/htmlToElement.js";
+import { handleAddMovie } from "/src/components/movies/AddMovieHandler.js";
 
-export function AddMovie() {
-	const section = createElement({ tag: "section", className: "movie-form" });
-	const form = createElement({ tag: "form", className: "movie-form__form" });
-
-	const uploadContainer = createElement({
+function createUpload() {
+	return createElement({
 		tag: "div",
 		className: "movie-form__upload-container",
 		children: [
@@ -31,6 +29,64 @@ export function AddMovie() {
 			}),
 		],
 	});
+}
+
+function createInputGroup({ icon, id, placeholder }) {
+	return createElement({
+		tag: "div",
+		className: "form__group",
+		children: [Input({ icon, attributes: { id, placeholder } })],
+	});
+}
+
+function renderFormInputs(fields) {
+	const halfFields = fields.filter(f => f.half).map(createInputGroup);
+	const fullFields = fields.filter(f => !f.half).map(createInputGroup);
+
+	const elements = [...fullFields];
+
+	if (halfFields.length) {
+		const halfContainer = createElement({
+			tag: "div",
+			className: "form__field--half",
+			children: halfFields,
+		});
+		elements.push(halfContainer);
+	}
+
+	return elements;
+}
+
+function createTextArea(attributes) {
+	return createElement({
+		tag: "textarea",
+		className: "movie-form__textarea",
+		attributes,
+	});
+}
+
+export function AddMovie() {
+	const section = createElement({ tag: "section", className: "movie-form" });
+	const form = createElement({ tag: "form", className: "movie-form__form" });
+
+	const fields = [
+		{ icon: IconMovie(), id: "titulo", placeholder: "Título" },
+		{ icon: IconStarComplete(), id: "diretor", placeholder: "Diretor" },
+		{
+			icon: IconCalendar(),
+			id: "ano_de_lancamento",
+			placeholder: "Ano",
+			half: true,
+		},
+		{
+			icon: IconTicket(),
+			id: "categoria",
+			placeholder: "Categoria",
+			half: true,
+		},
+	];
+
+	const formFields = renderFormInputs(fields);
 
 	const formContainer = createElement({
 		tag: "div",
@@ -45,55 +101,23 @@ export function AddMovie() {
 						className: "movie-form__title",
 						textContent: "Novo filme",
 					}),
-					Input({
-						icon: IconMovie(),
-						attributes: { id: "titulo", placeholder: "Título" },
-					}),
-					Input({
-						icon: IconStarComplete(),
-						attributes: { id: "diretor", placeholder: "Diretor" },
-					}),
-					createElement({
-						tag: "div",
-						className: "movie-form__input",
-						children: [
-							Input({
-								icon: IconCalendar(),
-								attributes: {
-									id: "ano_de_lancamento",
-									placeholder: "Ano",
-								},
-							}),
-							Input({
-								icon: IconTicket(),
-								attributes: {
-									id: "categoria",
-									placeholder: "Categoria",
-								},
-							}),
-						],
-					}),
-					createElement({
-						tag: "textarea",
-						className: "movie-form__textarea",
-						attributes: {
-							id: "sinopse",
-							placeholder: "Sinopse",
-						},
-					}),
+					...formFields,
+					createTextArea({ id: "sinopse", placeholder: "Sinopse" }),
 					createElement({
 						tag: "div",
 						className: "movie-form__actions",
 						children: [
 							createElement({
 								tag: "button",
-								className: "movie-form__btn movie-form__btn-cancel",
+								className:
+									"movie-form__btn movie-form__btn-cancel",
 								textContent: "Cancelar",
 								attributes: { type: "reset" },
 							}),
 							createElement({
 								tag: "button",
-								className: "movie-form__btn movie-form__btn-save",
+								className:
+									"movie-form__btn movie-form__btn-save",
 								textContent: "Salvar",
 								attributes: { type: "submit" },
 							}),
@@ -104,10 +128,11 @@ export function AddMovie() {
 		],
 	});
 
-	form.appendChild(uploadContainer);
+	form.appendChild(createUpload());
 	form.appendChild(formContainer);
-
 	section.appendChild(form);
+
+	handleAddMovie(form);
 
 	return section;
 }
