@@ -10,6 +10,28 @@
   border-radius: 6px;
 }
 
+.form__field-error {
+  border-color: var(--form-error);
+}
+
+.form__field-error textarea {
+  border-color: var(--form-error);
+}
+
+.form__field-span--error {
+  width: 100%;
+  color: var(--form-error);
+  font-size: 0.5rem;
+  margin: 0;
+  text-align: start;
+}
+
+.form__field--half {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+}
+
 .form__input-icon {
   display: flex;
   height: 100%;
@@ -29,4 +51,11 @@
   background-color: transparent;
   border: none;
   outline: none;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
 }

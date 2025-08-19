@@ -17,6 +17,38 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Verificar validade do token.
 - Pesquisar filme por usuario.
 
+## [0.7.11] - 19/08/2025 - **Estrutura base de validação e integração do AddMovie**
+
+### Added
+- Helper `showFieldError` para exibir e remover mensagens de erro em inputs de forma reutilizável.
+- Componente `AddMovieHandler`:
+  - Captura dados do formulário `AddMovie`.
+  - Valida com `createNewMovie`.
+  - Aplica erros nos inputs via `showFieldError`.
+  - Envia dados ao backend com `handleMovieRequest`.
+  - Controla feedback de loading (`showLoading` / `hideLoading`).
+
+### Changed
+- `movieService`:
+  - Nova função `handleMovieRequest(endpoint, payload, token)` para requisições autenticadas.
+  - `createNewMovie(formData)` agora realiza validação antes do envio.
+  - Validação via `validateForm` com regras básicas (obrigatoriedade e tamanho mínimo).
+
+### Refactor
+- `AddMovie` passou a utilizar `AddMovieHandler`:
+  - Separação de responsabilidades.
+  - Submissão, validação e aplicação de erros centralizados.
+
+  ### Changed
+- `input.css`:
+  - Adicionada classe `.form__group` para encapsular inputs e textareas.
+  - Criadas classes `.form__field-error` e `.form__field-span--error` para exibir bordas e mensagens de erro.
+  - Suporte a layout de campos metade-metade com `.form__field--half`.
+
+- `addMovie.css`:
+  - Textarea agora encapsulada em `.form__group` para manter consistência visual com os inputs.
+  - Pequenos ajustes visuais e manutenção da responsividade e estilo geral do formulário.
+
 ## [0.7.10] - 19/08/2025 - **Refatoração do AddMovie**
 
 ### Changed

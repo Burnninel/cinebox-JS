@@ -56,11 +56,6 @@
 	color: var(--gray-100);
 }
 
-.movie-form__input {
-  display: flex;
-  gap: 1rem;
-}
-
 .movie-form__box .form__field {
 	max-height: 3rem;
 }

@@ -1,36 +1,40 @@
 import { apiRequest } from "/src/helpers/apiHelpers.js";
+import { validateForm } from "/src/utils/validateForm.js";
 
 const API_URL = "http://localhost:8888/filme";
 
-export function fetchAllMovies(pesquisar = null) {
-  if (pesquisar) {
-      return apiRequest(`${API_URL}?pesquisar=${pesquisar}`, "GET");
-  }
+export async function handleMovieRequest(endpoint, payload, token) {
+  return apiRequest(`${API_URL}/${endpoint}`, "POST", payload, token);
+}
 
-  return apiRequest(API_URL, "GET");
+export function fetchAllMovies(pesquisar = null) {
+	if (pesquisar) {
+		return apiRequest(`${API_URL}?pesquisar=${pesquisar}`, "GET");
+	}
+
+	return apiRequest(API_URL, "GET");
 }
 
 export async function fetchMovieById(id) {
-  return apiRequest(`${API_URL}/${id}`, "GET");
+	return apiRequest(`${API_URL}/${id}`, "GET");
 }
 
 export async function fetchMoviesByUser(token) {
-  return apiRequest(`${API_URL}/meus-filmes`, "GET", null, token);
+	return apiRequest(`${API_URL}/meus-filmes`, "GET", null, token);
 }
 
-export async function createNewMovie() {
-  const payload = {
-    titulo: "aisaaaai - A lenda",
-    diretor: "Jhon Ksennedy",
-    categoria: "Ação - Suspense",
-    sinopse: "Um filme que supera as leis da física.",
-    ano_de_lancamento: "1977",
-    imagem: "deadpool.jpg",
-  };
+export async function createNewMovie(formData) {
+	const validationRules = {
+		titulo: { required: true, minLength: 3 },
+		diretor: { required: true, minLength: 6 },
+		ano_de_lancamento: { required: true },
+		categoria: { required: true },
+		sinopse: { required: true },
+	};
 
-  return apiRequest(API_URL, "POST", payload);
+	return validateForm(formData, validationRules);
 }
 
 export async function toggleMovieFavorite(id, action) {
-  return apiRequest(`${API_URL}/${id}/${action}`, "POST");
+	return apiRequest(`${API_URL}/${id}/${action}`, "POST");
 }
