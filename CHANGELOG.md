@@ -13,9 +13,17 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Criar validação da pagina de cadastro do filme.
 
 ### Pending / Roadmap (Backend)
-- Consultar dados do usuário via token.
-- Verificar validade do token.
+- Consultar dados do usuário via token - (Implementado: [0.7.12]) -> '/usuario'
+- Verificar validade do token - (Implementado: [0.7.12]) -> '/usuario'
 - Pesquisar filme por usuario.
+- Upload de imagem.
+
+## [0.7.11] - 19/08/2025 - **Melhorias no AddMovieHandler**
+
+### Added
+- Integração com `ToastContainer` para exibir mensagens de sucesso e erro no fluxo de cadastro.
+- Redirecionamento automático para `/meus-filmes` após cadastro bem-sucedido.
+- Remoção dinâmica de mensagens de erro em inputs ao usuário digitar novamente.
 
 ## [0.7.11] - 19/08/2025 - **Estrutura base de validação e integração do AddMovie**
 
