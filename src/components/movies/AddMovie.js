@@ -118,7 +118,7 @@ export function AddMovie() {
 								className:
 									"movie-form__btn movie-form__btn-cancel",
 								textContent: "Cancelar",
-								attributes: { type: "reset" },
+								attributes: { type: "button" },
 							}),
 							createElement({
 								tag: "button",

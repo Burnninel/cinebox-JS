@@ -9,15 +9,24 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Ajustar redirecionamentos (Explorar e Meus-Filmes) do header.
 - Cria pagina de cadastro do filme.
 - Cria validação da pagina de cadastro do filme.
+- Cria interação no botão 'cancelar' do `AddMovieHandler`.
 
 ### Next feature
-- Criar interação no botão 'cancelar' do `AddMovieHandler`.
+- Finalizar pagina 'meus filmes'. 
 
 ### Pending / Roadmap (Backend)
 - Consultar dados do usuário via token - (Implementado: [0.7.12]) -> '/usuario'
 - Verificar validade do token - (Implementado: [0.7.12]) -> '/usuario'
 - Pesquisar filme por usuario.
 - Upload de imagem.
+
+## [0.7.14] - 20/08/2025
+
+### Added
+- Inclusão de lógica no `AddMovieHandler` para redirecionar o usuário para `/meus-filmes` ao clicar em "Cancelar".
+
+### Changed
+- Botão "Cancelar" alterado de `type="reset"` para `type="button"`.
 
 ## [0.7.13] - 20/08/2025
 

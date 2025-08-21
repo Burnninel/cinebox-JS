@@ -26,6 +26,11 @@ export async function handleAddMovie(form) {
 		);
 	});
 
+	const cancelBtn = form.querySelector(".movie-form__btn-cancel");
+	cancelBtn?.addEventListener("click", () => {
+		navigateTo("/meus-filmes");
+	});
+
 	form.addEventListener("submit", async function (event) {
 		event.preventDefault();
 
