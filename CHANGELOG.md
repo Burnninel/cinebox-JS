@@ -8,9 +8,10 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Implementar botão de criar filme no `MovieSection`.
 - Ajustar redirecionamentos (Explorar e Meus-Filmes) do header.
 - Cria pagina de cadastro do filme.
+- Cria validação da pagina de cadastro do filme.
 
 ### Next feature
-- Criar validação da pagina de cadastro do filme.
+- Criar interação no botão 'cancelar' do `AddMovieHandler`.
 
 ### Pending / Roadmap (Backend)
 - Consultar dados do usuário via token - (Implementado: [0.7.12]) -> '/usuario'
@@ -18,7 +19,16 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
-## [0.7.11] - 19/08/2025 - **Melhorias no AddMovieHandler**
+## [0.7.13] - 20/08/2025
+
+### Added
+- Novas validações no `validateForm`:
+  - `numeric`: garante que o valor seja numérico (inteiro).
+  - `length`: valida se o campo possui exatamente o número de caracteres definido.
+  - `between`: verifica se o valor numérico está dentro de um intervalo definido.
+- Aplicação das novas validações no `movieService` para o campo `ano_de_lancamento`.
+
+## [0.7.12] - 20/08/2025
 
 ### Added
 - Integração com `ToastContainer` para exibir mensagens de sucesso e erro no fluxo de cadastro.

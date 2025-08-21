@@ -4,7 +4,7 @@ import { validateForm } from "/src/utils/validateForm.js";
 const API_URL = "http://localhost:8888/filme";
 
 export async function handleMovieRequest(endpoint, payload, token) {
-  return apiRequest(`${API_URL}/${endpoint}`, "POST", payload, token);
+	return apiRequest(`${API_URL}/${endpoint}`, "POST", payload, token);
 }
 
 export function fetchAllMovies(pesquisar = null) {
@@ -27,7 +27,11 @@ export async function createNewMovie(formData) {
 	const validationRules = {
 		titulo: { required: true, minLength: 3 },
 		diretor: { required: true, minLength: 6 },
-		ano_de_lancamento: { required: true },
+		ano_de_lancamento: {
+			required: true,
+			numeric: true,
+			between: [4, 8],
+		},
 		categoria: { required: true },
 		sinopse: { required: true },
 	};
