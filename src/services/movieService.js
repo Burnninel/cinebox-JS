@@ -23,17 +23,18 @@ export async function fetchMoviesByUser(token) {
 	return apiRequest(`${API_URL}/meus-filmes`, "GET", null, token);
 }
 
-export async function createNewMovie(formData) {
+export async function validateNewMovie(formData) {
 	const validationRules = {
 		titulo: { required: true, minLength: 3 },
 		diretor: { required: true, minLength: 6 },
 		ano_de_lancamento: {
 			required: true,
 			numeric: true,
-			between: [4, 8],
+			length: 4,
+			between: [1900, 2025],
 		},
-		categoria: { required: true },
-		sinopse: { required: true },
+		categoria: { required: true, minLength: 3 },
+		sinopse: { required: true, minLength: 10 },
 	};
 
 	return validateForm(formData, validationRules);

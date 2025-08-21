@@ -10,15 +10,25 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Cria pagina de cadastro do filme.
 - Cria validação da pagina de cadastro do filme.
 - Cria interação no botão 'cancelar' do `AddMovieHandler`.
+- Finaliza pagina 'filme/novo'. 
 
 ### Next feature
-- Finalizar pagina 'meus filmes'. 
+- Em análise...
 
 ### Pending / Roadmap (Backend)
 - Consultar dados do usuário via token - (Implementado: [0.7.12]) -> '/usuario'
 - Verificar validade do token - (Implementado: [0.7.12]) -> '/usuario'
 - Pesquisar filme por usuario.
 - Upload de imagem.
+
+## [0.7.15] - 21/08/2025 - **Finalização da página Novo Filme**
+
+### Changed
+- Refatoração final das controllers `AddMovie` e `AddMovieHandler` para maior modularidade, legibilidade e manutenção.
+- Upload de imagem permanece estático (`"mmf.jpg"`) devido à limitação do backend.
+- Correações no movieService:
+  - Função `createNewMovie` renomeada para `validateNewMovie`.
+  - Adição de `minLength` para os campos `categoria` (3) e `sinopse` (10).
 
 ## [0.7.14] - 20/08/2025
 

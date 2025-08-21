@@ -46,12 +46,13 @@ function renderFormInputs(fields) {
 	const elements = [...fullFields];
 
 	if (halfFields.length) {
-		const halfContainer = createElement({
-			tag: "div",
-			className: "form__field--half",
-			children: halfFields,
-		});
-		elements.push(halfContainer);
+		elements.push(
+			createElement({
+				tag: "div",
+				className: "form__field--half",
+				children: halfFields,
+			})
+		);
 	}
 
 	return elements;
@@ -66,6 +67,50 @@ function createTextArea(attributes) {
 				tag: "textarea",
 				className: "movie-form__textarea",
 				attributes,
+			}),
+		],
+	});
+}
+
+function createFormActions() {
+	return createElement({
+		tag: "div",
+		className: "movie-form__actions",
+		children: [
+			createElement({
+				tag: "button",
+				className: "movie-form__btn movie-form__btn-cancel",
+				textContent: "Cancelar",
+				attributes: { type: "button" },
+			}),
+			createElement({
+				tag: "button",
+				className: "movie-form__btn movie-form__btn-save",
+				textContent: "Salvar",
+				attributes: { type: "submit" },
+			}),
+		],
+	});
+}
+
+function createFormContainer(formFields) {
+	return createElement({
+		tag: "div",
+		className: "movie-form__container",
+		children: [
+			createElement({
+				tag: "div",
+				className: "movie-form__box",
+				children: [
+					createElement({
+						tag: "h2",
+						className: "movie-form__title",
+						textContent: "Novo filme",
+					}),
+					...formFields,
+					createTextArea({ id: "sinopse", placeholder: "Sinopse" }),
+					createFormActions(),
+				],
 			}),
 		],
 	});
@@ -94,48 +139,8 @@ export function AddMovie() {
 
 	const formFields = renderFormInputs(fields);
 
-	const formContainer = createElement({
-		tag: "div",
-		className: "movie-form__container",
-		children: [
-			createElement({
-				tag: "div",
-				className: "movie-form__box",
-				children: [
-					createElement({
-						tag: "h2",
-						className: "movie-form__title",
-						textContent: "Novo filme",
-					}),
-					...formFields,
-					createTextArea({ id: "sinopse", placeholder: "Sinopse" }),
-					createElement({
-						tag: "div",
-						className: "movie-form__actions",
-						children: [
-							createElement({
-								tag: "button",
-								className:
-									"movie-form__btn movie-form__btn-cancel",
-								textContent: "Cancelar",
-								attributes: { type: "button" },
-							}),
-							createElement({
-								tag: "button",
-								className:
-									"movie-form__btn movie-form__btn-save",
-								textContent: "Salvar",
-								attributes: { type: "submit" },
-							}),
-						],
-					}),
-				],
-			}),
-		],
-	});
-
 	form.appendChild(createUpload());
-	form.appendChild(formContainer);
+	form.appendChild(createFormContainer(formFields));
 	section.appendChild(form);
 
 	handleAddMovie(form);

@@ -1,6 +1,6 @@
 import {
 	handleMovieRequest,
-	createNewMovie,
+	validateNewMovie,
 } from "/src/services/movieService.js";
 import {
 	setErrors,
@@ -11,37 +11,41 @@ import { getCookieValue } from "/src/helpers/cookieHelpers.js";
 import { ToastContainer } from "/src/components/common/ToastContainer.js";
 import { navigateTo } from "/src/router.js";
 
+function collectFormData(form) {
+	const inputs = form.querySelectorAll("input, textarea");
+	const data = {};
+	inputs.forEach((input) => {
+		data[input.id] = input.value.trim();
+	});
+	data.imagem = "mmf.jpg"; // Imagem padrão teste - BackEnd não possui upload de imagem ainda
+	return { data, inputs };
+}
+
+function setupInputListeners(inputs) {
+	inputs.forEach((input) => {
+		input.addEventListener("input", () => removeInputErrorMessage(input));
+	});
+}
+
+function setupCancelButton(form, route) {
+	const cancelBtn = form.querySelector(".movie-form__btn-cancel");
+	cancelBtn?.addEventListener("click", () => navigateTo(route));
+}
+
 export async function handleAddMovie(form) {
 	const token = getCookieValue("token");
 	const toastContainer = ToastContainer();
 
-	const inputs = form.querySelectorAll("input, textarea");
-	const formData = {};
-
-	inputs.forEach(({ id }) => {
-		const inputElement = form.querySelector(`#${id}`);
-		formData[id] = inputElement?.value || "";
-		inputElement?.addEventListener("input", () =>
-			removeInputErrorMessage(inputElement)
-		);
-	});
-
-	const cancelBtn = form.querySelector(".movie-form__btn-cancel");
-	cancelBtn?.addEventListener("click", () => {
-		navigateTo("/meus-filmes");
-	});
+	const { data: initialData, inputs } = collectFormData(form);
+	setupInputListeners(inputs);
+	setupCancelButton(form, "/meus-filmes");
 
 	form.addEventListener("submit", async function (event) {
 		event.preventDefault();
 
-		inputs.forEach((input) => {
-			formData[input.id] = input.value.trim();
-		});
+		const { data: formData } = collectFormData(form);
 
-		formData.imagem = "mmf.jpg"; // Imagem padrão teste - BackEnd não possui upload de imagem ainda
-
-		const validateForm = await createNewMovie(formData);
-
+		const validateForm = await validateNewMovie(formData);
 		if (Object.keys(validateForm).length !== 0) {
 			setErrors(validateForm);
 			return;
