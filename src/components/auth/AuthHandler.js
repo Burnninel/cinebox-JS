@@ -1,110 +1,84 @@
-import { handleAuthRequest, validateLogin, validateSignup } from "/src/services/authService.js";
+import {
+	handleAuthRequest,
+	validateLogin,
+	validateSignup,
+} from "/src/services/authService.js";
 import { showLoading, hideLoading } from "/src/components/common/Loading.js";
+import {
+	setErrors,
+	removeInputErrorMessage,
+  clearAllFormErrors,
+} from "/src/helpers/showFieldError.js";
 import { ToastContainer } from "/src/components/common/ToastContainer.js";
 import { navigateTo } from "/src/router.js";
 
 export async function handleAuthForm(authContainer, inputs, formType) {
-  const submitButton = authContainer.querySelector(".auth-form__submit");
-  const toastContainer = ToastContainer();
+	const submitButton = authContainer.querySelector(".auth-form__submit");
+	const toastContainer = ToastContainer();
 
-  submitButton.addEventListener("click", async () => {
-    await submitForm();
-  });
+	submitButton.addEventListener("click", async () => {
+		await submitForm();
+	});
 
-  inputs.forEach(({ id }) => {
-    const inputElement = authContainer.querySelector(`#${id}`);
-    inputElement?.addEventListener("keydown", async (event) => {
-      if (event.key === "Enter") {
-        await submitForm();
-      }
-    });
-  });
+	inputs.forEach(({ id }) => {
+		const inputElement = authContainer.querySelector(`#${id}`);
+		inputElement?.addEventListener("keydown", async (event) => {
+			if (event.key === "Enter") {
+				await submitForm();
+			}
+		});
+	});
 
-  async function submitForm() {
-    const formData = {};
+	async function submitForm() {
+		const formData = {};
 
-    inputs.forEach(({ id }) => {
-      const inputElement = authContainer.querySelector(`#${id}`);
-      formData[id] = inputElement?.value || "";
-      inputElement?.addEventListener("input", () =>
-        removeInputErrorMessage(inputElement)
-    );
-  });
-  
+		inputs.forEach(({ id }) => {
+			const inputElement = authContainer.querySelector(`#${id}`);
+			formData[id] = inputElement?.value || "";
+			inputElement?.addEventListener("input", () =>
+				removeInputErrorMessage(inputElement)
+			);
+		});
 
-    const validationErrors = formType === 'login' 
-    ? validateLogin(formData)
-    : validateSignup(formData)
+		const validationErrors =
+			formType === "login"
+				? validateLogin(formData)
+				: validateSignup(formData);
 
-    if(Object.keys(validationErrors).length !== 0) {
-      setErrors(validationErrors)
-      return;
-    }
+		if (Object.keys(validationErrors).length !== 0) {
+			setErrors(validationErrors);
+			return;
+		}
 
-    showLoading();
+		showLoading();
 
-    try {
-      const formType = submitButton.dataset.form;
-      const response = await handleAuthRequest(formType, formData);
-      const authenticatedUser = response.data;
+		try {
+			const formType = submitButton.dataset.form;
+			const response = await handleAuthRequest(formType, formData);
+			const authenticatedUser = response.data;
 
-      clearAllFormErrors(authContainer, formData);
-      toastContainer.showToast({ message: response.message, type: "success" });
-      
-      document.cookie = "token=; path=/; max-age=0";
-      document.cookie = `token=${authenticatedUser.token}; path=/; max-age=86400`;
+			clearAllFormErrors(authContainer, formData);
+			toastContainer.showToast({
+				message: response.message,
+				type: "success",
+			});
 
-      navigateTo(formType === 'login' ? "/meus-filmes" : "/login");
-    } catch (error) {
-      if (!error.errors || Object.keys(error.errors).length === 0) {
-        clearAllFormErrors(authContainer, formData);
-        toastContainer.showToast({ message: error.message, type: "error" });
-      }
+			document.cookie = "token=; path=/; max-age=0";
+			document.cookie = `token=${authenticatedUser.token}; path=/; max-age=86400`;
 
-      setErrors(error.errors || {});
-    } finally {
-      hideLoading();
-    }
-  }
-}
+			navigateTo(formType === "login" ? "/meus-filmes" : "/login");
+		} catch (error) {
+			if (!error.errors || Object.keys(error.errors).length === 0) {
+				clearAllFormErrors(authContainer, formData);
+				toastContainer.showToast({
+					message: error.message,
+					type: "error",
+				});
+			}
 
-function removeInputErrorMessage(input) {
-  const fieldWrapper = input.closest(".form__field");
-  const nextSibling = fieldWrapper.nextElementSibling;
-
-  if (nextSibling?.classList.contains("auth-form__span-error")) {
-    nextSibling.remove();
-  }
-
-  fieldWrapper.classList.remove("auth-form__input-error");
-}
-
-function showFieldError(input, message) {
-  const fieldWrapper = input.closest(".form__field");
-  const nextSibling = fieldWrapper.nextElementSibling;
-
-  if (nextSibling?.classList.contains("auth-form__span-error")) {
-    nextSibling.textContent = message;
-  } else {
-    const errorSpan = document.createElement("span");
-    errorSpan.className = "auth-form__span-error";
-    errorSpan.textContent = message;
-
-    fieldWrapper.classList.add("auth-form__input-error");
-    fieldWrapper.insertAdjacentElement("afterend", errorSpan);
-  }
-}
-
-function setErrors(errors) {
-  Object.entries(errors).forEach(([fieldId, message]) => {
-    const input = document.getElementById(fieldId);
-    if (input) showFieldError(input, message);
-  });
-}
-
-function clearAllFormErrors(authContainer, formData) {
-  Object.keys(formData).forEach((fieldId) => {
-    const input = authContainer.querySelector(`#${fieldId}`);
-    if (input) removeInputErrorMessage(input);
-  });
+			setErrors(error.errors || {});
+		} finally {
+			hideLoading();
+		}
+	}
 }

@@ -41,3 +41,10 @@ export function removeInputErrorMessage(input) {
 
 	fieldWrapper.classList.remove("form__field-error");
 }
+
+export function clearAllFormErrors(form, formData) {
+	Object.keys(formData).forEach((fieldId) => {
+		const input = form.querySelector(`#${fieldId}`);
+		if (input) removeInputErrorMessage(input);
+	});
+}

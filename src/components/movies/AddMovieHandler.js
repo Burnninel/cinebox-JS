@@ -7,7 +7,6 @@ import {
 	removeInputErrorMessage,
 } from "/src/helpers/showFieldError.js";
 import { showLoading, hideLoading } from "/src/components/common/Loading.js";
-import { getCookieValue } from "/src/helpers/cookieHelpers.js";
 import { ToastContainer } from "/src/components/common/ToastContainer.js";
 import { navigateTo } from "/src/router.js";
 
@@ -32,11 +31,11 @@ function setupCancelButton(form, route) {
 	cancelBtn?.addEventListener("click", () => navigateTo(route));
 }
 
-export async function handleAddMovie(form) {
-	const token = getCookieValue("token");
+export async function handleAddMovie(form, token) {
 	const toastContainer = ToastContainer();
 
-	const { data: initialData, inputs } = collectFormData(form);
+	const { inputs } = collectFormData(form);
+
 	setupInputListeners(inputs);
 	setupCancelButton(form, "/meus-filmes");
 

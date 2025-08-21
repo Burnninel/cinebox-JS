@@ -15,6 +15,7 @@
 
 .global-header__logo svg {
   height: 36px;
+  cursor: pointer;
 }
 
 .global-header__navbar {

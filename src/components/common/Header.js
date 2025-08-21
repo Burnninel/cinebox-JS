@@ -30,6 +30,10 @@ export function Header() {
 		children: [htmlToElement(IconLogo())],
 	});
 
+	logo.addEventListener("click", () => {
+		navigateTo("/explorar");
+	})
+
 	const buttons = buttonsConfig.map(createButton);
 
 	const navbar = createElement({

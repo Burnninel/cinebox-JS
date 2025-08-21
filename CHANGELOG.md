@@ -21,7 +21,31 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
-## [0.7.15] - 21/08/2025 - **Finalização da página Novo Filme**
+## [0.7.16] - 21/08/2025
+
+### Added
+- Interação no logo do `common/Header`: redireciona para `/explorar`.
+- Helper `validateToken` criado para centralizar a validação do token de autenticação.
+  - Envia requisição `POST` para `/usuario` e retorna `false` se o token for inválido/ausente.
+
+### Changed
+- `pages/MyMovies` agora recebe o `token` como parâmetro (não utiliza mais `cookieHelpers`).
+- `pages/NewMovie` atualizado para repassar o `token` ao componente `AddMovie`.
+
+### Refactor
+- `AuthHandler` simplificado, removendo funções duplicadas de manipulação de erros.  
+- Estilização de erros padronizada via helper `showFieldError.js`.  
+- Router atualizado para:
+  - Validar token com `validateToken` em rotas privadas.  
+  - Exibir toast de sessão expirada e redirecionar para `/login` se inválido.  
+  - Passar `token` validado como argumento para páginas privadas (`page.component(token)`).  
+- Imports do Router agrupados por contexto (`Helpers / Utils`, `Components`, `Pages`).
+
+### CSS
+- Removida estilização de erro duplicada no controller (`auth.css`).  
+- Inputs de erro seguem a classe padrão do helper.  
+
+## [0.7.15] - 20/08/2025 - **Finalização da página Novo Filme**
 
 ### Changed
 - Refatoração final das controllers `AddMovie` e `AddMovieHandler` para maior modularidade, legibilidade e manutenção.

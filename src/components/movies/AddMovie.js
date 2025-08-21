@@ -116,7 +116,7 @@ function createFormContainer(formFields) {
 	});
 }
 
-export function AddMovie() {
+export function AddMovie(token) {
 	const section = createElement({ tag: "section", className: "movie-form" });
 	const form = createElement({ tag: "form", className: "movie-form__form" });
 
@@ -143,7 +143,7 @@ export function AddMovie() {
 	form.appendChild(createFormContainer(formFields));
 	section.appendChild(form);
 
-	handleAddMovie(form);
+	handleAddMovie(form, token);
 
 	return section;
 }

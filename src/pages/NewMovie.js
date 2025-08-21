@@ -1,12 +1,12 @@
 import { Header } from "/src/components/common/Header.js";
 import { AddMovie } from "/src/components/movies/AddMovie.js";
 
-export async function NewMovie() {
+export async function NewMovie(token) {
 	const fragment = document.createDocumentFragment();
 
 	fragment.appendChild(Header());
 
-	const section = await AddMovie();
+	const section = await AddMovie(token);
 	fragment.appendChild(section);
 
 	return fragment;
