@@ -24,7 +24,7 @@ const routes = [
 	{ path: "/signup", component: Signup, private: false },
 	{ path: "/meus-filmes", component: MyMovies, private: true },
 	{ path: "/filme/novo", component: NewMovie, private: true },
-	{ path: "/filme/:id", component: Movie, private: true },
+	{ path: "/filme/:id", component: Movie, private: false },
 ];
 
 function matchRoute(pathname) {
@@ -79,7 +79,7 @@ async function router() {
 	try {
 		const content = route.private
 			? await route.component(token, params)
-			: await route.component();
+			: await route.component(token, params);
 		app.appendChild(content);
 	} catch (error) {
 		console.error(`Erro ao carregar a página ${path}:`, error);

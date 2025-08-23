@@ -21,6 +21,14 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
+## [0.8.2] - 23/08/2025
+
+### Changed
+- Página `/filme/:id` agora é pública, permitindo acesso sem autenticação.
+  - Sistema de avaliação será restrito a usuários autenticados; 
+  - A verificação do token ocorre apenas ao tentar avaliar o filme.
+- Router atualizado para que todas as páginas recebam `token` e `params` ao serem carregadas.
+
 ## [0.8.1] - 23/08/2025
 
 ### Added
