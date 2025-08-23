@@ -21,6 +21,28 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
+## [0.8.0] - 22/08/2025 - **Implementação base da página Filme**
+
+### Added
+- Página `Movie.js` criada como estrutura base para exibir detalhes de um filme.
+- Suporte a rotas dinâmicas `/filme/:id` no router, capturando o ID da URL e repassando como parâmetro para a página.
+- Navegação dos cards implementada via link: ao clicar em um `MovieCard`, usuário é direcionado para a rota do filme correspondente (`/filme/{id}`).
+
+### Changed
+- `MovieCard` atualizado:
+  - Agora envolve o conteúdo do card em um `<a>` com `href` para a rota do filme.
+  - Click event no card utiliza `navigateTo` para navegação SPA.
+- `MovieSection` refatorado para:
+  - Separar a criação do header, renderização da lista de filmes, e setup de botões/search em funções menores.
+  - Renderizar cards usando a nova lógica de links (`MovieCard` com navegação).
+  - Manter compatibilidade com página “Meus Filmes” e pesquisa.
+
+### Refactor
+- Router atualizado para suportar URL dinâmica via `URLPattern`.
+  - `matchRoute` implementada para capturar parâmetros da rota (`:id`) e repassar para o componente.
+  - Código reorganizado mantendo carregamento (`Loading`) e validação de token em rotas privadas.
+- Modularização de funções internas de `MovieSection` (`createHeader`, `renderMovieList`, `setupAddButton`, `setupSearch`) para maior clareza e manutenção.
+
 ## [0.7.16] - 21/08/2025
 
 ### Added

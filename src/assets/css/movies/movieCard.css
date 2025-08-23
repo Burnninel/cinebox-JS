@@ -20,6 +20,11 @@
   transition: background 0.3s ease;
 }
 
+.card__link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .card__image {
   position: absolute;
   width: 100%;

@@ -23,6 +23,7 @@ function createRating(media) {
 }
 
 export function MovieCard({
+	id,
 	titulo,
 	categoria,
 	ano_de_lancamento,
@@ -30,14 +31,15 @@ export function MovieCard({
 	imagem,
 	sinopse,
 }) {
-	return createElement({
-		tag: "li",
-		className: "card",
+	const link = createElement({
+		tag: "a",
+		className: "card__link",
+		attributes: { href: `/filme/${id}` },
 		children: [
 			createElement({
 				tag: "img",
 				className: "card__image",
-				attributes: { src: `/src/assets/img/${imagem}`, alt: imagem },
+				attributes: { src: `/src/assets/img/${imagem}`, alt: titulo },
 			}),
 			createRating(media_avaliacoes),
 			createElement({
@@ -62,5 +64,16 @@ export function MovieCard({
 				],
 			}),
 		],
+	});
+
+	link.addEventListener("click", (e) => {
+		e.preventDefault();
+		navigateTo(link.href);
+	});
+
+	return createElement({
+		tag: "li",
+		className: "card",
+		children: [link],
 	});
 }

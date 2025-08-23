@@ -16,14 +16,27 @@ import { Login } from "/src/pages/Login.js";
 import { Signup } from "/src/pages/Signup.js";
 import { MyMovies } from "/src/pages/MyMovies.js";
 import { NewMovie } from "/src/pages/NewMovie.js";
+import { Movie } from "/src/pages/Movie.js";
 
-const routes = {
-	"/explorar": { component: Home, private: false },
-	"/login": { component: Login, private: false },
-	"/signup": { component: Signup, private: false },
-	"/meus-filmes": { component: MyMovies, private: true },
-	"/filme/novo": { component: NewMovie, private: true },
-};
+const routes = [
+	{ path: "/explorar", component: Home, private: false },
+	{ path: "/login", component: Login, private: false },
+	{ path: "/signup", component: Signup, private: false },
+	{ path: "/meus-filmes", component: MyMovies, private: true },
+	{ path: "/filme/novo", component: NewMovie, private: true },
+	{ path: "/filme/:id", component: Movie, private: true },
+];
+
+function matchRoute(pathname) {
+	for (const route of routes) {
+		const pattern = new URLPattern({ pathname: route.path });
+		const match = pattern.exec({ pathname });
+		if (match) {
+			return { route, params: match.pathname.groups };
+		}
+	}
+	return null;
+}
 
 async function router() {
 	const app = document.querySelector(".app");
@@ -39,16 +52,17 @@ async function router() {
 	}
 
 	const path = window.location.pathname;
-	const page = routes[path];
-
-	if (!page) {
+	const matched = matchRoute(path);
+	if (!matched) {
 		app.innerHTML = "<h2>Página não encontrada</h2>";
 		return;
 	}
 
+	const { route, params } = matched;
+
 	const token = getCookieValue("token");
 
-	if (page.private) {
+	if (route.private) {
 		const isValid = await validateToken(token);
 		if (!isValid) {
 			ToastContainer().showToast({
@@ -63,9 +77,9 @@ async function router() {
 	showLoading();
 
 	try {
-		const content = page.private
-			? await page.component(token)
-			: await page.component();
+		const content = route.private
+			? await route.component(token, params)
+			: await route.component();
 		app.appendChild(content);
 	} catch (error) {
 		console.error(`Erro ao carregar a página ${path}:`, error);
