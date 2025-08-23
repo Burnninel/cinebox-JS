@@ -21,6 +21,34 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
+## [0.8.1] - 23/08/2025
+
+### Added
+- Componente `MovieLayout` criado, exibindo:
+  - Detalhes do filme: título, diretor, categoria e ano.
+  - Avaliações com estrelas, nota média e total de avaliações.
+  - Botão de voltar (`BackButton`).
+- Funções auxiliares:
+  - `createDetailItem` para criar itens de detalhe do filme.
+  - `createStarItem` para criar estrelas individuais.
+  - `createBackButton` para navegar de volta.
+  - `createRatingStars` para exibir estrelas e informações de nota.
+  - `createMovieInfoSection` para montar a seção de detalhes do filme.
+
+### Changed
+- Página `pages/Movie` atualizada para consumir a API:
+  - Fetch do filme pelo ID via `fetchMovieById`.
+  - Integração do layout `MovieLayout` no fragmento.
+- Refatoração da página `Movie` para suportar futuras seções: lista de avaliações e galeria de imagens.
+
+### CSS
+- Estilização inicial da página de detalhes do filme (`.movie-page`):
+  - Botão de voltar estilizado (`.movie-page__btn-back`).
+  - Título do filme (`.movie-page__title`) com destaque.
+  - Lista de informações do filme (`.movie-page__details-list`) com labels e valores.
+  - Sistema de avaliação (`.movie-page__rating`) com estrelas e meta de rating.
+  - Sinopse (`.movie-page__sinopse`) posicionada e dimensionada na seção de detalhes.
+
 ## [0.8.0] - 22/08/2025 - **Implementação base da página Filme**
 
 ### Added
