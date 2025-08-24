@@ -95,6 +95,16 @@ function createRatingStars(reviewCount, averageRating, maxStars  = 5) {
 	});
 }
 
+function renderImage(img) {
+	return createElement({
+		tag: "img",
+		className: "movie-page__image",
+		attributes: {
+			src: `/src/assets/img/${img}`,
+		}
+	})
+}
+
 function createMovieInfoSection(movie) {
 	const infoFields = [
 		{ label: "Diretor", value: movie.diretor },
@@ -125,7 +135,11 @@ function createMovieInfoSection(movie) {
 		tag: "div",
 		className: "movie-page__info",
 		children: [
-			createElement({ tag: "div", className: "movie-page__image" }),
+			createElement({ 
+				tag: "div", 
+				className: "movie-page__info-image",
+				children: [renderImage(movie.imagem)]
+			 }),
 			createElement({
 				tag: "div",
 				className: "movie-page__details",

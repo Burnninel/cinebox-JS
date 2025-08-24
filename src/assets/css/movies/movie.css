@@ -1,24 +1,40 @@
 .movie-page {
 	display: flex;
-	justify-content: center;
-	padding-top: 6rem;
+	flex-direction: column;
+	height: auto;
+	padding-top: 8rem;
 	margin: 0 8vw;
 }
 
 .movie-page__info {
 	display: flex;
-	width: 100%;
-	align-items: flex-start;
+	flex-direction: row;
+	max-height: 60vh;
+	gap: 2rem;
+}
+
+.movie-page__info-image {
+	display: flex;
+	justify-content: center;
+	flex: 0 0 30%;
+	overflow: hidden;
+	padding: 1rem;
 }
 
 .movie-page__image {
-	width: 40%;
-	height: 10px;
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 14px;
+	box-shadow: 0 0 1rem rgba(255, 254, 254, 0.182);
 }
 
 .movie-page__details {
-	width: 60%;
-	padding: 3rem 0;
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
+	scrollbar-width: thin; 
+    scrollbar-color: var(--purple-dark) #a9a9a907;
 }
 
 .movie-page__details-content {
@@ -80,7 +96,7 @@
 }
 
 .movie-page__rating-stars {
-    display: flex;
+	display: flex;
 	flex-direction: row;
 	margin: 0;
 	padding: 0;
@@ -89,27 +105,28 @@
 }
 
 .movie-page__rating-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
 }
 
 .movie-page__rating-score {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--white);
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: var(--white);
 }
 
 .movie-page__rating-count {
-     font-size: 0.8rem;
-    color: var(--gray-300);
+	font-size: 0.8rem;
+	color: var(--gray-300);
 }
 
 .movie-page__sinopse-wrapper {
 	display: flex;
 	align-items: end;
-	min-height: 20vh;
-    padding-top: 2rem;
+	flex-grow: 1;
+	margin-top: auto;
+	padding-top: 2rem;
 }
 
 .movie-page__sinopse {

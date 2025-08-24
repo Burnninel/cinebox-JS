@@ -21,6 +21,25 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
+## [0.8.3] - 23/08/2025
+
+### Added
+- Exibição da imagem do filme no componente `MovieLayout`.
+  - Função auxiliar `renderImage` criada para renderizar o `img` com poster.
+  - Nova estrutura de container `.movie-page__info-image` para encapsular a imagem.
+
+### Changed
+- Estrutura do `MovieLayout` ajustada:
+  - A antiga `div.movie-page__image` foi substituída por um container dedicado (`.movie-page__info-image`) que contém a imagem do filme.
+
+### CSS
+- CSS atualizado:
+  - `.movie-page` agora usa `flex-direction: column`, com altura dinâmica.
+  - Layout de `.movie-page__info` reformulado com `gap` e limite de altura.
+  - Nova estilização da imagem (`.movie-page__image`): largura responsiva, `border-radius`, `box-shadow` e centralização.
+  - `.movie-page__details` agora permite rolagem (`overflow: auto`) com scrollbar customizada.
+  - Ajuste em `.movie-page__sinopse-wrapper` para ocupar o espaço restante com `flex-grow: 1` e `margin-top: auto`.
+
 ## [0.8.2] - 23/08/2025
 
 ### Changed
