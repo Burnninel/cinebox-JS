@@ -2,8 +2,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 100vh;
-	padding-top: 6rem;
+	min-height: calc(100vh - 4rem);
 }
 
 .movie-form__form {

@@ -6,11 +6,6 @@ body, html {
   min-height: 100vh;
 }
 
-section {
-	min-height: 100vh;
-	box-sizing: border-box;
-}
-
 .app {
   height: 100%;
   display: flex;
