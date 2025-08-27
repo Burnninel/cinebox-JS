@@ -21,6 +21,16 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
+## [0.8.4] - 27/08/2025
+
+### Added
+- Imagem de fundo sutil na seção `.movie-page__info`, enviada dinamicamente via JS.
+- Gradient aplicado sobre a imagem para efeito de fade discreto no final.
+
+### Changed
+- Ajuste da opacidade da imagem de fundo para deixar o efeito mais suave.
+- Refatoração do CSS da `.movie-page__info` para suportar a imagem e o gradient.
+
 ## [0.8.3] - 23/08/2025
 
 ### Added

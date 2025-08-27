@@ -131,7 +131,7 @@ function createMovieInfoSection(movie) {
 		createRatingStars(movie.total_avaliacoes, movie.media_avaliacoes),
 	];
 
-	return createElement({
+	const infoSection = createElement({
 		tag: "div",
 		className: "movie-page__info",
 		children: [
@@ -164,6 +164,13 @@ function createMovieInfoSection(movie) {
 			}),
 		],
 	});
+
+	infoSection.style.setProperty(
+		"--bg-image",
+		`url("/src/assets/img/${movie.imagem}")`
+	);
+
+	return infoSection;
 }
 
 export function MovieLayout({ movie, reviews }) {
