@@ -21,6 +21,17 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
+## [0.8.5] - 29/08/2025
+
+### Added
+- Estrutura base  da seção de avaliações (`movie-page__reviews`) adicionada no `MovieLayout`:
+  - Header com título "Avaliações" e botão "Avaliar filme".
+  - Lista de reviews (`movie-page__reviews-list`) com item **estático** de exemplo.
+  - Perfil do usuário, comentário e box de nota com estrela.
+- Arquivo CSS `movieReviews.css` criado para estilização da seção:
+  - Header de avaliações, botão de ação e lista de reviews.
+  - Estilização de perfil do usuário, avatar, informações, comentário e nota com estrelas.
+
 ## [0.8.4] - 27/08/2025
 
 ### Added
