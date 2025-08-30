@@ -6,33 +6,24 @@ import {
 
 import { createElement } from "/src/helpers/createElement.js";
 import { htmlToElement } from "/src/helpers/htmlToElement.js";
-
-import {
-	createSpan,
-	createParagraph,
-	createH1,
-	createDiv,
-	createUl,
-	createLi,
-	createButton,
-} from "/src/helpers/domHelpers.js";
+import { DOM } from "/src/helpers/dom/index.js";
 
 function createDetailItem(label, value) {
-	return createLi("movie-page__info-item", [
-		createSpan("movie-page__info-label", `${label}: `),
-		createSpan("movie-page__info-value", value),
+	return DOM.createLi("movie-page__info-item", [
+		DOM.createSpan("movie-page__info-label", `${label}: `),
+		DOM.createSpan("movie-page__info-value", value),
 	]);
 }
 
 function createStarItem(icon) {
-	return createLi("movie-page__rating-item", [htmlToElement(icon())]);
+	return DOM.createLi("movie-page__rating-item", [htmlToElement(icon())]);
 }
 
 function createBackButton() {
-	return createDiv("movie-page__nav-back", [
-		createButton("movie-page__btn-back", [
+	return DOM.createDiv("movie-page__nav-back", [
+		DOM.createButton("movie-page__btn-back", [
 			htmlToElement(IconBack()),
-			createSpan("movie-page__btn-back-label", "Voltar"),
+			DOM.createSpan("movie-page__btn-back-label", "Voltar"),
 		]),
 	]);
 }
@@ -47,14 +38,17 @@ function createRatingStars(reviewCount, averageRating, maxStars = 5) {
 		),
 	];
 
-	const starsList = createUl("movie-page__rating-stars", stars);
+	const starsList = DOM.createUl("movie-page__rating-stars", stars);
 
-	const ratingMeta = createDiv("movie-page__rating-meta", [
-		createSpan("movie-page__rating-score", averageRating),
-		createSpan("movie-page__rating-count", `(${reviewCount} avaliações)`),
+	const ratingMeta = DOM.createDiv("movie-page__rating-meta", [
+		DOM.createSpan("movie-page__rating-score", averageRating),
+		DOM.createSpan(
+			"movie-page__rating-count",
+			`(${reviewCount} avaliações)`
+		),
 	]);
 
-	return createDiv("movie-page__rating", [starsList, ratingMeta]);
+	return DOM.createDiv("movie-page__rating", [starsList, ratingMeta]);
 }
 
 function renderImage(img) {
@@ -76,8 +70,8 @@ export function createMovieInfoSection(movie) {
 
 	const detailsItems = [
 		createBackButton(),
-		createH1("movie-page__title", movie.titulo),
-		createUl("movie-page__details-list", [
+		DOM.createH1("movie-page__title", movie.titulo),
+		DOM.createUl("movie-page__details-list", [
 			...infoFields.map((item) =>
 				createDetailItem(item.label, item.value)
 			),
@@ -85,12 +79,12 @@ export function createMovieInfoSection(movie) {
 		createRatingStars(movie.total_avaliacoes, movie.media_avaliacoes),
 	];
 
-	const infoSection = createDiv("movie-page__info", [
-		createDiv("movie-page__info-image", [renderImage(movie.imagem)]),
-		createDiv("movie-page__details", [
-			createDiv("movie-page__details-content", detailsItems),
-			createDiv("movie-page__sinopse-wrapper", [
-				createParagraph("movie-page__sinopse", movie.sinopse),
+	const infoSection = DOM.createDiv("movie-page__info", [
+		DOM.createDiv("movie-page__info-image", [renderImage(movie.imagem)]),
+		DOM.createDiv("movie-page__details", [
+			DOM.createDiv("movie-page__details-content", detailsItems),
+			DOM.createDiv("movie-page__sinopse-wrapper", [
+				DOM.createParagraph("movie-page__sinopse", movie.sinopse),
 			]),
 		]),
 	]);

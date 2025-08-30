@@ -11,15 +11,23 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Cria validação da pagina de cadastro do filme.
 - Cria interação no botão 'cancelar' do `AddMovieHandler`.
 - Finaliza pagina 'filme/novo'. 
+- Sistema de export/imports dos Helpers ajustados (pasta `/dom`);
 
 ### Next feature
-- Remodular sistema de imports;
 
 ### Pending / Roadmap (Backend)
 - Consultar dados do usuário via token - (Implementado: [0.7.12]) -> '/usuario'
 - Verificar validade do token - (Implementado: [0.7.12]) -> '/usuario'
 - Pesquisar filme por usuario.
 - Upload de imagem.
+
+## [0.8.11] - 30/08/2025 - **Refatora DOM helpers e ajusta components**
+
+### Changed
+- Criada a pasta `helpers/dom/` e movido `domHelpers.js` para dentro dela.
+- Criado `helpers/dom/index.js` com `export * as DOM from "./domHelpers.js"`.
+- Ajustados os components `MovieInfoSection` e `MovieReviewSection` para utilizar `DOM` em vez de múltiplos imports individuais.
+- Código dos components mais limpo, semântico e modular, mantendo a escalabilidade dos helpers.
 
 ## [0.8.10] - 30/08/2025
 
