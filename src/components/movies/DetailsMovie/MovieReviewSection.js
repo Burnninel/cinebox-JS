@@ -1,7 +1,15 @@
 import { IconStar, IconStarComplete } from "/src/assets/icons/icons.js";
-
 import { createElement } from "/src/helpers/createElement.js";
 import { htmlToElement } from "/src/helpers/htmlToElement.js";
+import {
+	createSpan,
+	createParagraph,
+	createH1,
+	createDiv,
+	createUl,
+	createLi,
+	createButton,
+} from "/src/helpers/domHelpers.js";
 
 function createHeader() {
 	const header = createElement({
@@ -9,25 +17,16 @@ function createHeader() {
 		className: "movie-page__reviews-header",
 	});
 
-	const title = createElement({
-		tag: "h1",
-		className: "movie-page__reviews-title",
-		textContent: "Avaliações",
-	});
+	const title = createH1("movie-page__reviews-title", "Avaliações");
 
-	const button = createElement({
-		tag: "button",
-		className: "movie-page__reviews-button",
-		attributes: { type: "submit" },
-		children: [
+	const button = createButton(
+		"movie-page__reviews-button",
+		[
 			htmlToElement(IconStar()),
-			createElement({
-				tag: "span",
-				className: "movie-page__reviews-button-text",
-				textContent: "Avaliar filme",
-			}),
+			createSpan("movie-page__reviews-button-text", "Avaliar filme"),
 		],
-	});
+		"submit"
+	);
 
 	header.append(title, button);
 
@@ -35,38 +34,17 @@ function createHeader() {
 }
 
 function createProfile(username) {
-	const profile = createElement({
-		tag: "div",
-		className: "movie-page__reviews-profile",
-	});
+	const profile = createDiv("movie-page__reviews-profile");
+	const user = createDiv("movie-page__reviews-user");
 
-	const user = createElement({
-		tag: "div",
-		className: "movie-page__reviews-user",
-	});
+	const avatar = createDiv("movie-page__reviews-avatar", [
+		htmlToElement(IconStarComplete()),
+	]);
 
-	const avatar = createElement({
-		tag: "div",
-		className: "movie-page__reviews-avatar",
-		children: [htmlToElement(IconStarComplete())],
-	});
-
-	const userInfo = createElement({
-		tag: "div",
-		className: "movie-page__reviews-userinfo",
-		children: [
-			createElement({
-				tag: "span",
-				className: "movie-page__reviews-username",
-				textContent: username,
-			}),
-			createElement({
-				tag: "span",
-				className: "movie-page__reviews-count",
-				textContent: "18 filmes avaliados",
-			}),
-		],
-	});
+	const userInfo = createDiv("movie-page__reviews-userinfo", [
+		createSpan("movie-page__reviews-username", username),
+		createSpan("movie-page__reviews-count", "18 filmes avaliados"),
+	]);
 
 	user.append(avatar, userInfo);
 
@@ -76,44 +54,22 @@ function createProfile(username) {
 }
 
 function createReviewBody(comment, rating) {
-	const reviewsBody =  createElement({
-		tag: "div",
-		className: "movie-page__reviews-body",
-	})
+	const reviewsBody = createDiv("movie-page__reviews-body");
 
-	const commentsCard = createElement({
-		tag: "p",
-		className: "movie-page__reviews-comment",
-		textContent: comment,
-	})
+	const commentsCard = createParagraph(
+		"movie-page__reviews-comment",
+		comment
+	);
 
-	const ratingCard = createElement({
-		tag: "div",
-		className: "movie-page__reviews-rating",
-		children: [
-			createElement({
-				tag: "div",
-				className: "movie-page__reviews-rating-score",
-				children: [
-					createElement({
-						tag: "span",
-						className: "movie-page__reviews-rating-nota-value",
-						textContent: rating,
-					}),
-					createElement({
-						tag: "span",
-						className: "movie-page__reviews-rating-nota-max",
-						textContent: "/5",
-					}),
-				],
-			}),
-			createElement({
-				tag: "div",
-				className: "movie-page__reviews-rating-star",
-				children: [htmlToElement(IconStarComplete())],
-			}),
-		],
-	});
+	const ratingCard = createDiv("movie-page__reviews-rating", [
+		createDiv("movie-page__reviews-rating-score", [
+			createSpan("movie-page__reviews-rating-value", rating),
+			createSpan("movie-page__reviews-rating-max", "/5"),
+		]),
+		createDiv("movie-page__reviews-rating-star", [
+			htmlToElement(IconStarComplete()),
+		]),
+	]);
 
 	reviewsBody.append(commentsCard, ratingCard);
 
@@ -121,29 +77,17 @@ function createReviewBody(comment, rating) {
 }
 
 function createItemList(review) {
-	return createElement({
-		tag: "li",
-		className: "movie-page__reviews-item",
-		children: [
-			createProfile(review.usuario),
-			createReviewBody(review.comentario, review.nota),
-		],
-	});
+	return createLi("movie-page__reviews-item", [
+		createProfile(review.usuario),
+		createReviewBody(review.comentario, review.nota),
+	]);
 }
 
 export function createMovieReviewSection(reviews) {
-	const reviewSection = createElement({
-		tag: "div",
-		className: "movie-page__reviews",
-		children: [
-			createHeader(),
-			createElement({
-				tag: "ul",
-				className: "movie-page__reviews-list",
-				children: [...reviews.map((review) => createItemList(review))],
-			}),
-		],
-	});
+	const reviewSection = createDiv("movie-page__reviews", [
+		createHeader(),
+		createUl("movie-page__reviews-list", reviews.map(createItemList)),
+	]);
 
 	return reviewSection;
 }

@@ -124,12 +124,12 @@
 	font-weight: 500;
 }
 
-.movie-page__reviews-rating-nota-value {
+.movie-page__reviews-rating-value {
 	color: var(--gray-100);
 	font-size: 1.8rem;
 }
 
-.movie-page__reviews-rating-nota-max {
+.movie-page__reviews-rating-max {
 	color: var(--gray-300);
 	font-size: 1.2rem;
 }

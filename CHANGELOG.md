@@ -13,13 +13,19 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Finaliza pagina 'filme/novo'. 
 
 ### Next feature
-- Em análise...
+- Remodular sistema de imports;
 
 ### Pending / Roadmap (Backend)
 - Consultar dados do usuário via token - (Implementado: [0.7.12]) -> '/usuario'
 - Verificar validade do token - (Implementado: [0.7.12]) -> '/usuario'
 - Pesquisar filme por usuario.
 - Upload de imagem.
+
+## [0.8.10] - 30/08/2025
+
+### Changed
+- `MovieInfoSection` atualizado para utilizar os novos helpers do `domHelpers` (`createH1`, `createUl`, `createLi`, `createButton`, etc.), reduzindo código repetitivo e aumentando a legibilidade.
+- `MovieReviewSection` refatorado para adotar `domHelpers` na criação de elementos, tornando a estrutura mais clara e semântica.
 
 ## [0.8.9] - 29/08/2025 - **Implementa `domHelpers`**
 
