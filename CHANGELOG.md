@@ -21,6 +21,19 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
+## [0.8.12] - 30/08/2025
+
+### Added
+- Pasta `/helpers/elements` criada para agrupar `createElement` e `htmlToElement`.
+- Arquivo `index.js` em `/helpers/elements` para exportar os helpers como `Element`.
+- Novos helpers em `/helpers/dom/domHelpers`: `createHeader`, `createIcon` e `createImage`.
+
+### Refactored
+- Componentes `MovieInfoSection` e `MovieReviewSection` atualizados para utilizar a nova estrutura de helpers (`DOM` e `Element`).
+
+### Changed
+- Imports de helpers atualizados em todos os componentes impactados.
+
 ## [0.8.11] - 30/08/2025 - **Refatora DOM helpers e ajusta components**
 
 ### Changed

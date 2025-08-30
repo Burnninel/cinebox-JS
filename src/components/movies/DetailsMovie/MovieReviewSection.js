@@ -1,20 +1,15 @@
-import { IconStar, IconStarComplete } from "/src/assets/icons/icons.js";
-import { createElement } from "/src/helpers/createElement.js";
-import { htmlToElement } from "/src/helpers/htmlToElement.js";
 import { DOM } from "/src/helpers/dom/index.js";
+import { IconStar, IconStarComplete } from "/src/assets/icons/icons.js";
 
 function createHeader() {
-	const header = createElement({
-		tag: "header",
-		className: "movie-page__reviews-header",
-	});
+	const header = DOM.createHeader("movie-page__reviews-header");
 
 	const title = DOM.createH1("movie-page__reviews-title", "Avaliações");
 
 	const button = DOM.createButton(
 		"movie-page__reviews-button",
 		[
-			htmlToElement(IconStar()),
+			DOM.createIcon(IconStar),
 			DOM.createSpan("movie-page__reviews-button-text", "Avaliar filme"),
 		],
 		"submit"
@@ -30,7 +25,7 @@ function createProfile(username) {
 	const user = DOM.createDiv("movie-page__reviews-user");
 
 	const avatar = DOM.createDiv("movie-page__reviews-avatar", [
-		htmlToElement(IconStarComplete()),
+		DOM.createIcon(IconStarComplete),
 	]);
 
 	const userInfo = DOM.createDiv("movie-page__reviews-userinfo", [
@@ -59,7 +54,7 @@ function createReviewBody(comment, rating) {
 			DOM.createSpan("movie-page__reviews-rating-max", "/5"),
 		]),
 		DOM.createDiv("movie-page__reviews-rating-star", [
-			htmlToElement(IconStarComplete()),
+			DOM.createIcon(IconStarComplete),
 		]),
 	]);
 

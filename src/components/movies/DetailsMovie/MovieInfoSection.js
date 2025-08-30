@@ -1,12 +1,9 @@
+import { DOM } from "/src/helpers/dom/index.js";
 import {
 	IconStar,
 	IconStarComplete,
 	IconBack,
 } from "/src/assets/icons/icons.js";
-
-import { createElement } from "/src/helpers/createElement.js";
-import { htmlToElement } from "/src/helpers/htmlToElement.js";
-import { DOM } from "/src/helpers/dom/index.js";
 
 function createDetailItem(label, value) {
 	return DOM.createLi("movie-page__info-item", [
@@ -16,13 +13,13 @@ function createDetailItem(label, value) {
 }
 
 function createStarItem(icon) {
-	return DOM.createLi("movie-page__rating-item", [htmlToElement(icon())]);
+	return DOM.createLi("movie-page__rating-item", [DOM.createIcon(icon)]);
 }
 
 function createBackButton() {
 	return DOM.createDiv("movie-page__nav-back", [
 		DOM.createButton("movie-page__btn-back", [
-			htmlToElement(IconBack()),
+			DOM.createIcon(IconBack),
 			DOM.createSpan("movie-page__btn-back-label", "Voltar"),
 		]),
 	]);
@@ -51,14 +48,8 @@ function createRatingStars(reviewCount, averageRating, maxStars = 5) {
 	return DOM.createDiv("movie-page__rating", [starsList, ratingMeta]);
 }
 
-function renderImage(img) {
-	return createElement({
-		tag: "img",
-		className: "movie-page__image",
-		attributes: {
-			src: `/src/assets/img/${img}`,
-		},
-	});
+function renderImage(path) {
+	return DOM.createImage("movie-page__image", path);
 }
 
 export function createMovieInfoSection(movie) {
