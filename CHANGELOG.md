@@ -21,6 +21,14 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
+## [0.8.9] - 29/08/2025 - **Implementa `domHelpers`**
+
+### Added
+- Criado o helper `domHelpers.js` para simplificar a criação de elementos comuns:
+  - `createSpan(className, text)` — cria um `<span>` com classe e texto.
+  - `createParagraph(className, text)` — cria um `<p>` com classe e texto.
+  - `createDiv(className, children)` — cria um `<div>` com classe e filhos.
+
 ## [0.8.8] - 29/08/2025
 
 ### Added
