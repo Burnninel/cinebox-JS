@@ -21,7 +21,19 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
-## [0.8.6] - 29/08/2025 - 
+## [0.8.7] - 29/08/2025 **Modularização do MovieLayout**
+
+### Changed
+- `MovieLayout` agora importa e utiliza:
+  - `MovieInfoSection` para exibir os detalhes do filme.
+  - `MovieReviewSection` para exibir a seção de avaliações.
+- Trechos de código do antigo `MovieLayout` divididos em:
+  - `MovieInfoSection.js`
+  - `MovieReviewSection.js`
+- Ajuste dos imports nas páginas que utilizam `MovieLayout`.
+- Estrutura do componente mais modular, facilitando manutenção e reutilização.
+
+## [0.8.6] - 29/08/2025 -  **Reorganização da estrutura de `components/movies/`**
 
 ### Changed
 - Estrutura de pastas dentro de `components/movies` reorganizada para melhor modularização:
@@ -31,7 +43,7 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
   - `EmptyMovieMessage` mantido na raiz de `movies/` por ser genérico.
 - Ajustados os imports nas páginas que consumiam os componentes movidos para refletir os novos caminhos.
 
-## [0.8.5] - 29/08/2025 **Reorganização da estrutura de `components/movies/`**
+## [0.8.5] - 29/08/2025
 
 ### Added
 - Estrutura base  da seção de avaliações (`movie-page__reviews`) adicionada no `MovieLayout`:
