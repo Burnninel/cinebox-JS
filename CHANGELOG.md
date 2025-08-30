@@ -21,6 +21,19 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
+## [0.8.8] - 29/08/2025
+
+### Added
+- Renderização dinâmica de todas as avaliações, antes estava fixa.
+- Nome do usuário, nota e comentário agora são passados dinamicamente.
+- Total de avaliações permanece estático (limitação do backend).
+
+### Changed
+- Refatorado o componente `MovieReviewSection` para melhorar legibilidade e organização:
+  - Separação clara das seções: `header`, `profile` e `reviewBody`.
+  - Uso de variáveis intermediárias para criar elementos antes de adicioná-los ao DOM.
+  - Funções renomeadas e parâmetros ajustados para maior clareza (`createReviewBody` e `review` ao invés de `item`).
+
 ## [0.8.7] - 29/08/2025 **Modularização do MovieLayout**
 
 ### Changed

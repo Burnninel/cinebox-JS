@@ -35,7 +35,9 @@
 
 .movie-page__reviews-list {
 	display: flex;
+	flex-direction: column;
 	width: 100%;
+	gap: 1rem;
 	padding: 0;
 	list-style: none;
 }
@@ -90,6 +92,7 @@
 
 .movie-page__reviews-body {
     display: flex;
+	justify-content: space-between;
     width: 80%;
     padding-left: 2rem;
 	gap: 3rem;
