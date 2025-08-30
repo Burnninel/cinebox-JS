@@ -21,7 +21,17 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
-## [0.8.5] - 29/08/2025
+## [0.8.6] - 29/08/2025 - 
+
+### Changed
+- Estrutura de pastas dentro de `components/movies` reorganizada para melhor modularização:
+  - `AddMovie/` contendo `AddMovie` e `AddMovieHandler`.
+  - `DetailsMovie/` contendo `MovieLayout`.
+  - `ListMovie/` contendo `MovieCard` e `MovieSection`.
+  - `EmptyMovieMessage` mantido na raiz de `movies/` por ser genérico.
+- Ajustados os imports nas páginas que consumiam os componentes movidos para refletir os novos caminhos.
+
+## [0.8.5] - 29/08/2025 **Reorganização da estrutura de `components/movies/`**
 
 ### Added
 - Estrutura base  da seção de avaliações (`movie-page__reviews`) adicionada no `MovieLayout`:

@@ -1,5 +1,5 @@
 import { Header } from "/src/components/common/Header.js";
-import { MovieLayout } from "/src/components/movies/MovieLayout.js";
+import { MovieLayout } from "/src/components/movies/DetailsMovie/MovieLayout.js";
 import { createElement } from "/src/helpers/createElement.js";
 import { fetchMovieById } from "/src/services/movieService.js";
 

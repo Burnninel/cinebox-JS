@@ -1,4 +1,4 @@
-import { MovieCard } from "/src/components/movies/MovieCard.js";
+import { MovieCard } from "/src/components/movies/ListMovie/MovieCard.js";
 import { EmptyMovieMessage } from "/src/components/movies/EmptyMovieMessage.js";
 import { IconSearch, IconCreate } from "/src/assets/icons/icons.js";
 import { fetchAllMovies } from "/src/services/movieService.js";

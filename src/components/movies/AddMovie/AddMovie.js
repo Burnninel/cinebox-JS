@@ -8,7 +8,7 @@ import {
 import { Input } from "/src/components/common/Input.js";
 import { createElement } from "/src/helpers/createElement.js";
 import { htmlToElement } from "/src/helpers/htmlToElement.js";
-import { handleAddMovie } from "/src/components/movies/AddMovieHandler.js";
+import { handleAddMovie } from "/src/components/movies/AddMovie/AddMovieHandler.js";
 
 function createUpload() {
 	return createElement({
