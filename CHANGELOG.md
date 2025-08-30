@@ -28,6 +28,11 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
   - `createSpan(className, text)` — cria um `<span>` com classe e texto.
   - `createParagraph(className, text)` — cria um `<p>` com classe e texto.
   - `createDiv(className, children)` — cria um `<div>` com classe e filhos.
+  - `createH1(className, text)` — cria um `<h1>` com classe e texto.
+  - `createH2(className, text)` — cria um `<h2>` com classe e texto.
+  - `createUl(className, children)` — cria um `<ul>` com classe e filhos.
+  - `createLi(className, text)` — cria um `<li>` com classe e texto.
+  - `createButton(className, children, type)` — cria um `<button>` com classe, filhos e tipo.
 
 ## [0.8.8] - 29/08/2025
 
