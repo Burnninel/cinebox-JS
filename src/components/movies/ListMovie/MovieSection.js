@@ -1,77 +1,52 @@
+import { DOM } from "/src/helpers/dom/index.js";
+import { Element } from "/src/helpers/element/index.js";
 import { MovieCard } from "/src/components/movies/ListMovie/MovieCard.js";
 import { EmptyMovieMessage } from "/src/components/movies/EmptyMovieMessage.js";
 import { IconSearch, IconCreate } from "/src/assets/icons/icons.js";
 import { fetchAllMovies } from "/src/services/movieService.js";
 import { navigateTo } from "/src/router.js";
-import { createElement } from "/src/helpers/createElement.js";
-import { htmlToElement } from "/src/helpers/htmlToElement.js";
 
 function createSearchInput() {
-	return createElement({
-		tag: "div",
-		className: "explore__search",
-		children: [
-			createElement({
-				tag: "button",
-				className: "explore__search-button",
-				children: [htmlToElement(IconSearch())],
-			}),
-			createElement({
-				tag: "input",
-				attributes: { type: "text", placeholder: "Pesquisar filme" },
-			}),
-		],
-	});
+	return DOM.createDiv("explore__search", [
+		DOM.createButton({
+			className: "explore__search-button",
+			children: [DOM.createIcon(IconSearch)],
+		}),
+		Element.createElement({
+			tag: "input",
+			attributes: { type: "text", placeholder: "Pesquisar filme" },
+		}),
+	]);
 }
 
 function createAddButton() {
-	return createElement({
-		tag: "div",
-		className: "explore__add",
-		children: [
-			createElement({
-				tag: "button",
-				className: "explore__add-button",
-				children: [
-					htmlToElement(IconCreate()),
-					createElement({ tag: "span", textContent: "Novo" }),
-				],
-			}),
-		],
-	});
+	return DOM.createDiv("explore__add", [
+		DOM.createButton({
+			className: "explore__add-button",
+			children: [
+				DOM.createIcon(IconCreate),
+				DOM.createSpan("explore__add-button-label", "Novo"),
+			],
+		}),
+	]);
 }
 
 function createHeader(title, isMyMoviesPage) {
-	return createElement({
-		tag: "header",
-		className: "explore-header",
-		children: [
-			createElement({
-				tag: "div",
-				children: [
-					createElement({
-						tag: "h1",
-						className: "explore__title",
-						textContent: title,
-					}),
-				],
-			}),
-			createElement({
-				tag: "div",
-				className: "expore__actions",
-				children: [
-					createSearchInput(),
-					isMyMoviesPage
-						? createElement({
-								tag: "hr",
-								className: "explore__divider",
-						  })
-						: null,
-					isMyMoviesPage ? createAddButton() : null,
-				],
-			}),
-		],
-	});
+	return DOM.createHeader("explore-header", [
+		DOM.createDiv("explore__title-wrapper", [
+			DOM.createH1("explore__title", title),
+		]),
+		DOM.createDiv("expore__actions", [
+			createSearchInput(),
+			isMyMoviesPage
+				? Element.createElement({
+						tag: "hr",
+						className: "explore__divider",
+				  })
+				: null,
+			isMyMoviesPage ? createAddButton() : null,
+		]),
+	]);
 }
 
 function renderMovieList(movieList, movies) {
@@ -125,15 +100,12 @@ function setupSearch(section, movieList) {
 }
 
 export async function MovieSection(title, movies) {
-	const section = createElement({ tag: "section", className: "explore" });
+	const section = DOM.createSection("explore");
 	const isMyMoviesPage = window.location.pathname === "/meus-filmes";
 
 	const header = createHeader(title, isMyMoviesPage);
 
-	const movieList = createElement({
-		tag: "ul",
-		className: "explore__card-list",
-	});
+	const movieList = DOM.createUl("explore__card-list");
 	section.append(header, movieList);
 
 	renderMovieList(movieList, movies);

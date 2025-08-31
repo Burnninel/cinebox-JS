@@ -1,58 +1,54 @@
+import { DOM } from "/src/helpers/dom/index.js";
+import { Element } from "/src/helpers/element/index.js";
 import { IconLogo, IconPopcorn, IconMovie } from "/src/assets/icons/icons.js";
 import { navigateTo } from "/src/router.js";
-import { createElement } from "/src/helpers/createElement.js";
-import { htmlToElement } from "/src/helpers/htmlToElement.js";
 
 const buttonsConfig = [
-	{ icon: IconPopcorn(), label: "Explorar", form: "explorar" },
-	{ icon: IconMovie(), label: "Meus Filmes", form: "meus-filmes" },
+	{ icon: IconPopcorn, label: "Explorar", form: "explorar" },
+	{ icon: IconMovie, label: "Meus Filmes", form: "meus-filmes" },
 	{ label: "Entrar", form: "login" },
 ];
 
 function createButton({ icon, label, form }) {
-	return createElement({
-		tag: "button",
+	return DOM.createButton({
 		className: "global-header__btn",
 		attributes: { "data-form": form },
 		children: icon
 			? [
-					htmlToElement(icon),
-					createElement({ tag: "span", textContent: label }),
+					DOM.createIcon(icon),
+					DOM.createSpan("global-header__label", label),
 			  ]
-			: [createElement({ tag: "span", textContent: label })],
+			: [DOM.createSpan("global-header__label", label)],
 	});
 }
 
 export function Header() {
-	const logo = createElement({
-		tag: "div",
-		className: "global-header__logo",
-		children: [htmlToElement(IconLogo())],
-	});
+	const logo = DOM.createDiv("global-header__logo", [
+		DOM.createIcon(IconLogo),
+	]);
 
 	logo.addEventListener("click", () => {
 		navigateTo("/explorar");
-	})
+	});
 
 	const buttons = buttonsConfig.map(createButton);
 
-	const navbar = createElement({
+	const navbar = Element.createElement({
 		tag: "nav",
 		className: "global-header__navbar",
 		children: buttons.filter((btn) => btn.dataset.form !== "login"),
 	});
 
-	const loginContainer = createElement({
-		tag: "div",
-		className: "global-header__login",
-		children: buttons.filter((btn) => btn.dataset.form === "login"),
-	});
+	const loginContainer = DOM.createDiv(
+		"global-header__login",
+		buttons.filter((btn) => btn.dataset.form === "login")
+	);
 
-	const header = createElement({
-		tag: "header",
-		className: "global-header",
-		children: [logo, navbar, loginContainer],
-	});
+	const header = DOM.createHeader("global-header", [
+		logo,
+		navbar,
+		loginContainer,
+	]);
 
 	setupHeaderNavigation(buttons);
 

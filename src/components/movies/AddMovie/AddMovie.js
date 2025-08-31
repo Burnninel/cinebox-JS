@@ -5,38 +5,23 @@ import {
 	IconCalendar,
 	IconStarComplete,
 } from "/src/assets/icons/icons.js";
+import { DOM } from "/src/helpers/dom/index.js";
 import { Input } from "/src/components/common/Input.js";
-import { createElement } from "/src/helpers/createElement.js";
-import { htmlToElement } from "/src/helpers/htmlToElement.js";
 import { handleAddMovie } from "/src/components/movies/AddMovie/AddMovieHandler.js";
 
 function createUpload() {
-	return createElement({
-		tag: "div",
-		className: "movie-form__upload-container",
-		children: [
-			createElement({
-				tag: "div",
-				className: "movie-form__upload-box",
-				children: [
-					htmlToElement(IconUpload()),
-					createElement({
-						tag: "span",
-						className: "movie-form__upload-title",
-						textContent: "Fazer upload",
-					}),
-				],
-			}),
-		],
-	});
+	return DOM.createDiv("movie-form__upload-container", [
+		DOM.createDiv("movie-form__upload-box", [
+			DOM.createIcon(IconUpload),
+			DOM.createSpan("movie-form__upload-title", "Fazer upload"),
+		]),
+	]);
 }
 
 function createInputGroup({ icon, id, placeholder }) {
-	return createElement({
-		tag: "div",
-		className: "form__group",
-		children: [Input({ icon, attributes: { id, placeholder } })],
-	});
+	return DOM.createDiv("form__group", [
+		Input({ icon, attributes: { id, placeholder } }),
+	]);
 }
 
 function renderFormInputs(fields) {
@@ -46,91 +31,67 @@ function renderFormInputs(fields) {
 	const elements = [...fullFields];
 
 	if (halfFields.length) {
-		elements.push(
-			createElement({
-				tag: "div",
-				className: "form__field--half",
-				children: halfFields,
-			})
-		);
+		elements.push(DOM.createDiv("form__field--half", halfFields));
 	}
 
 	return elements;
 }
 
 function createTextArea(attributes) {
-	return createElement({
-		tag: "div",
-		className: "form__group",
-		children: [
-			createElement({
-				tag: "textarea",
-				className: "movie-form__textarea",
-				attributes,
-			}),
-		],
-	});
+	return DOM.createDiv("form__group", [
+		DOM.createTextarea(
+			"movie-form__textarea",
+			attributes,
+		),
+	]);
 }
 
 function createFormActions() {
-	return createElement({
-		tag: "div",
-		className: "movie-form__actions",
-		children: [
-			createElement({
-				tag: "button",
-				className: "movie-form__btn movie-form__btn-cancel",
-				textContent: "Cancelar",
-				attributes: { type: "button" },
-			}),
-			createElement({
-				tag: "button",
-				className: "movie-form__btn movie-form__btn-save",
-				textContent: "Salvar",
-				attributes: { type: "submit" },
-			}),
-		],
-	});
+	return DOM.createDiv("movie-form__actions", [
+		DOM.createButton({
+			className: "movie-form__btn movie-form__btn-cancel",
+			textContent: "Cancelar",
+		}),
+		DOM.createButton({
+			className: "movie-form__btn movie-form__btn-save",
+			textContent: "Salvar",
+			type: "submit",
+		}),
+	]);
 }
 
 function createFormContainer(formFields) {
-	return createElement({
-		tag: "div",
-		className: "movie-form__container",
-		children: [
-			createElement({
-				tag: "div",
-				className: "movie-form__box",
-				children: [
-					createElement({
-						tag: "h2",
-						className: "movie-form__title",
-						textContent: "Novo filme",
-					}),
-					...formFields,
-					createTextArea({ id: "sinopse", placeholder: "Sinopse" }),
-					createFormActions(),
-				],
-			}),
-		],
-	});
+	return DOM.createDiv("movie-form__container", [
+		DOM.createDiv(
+			"movie-form__box",
+			[
+				DOM.createH2(
+					"movie-form__title",
+					"Novo filme",
+				),
+				...formFields,
+				createTextArea({ id: "sinopse", placeholder: "Sinopse" }),
+				createFormActions(),
+			],
+		),
+	]);
 }
 
 export function AddMovie(token) {
-	const section = createElement({ tag: "section", className: "movie-form" });
-	const form = createElement({ tag: "form", className: "movie-form__form" });
+	const section = DOM.createSection("movie-form");
+	const form = DOM.createForm("movie-form__form");
 
 	const fields = [
-		{ icon: IconMovie(), id: "titulo", placeholder: "Título" },
-		{ icon: IconStarComplete(), id: "diretor", placeholder: "Diretor" },
+		{ icon: IconMovie, id: "titulo", placeholder: "Título" },
+		{ icon: IconStarComplete, id: "diretor", placeholder: "Diretor" },
 		{
-			icon: IconCalendar(),
+			icon: IconCalendar,
 			id: "ano_de_lancamento",
 			placeholder: "Ano",
 			half: true,
 		},
 		{
-			icon: IconTicket(),
+			icon: IconTicket,
 			id: "categoria",
 			placeholder: "Categoria",
 			half: true,

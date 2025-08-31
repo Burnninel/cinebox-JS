@@ -1,25 +1,12 @@
 import { IconStarComplete } from "/src/assets/icons/icons.js";
-import { createElement } from "/src/helpers/createElement.js";
-import { htmlToElement } from "/src/helpers/htmlToElement.js";
+import { DOM } from "/src/helpers/dom/index.js";
 
 function createRating(media) {
-	return createElement({
-		tag: "div",
-		className: "card__rating",
-		children: [
-			createElement({
-				tag: "span",
-				className: "card__rating-score",
-				textContent: media,
-			}),
-			createElement({
-				tag: "span",
-				className: "card__rating-scale",
-				textContent: " /5",
-			}),
-			htmlToElement(IconStarComplete()),
-		],
-	});
+	return DOM.createDiv("card__rating", [
+		DOM.createSpan("card__rating-score", media),
+		DOM.createSpan("card__rating-scale", " /5"),
+		DOM.createIcon(IconStarComplete),
+	]);
 }
 
 export function MovieCard({
@@ -31,49 +18,23 @@ export function MovieCard({
 	imagem,
 	sinopse,
 }) {
-	const link = createElement({
-		tag: "a",
-		className: "card__link",
-		attributes: { href: `/filme/${id}` },
-		children: [
-			createElement({
-				tag: "img",
-				className: "card__image",
-				attributes: { src: `/src/assets/img/${imagem}`, alt: titulo },
-			}),
-			createRating(media_avaliacoes),
-			createElement({
-				tag: "div",
-				className: "card__info",
-				children: [
-					createElement({
-						tag: "h2",
-						className: "card__title",
-						textContent: titulo,
-					}),
-					createElement({
-						tag: "span",
-						className: "card__genre",
-						textContent: `${categoria} • ${ano_de_lancamento}`,
-					}),
-					createElement({
-						tag: "p",
-						className: "card__sinopse",
-						textContent: sinopse,
-					}),
-				],
-			}),
-		],
-	});
+	const link = DOM.createLink("card__link", `/filme/${id}`, [
+		DOM.createImage("card__image", imagem, { alt: titulo }),
+		createRating(media_avaliacoes),
+		DOM.createDiv("card__info", [
+			DOM.createH2("card__title", titulo),
+			DOM.createSpan(
+				"card__genre",
+				`${categoria} • ${ano_de_lancamento}`
+			),
+			DOM.createParagraph("card__sinopse", sinopse),
+		]),
+	]);
 
 	link.addEventListener("click", (e) => {
 		e.preventDefault();
 		navigateTo(link.href);
 	});
 
-	return createElement({
-		tag: "li",
-		className: "card",
-		children: [link],
-	});
+	return DOM.createLi("card", [link]);
 }

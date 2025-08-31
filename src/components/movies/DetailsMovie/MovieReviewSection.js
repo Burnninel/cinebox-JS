@@ -6,14 +6,14 @@ function createHeader() {
 
 	const title = DOM.createH1("movie-page__reviews-title", "Avaliações");
 
-	const button = DOM.createButton(
-		"movie-page__reviews-button",
-		[
+	const button = DOM.createButton({
+		className: "movie-page__reviews-button",
+		children: [
 			DOM.createIcon(IconStar),
 			DOM.createSpan("movie-page__reviews-button-text", "Avaliar filme"),
 		],
-		"submit"
-	);
+		type: "submit"
+	});
 
 	header.append(title, button);
 

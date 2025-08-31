@@ -18,10 +18,13 @@ function createStarItem(icon) {
 
 function createBackButton() {
 	return DOM.createDiv("movie-page__nav-back", [
-		DOM.createButton("movie-page__btn-back", [
-			DOM.createIcon(IconBack),
-			DOM.createSpan("movie-page__btn-back-label", "Voltar"),
-		]),
+		DOM.createButton({
+			className: "movie-page__btn-back",
+			children: [
+				DOM.createIcon(IconBack),
+				DOM.createSpan("movie-page__btn-back-label", "Voltar"),
+			],
+		}),
 	]);
 }
 

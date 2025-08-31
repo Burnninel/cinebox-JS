@@ -1,24 +1,17 @@
-import { createElement } from "/src/helpers/createElement.js";
+import { DOM } from "/src/helpers/dom/index.js";
 
 export function Loading() {
-	return createElement({
-		tag: "div",
-		className: "hidden",
-		attributes: { id: "loading" },
-		children: [
-			createElement({
-				tag: "div",
-				className: "loading-overlay",
-				attributes: { role: "status" },
-				children: [
-					createElement({
-						tag: "span",
-						className: "spinner-border",
-					}),
-				],
-			}),
+	return DOM.createDiv(
+		"hidden",
+		[
+			DOM.createDiv(
+				"loading-overlay",
+				[DOM.createSpan("spinner-border", "")],
+				{ role: "status" }
+			),
 		],
-	});
+		{ id: "loading" }
+	);
 }
 
 export function showLoading() {

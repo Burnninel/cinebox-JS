@@ -4,22 +4,36 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
 ## [Unreleased]
 ### Added
-- Cria a pagina meus filmes.
-- Implementar botão de criar filme no `MovieSection`.
-- Ajustar redirecionamentos (Explorar e Meus-Filmes) do header.
-- Cria pagina de cadastro do filme.
-- Cria validação da pagina de cadastro do filme.
-- Cria interação no botão 'cancelar' do `AddMovieHandler`.
-- Finaliza pagina 'filme/novo'. 
-- Sistema de export/imports dos Helpers ajustados (pasta `/dom`);
+- Cria pagina com informações do filme.
+- Inclui subpastas em 'components/movies' para mehor organização.
+- Cria 'domHelpers' para melhor manutenção do código.
+  - Inclui subpastas 'dom' e 'element' dentro de helpers;
+  - Arquivos index com export geral das funções;
+  - Import único no component;
+  - Uso no component usando 'DOM.nomeFn';
+- Refatora todos os componets para usar domHelpers .
 
 ### Next feature
+- Incluir interação no DetailsMovie
 
 ### Pending / Roadmap (Backend)
 - Consultar dados do usuário via token - (Implementado: [0.7.12]) -> '/usuario'
 - Verificar validade do token - (Implementado: [0.7.12]) -> '/usuario'
 - Pesquisar filme por usuario.
 - Upload de imagem.
+
+## [0.8.13] - 30/08/2025 - **Refatoração components usando `domHelpers`**
+
+### Changed
+- Refatoração geral dos components (`auth`, `common`, `movies` e subpastas) aplicando `domHelpers`
+- Criadas novas funções utilitárias em `domHelpers`:  
+  - `createSection`  
+  - `createForm`  
+  - `createInput`  
+  - `createTextarea`  
+- Ajustado `createButton` para aceitar `props` (maior flexibilidade de uso)  
+- Ajustado `createImage` e `createDiv` para receber atributos adicionais  
+- Revisado `MovieLayout` e `detailsMovie` para alinhar com a nova estrutura de helpers  
 
 ## [0.8.12] - 30/08/2025
 
@@ -215,13 +229,13 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Imports do Router agrupados por contexto (`Helpers / Utils`, `Components`, `Pages`).
 
 ### CSS
-- Removida estilização de erro duplicada no controller (`auth.css`).  
+- Removida estilização de erro duplicada no components (`auth.css`).  
 - Inputs de erro seguem a classe padrão do helper.  
 
 ## [0.7.15] - 20/08/2025 - **Finalização da página Novo Filme**
 
 ### Changed
-- Refatoração final das controllers `AddMovie` e `AddMovieHandler` para maior modularidade, legibilidade e manutenção.
+- Refatoração final das components `AddMovie` e `AddMovieHandler` para maior modularidade, legibilidade e manutenção.
 - Upload de imagem permanece estático (`"mmf.jpg"`) devido à limitação do backend.
 - Correações no movieService:
   - Função `createNewMovie` renomeada para `validateNewMovie`.

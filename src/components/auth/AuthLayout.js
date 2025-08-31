@@ -5,58 +5,36 @@ import { navigateTo } from "/src/router.js";
 import { createElement } from "/src/helpers/createElement.js";
 import { htmlToElement } from "/src/helpers/htmlToElement.js";
 
+import { DOM } from "/src/helpers/dom/index.js";
+import { Element } from "/src/helpers/element/index.js";
+
 function createAuthBanner() {
-	return createElement({
-		tag: "div",
-		className: "auth-banner",
-		children: [
-			createElement({
-				tag: "img",
-				attributes: {
-					src: "src/assets/img/login.png",
-					alt: "Imagem ilustrativa do banner de login",
-				},
-				className: "auth-banner__image",
-			}),
-			createElement({
-				tag: "div",
-				className: "auth-banner__logo",
-				children: [htmlToElement(IconLogo())],
-			}),
-			createElement({
-				tag: "div",
-				className: "auth-banner__info",
-				children: [
-					createElement({
-						tag: "h1",
-						className: "auth-banner__title",
-						textContent: "ab filmes",
-					}),
-					createElement({
-						tag: "p",
-						className: "auth-banner__description",
-						textContent:
-							"O guia definitivo para os amantes de cinemas",
-					}),
-				],
-			}),
-		],
-	});
+	return DOM.createDiv("auth-banner", [
+		DOM.createImage("auth-banner__image", "login.png", {
+			alt: "Imagem ilustrativa do banner de login",
+		}),
+		DOM.createDiv("auth-banner__logo", [DOM.createIcon(IconLogo)]),
+		DOM.createDiv("auth-banner__info", [
+			DOM.createH1("auth-banner__title", "ab filmes"),
+			DOM.createParagraph(
+				"auth-banner__description",
+				"O guia definitivo para os amantes de cinemas"
+			),
+		]),
+	]);
 }
 
 function createToggleButtons() {
-	return createElement({
+	return Element.createElement({
 		tag: "nav",
 		className: "auth-toggle",
 		children: [
-			createElement({
-				tag: "button",
+			DOM.createButton({
 				className: "auth-toggle__button auth-toggle__button--active",
 				textContent: "Login",
 				attributes: { "data-form": "login" },
 			}),
-			createElement({
-				tag: "button",
+			DOM.createButton({
 				className: "auth-toggle__button",
 				textContent: "Cadastre",
 				attributes: { "data-form": "signup" },
@@ -68,26 +46,20 @@ function createToggleButtons() {
 export async function AuthLayout({ forms }) {
 	const formType = Object.keys(forms)[0];
 
-	const section = createElement({ tag: "section", className: "auth" });
+	const section = DOM.createSection("auth");
 
 	const authBanner = createAuthBanner();
 
-	const authContainer = createElement({
-		tag: "section",
-		className: "auth-form",
-	});
+	const authContainer = DOM.createSection("auth-form");
 
 	const toggleButtonsElement = createToggleButtons();
 
-	const formContainer = createElement({
-		tag: "div",
-		className: "auth-form__form",
-	});
+	const formContainer = DOM.createDiv("auth-form__form");
 
 	function renderInputs(inputs) {
 		return inputs.map(
 			({ icon, type = "text", id = "", placeholder = "" }) =>
-				Input({ icon: icon(), attributes: { type, id, placeholder } })
+				Input({ icon: icon, attributes: { type, id, placeholder } })
 		);
 	}
 
@@ -97,14 +69,9 @@ export async function AuthLayout({ forms }) {
 		const { title, submitText, inputs } = forms[formType];
 
 		formContainer.append(
-			createElement({
-				tag: "h2",
-				className: "auth-form__title",
-				textContent: title,
-			}),
+			DOM.createH2("auth-form__title", title),
 			...renderInputs(inputs),
-			createElement({
-				tag: "button",
+			DOM.createButton({
 				className: "auth-form__submit",
 				textContent: submitText,
 				attributes: { type: "submit", "data-form": formType },
