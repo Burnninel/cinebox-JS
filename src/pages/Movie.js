@@ -1,9 +1,8 @@
 import { Header } from "/src/components/common/Header.js";
 import { MovieLayout } from "/src/components/movies/DetailsMovie/MovieLayout.js";
-import { createElement } from "/src/helpers/createElement.js";
 import { fetchMovieById } from "/src/services/movieService.js";
 
-export async function Movie(token, params) {
+export async function Movie(currentUser, params) {
 	const fragment = document.createDocumentFragment();
 
 	const header = Header();
@@ -15,7 +14,7 @@ export async function Movie(token, params) {
 	const layout = MovieLayout({
 		movie: data.filme,
 		reviews: data.avaliacoes,
-	});
+	}, currentUser);
 
 	fragment.appendChild(layout);
 

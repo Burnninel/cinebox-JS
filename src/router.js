@@ -61,6 +61,14 @@ async function router() {
 	const { route, params } = matched;
 
 	const token = getCookieValue("token");
+	let currentUser = null;
+
+	if (token) {
+		const isValid = await validateToken(token);
+		if (isValid) {
+			currentUser = isValid.data.usuario;
+		}
+	}
 
 	if (route.private) {
 		const isValid = await validateToken(token);
@@ -77,9 +85,7 @@ async function router() {
 	showLoading();
 
 	try {
-		const content = route.private
-			? await route.component(token, params)
-			: await route.component(token, params);
+		const content = await route.component(currentUser, params);
 		app.appendChild(content);
 	} catch (error) {
 		console.error(`Erro ao carregar a página ${path}:`, error);

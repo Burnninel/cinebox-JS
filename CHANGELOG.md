@@ -22,6 +22,13 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
+## [0.8.14] - 03/09/2025 - **Refatoração router para disponibilizar `currentUser`**
+
+### Changed
+- Ajustado `router` para validar o token apenas uma vez e disponibilizar o objeto `currentUser` para as páginas.
+- Alteradas as páginas `NewMovie`, `MyMovies` e `Movie` para receberem `currentUser` em vez de `token`.
+- Mantida a verificação de rotas privadas, redirecionando para `/login` caso a sessão esteja expirada.
+
 ## [0.8.13] - 30/08/2025 - **Refatoração components usando `domHelpers`**
 
 ### Changed
