@@ -22,6 +22,15 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Pesquisar filme por usuario.
 - Upload de imagem.
 
+## [0.8.15] - 03/09/2025 - 
+
+### Changed
+- `createMovieReviewSection` atualizado para receber `currentUser` como parâmetro.
+- Alterada a função `createProfile` para aceitar um segundo parâmetro `isCurrentUser`, permitindo diferenciar visualmente o usuário atual.
+- Adicionado destaque visual "você" no nome do usuário logado nas avaliações.
+- `createItemList` atualizado para priorizar a avaliação do usuário atual como primeiro item da lista.
+- `MovieLayout` ajustado para repassar `currentUser` para `createMovieReviewSection`.  
+
 ## [0.8.14] - 03/09/2025 - **Refatoração router para disponibilizar `currentUser`**
 
 ### Changed

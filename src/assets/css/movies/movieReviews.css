@@ -53,7 +53,7 @@
 }
 
 .movie-page__reviews-profile {
-    width: 20%;
+    width: 20rem;
 }
 
 .movie-page__reviews-user {
@@ -80,9 +80,23 @@
     gap: 0.5rem;
 }
 
+.movie-page__reviews-current-username {
+	display: flex;
+	gap: 0.8rem;
+	align-items: center;
+}
+
 .movie-page__reviews-username {
     color: var(--gray-100);
     font-weight: 600;
+}
+
+.movie-page__reviews-label-you {
+	font-size: 0.8rem;
+	color: var(--gray-100);
+	background-color: var(--purple-dark);
+	padding: 0.1rem 0.3rem;
+	border-radius: 16px;
 }
 
 .movie-page__reviews-count {
@@ -93,15 +107,20 @@
 .movie-page__reviews-body {
     display: flex;
 	justify-content: space-between;
-    width: 80%;
-    padding-left: 2rem;
-	gap: 3rem;
+    width: 100%;
+	margin-left: 0.6rem;
+	gap: 1rem;
     border-left: 1px solid var(--gray-500);
 }
 
 .movie-page__reviews-comment {
+	max-height: 8rem;
     color: var(--gray-400);
+    padding: 0 2rem;
     margin: 0;
+	overflow: auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--purple-dark) #a9a9a907;
 }
 
 .movie-page__reviews-rating {

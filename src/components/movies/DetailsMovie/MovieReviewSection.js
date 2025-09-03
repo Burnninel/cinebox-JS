@@ -12,7 +12,7 @@ function createHeader() {
 			DOM.createIcon(IconStar),
 			DOM.createSpan("movie-page__reviews-button-text", "Avaliar filme"),
 		],
-		type: "submit"
+		type: "submit",
 	});
 
 	header.append(title, button);
@@ -20,7 +20,7 @@ function createHeader() {
 	return header;
 }
 
-function createProfile(username) {
+function createProfile(username, isCurrentUser = false) {
 	const profile = DOM.createDiv("movie-page__reviews-profile");
 	const user = DOM.createDiv("movie-page__reviews-user");
 
@@ -28,8 +28,17 @@ function createProfile(username) {
 		DOM.createIcon(IconStarComplete),
 	]);
 
+	const usernameDisplay = isCurrentUser
+		? DOM.createDiv("movie-page__reviews-current-username", [
+				DOM.createSpan("movie-page__reviews-username", username),
+				DOM.createDiv("movie-page__reviews-label-you", [
+					DOM.createSpan("movie-page__reviews-you-text", "você"),
+				]),
+		  ])
+		: DOM.createSpan("movie-page__reviews-username", username);
+
 	const userInfo = DOM.createDiv("movie-page__reviews-userinfo", [
-		DOM.createSpan("movie-page__reviews-username", username),
+		usernameDisplay,
 		DOM.createSpan("movie-page__reviews-count", "18 filmes avaliados"),
 	]);
 
@@ -63,18 +72,44 @@ function createReviewBody(comment, rating) {
 	return reviewsBody;
 }
 
-function createItemList(review) {
-	return DOM.createLi("movie-page__reviews-item", [
-		createProfile(review.usuario),
-		createReviewBody(review.comentario, review.nota),
-	]);
+function createItemList(userReview, otherReviews) {
+	const userReviewItem = userReview
+		? [
+				DOM.createLi("movie-page__reviews-item", [
+					createProfile(userReview.usuario, true),
+					createReviewBody(userReview.comentario, userReview.nota),
+				]),
+		  ]
+		: [];
+
+	const otherReviewItems = otherReviews.map((review) =>
+		DOM.createLi("movie-page__reviews-item", [
+			createProfile(review.usuario),
+			createReviewBody(review.comentario, review.nota),
+		])
+	);
+
+	return [...userReviewItem, ...otherReviewItems];
 }
 
-export function createMovieReviewSection(reviews) {
-	const reviewSection = DOM.createDiv("movie-page__reviews", [
+export function createMovieReviewSection(allReviews, currentUser) {
+	const reviewSection = DOM.createDiv("movie-page__reviews");
+
+	const userReview = currentUser
+		? allReviews.find((review) => review.usuario_id === currentUser.id)
+		: null;
+
+	const otherReviews = currentUser
+		? allReviews.filter((review) => review.usuario_id !== currentUser.id)
+		: allReviews;
+
+	reviewSection.append(
 		createHeader(),
-		DOM.createUl("movie-page__reviews-list", reviews.map(createItemList)),
-	]);
+		DOM.createUl(
+			"movie-page__reviews-list",
+			createItemList(userReview, otherReviews)
+		)
+	);
 
 	return reviewSection;
 }

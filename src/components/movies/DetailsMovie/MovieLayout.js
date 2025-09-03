@@ -2,11 +2,11 @@ import { createMovieReviewSection } from "/src/components/movies/DetailsMovie/Mo
 import { createMovieInfoSection } from "/src/components/movies/DetailsMovie/MovieInfoSection.js";
 import { DOM } from "/src/helpers/dom/index.js";
 
-export function MovieLayout({ movie, reviews }) {
+export function MovieLayout({ movie, reviews }, currentUser) {
 	const section = DOM.createDiv("movie-page");
 	section.append(
 		createMovieInfoSection(movie),
-		createMovieReviewSection(reviews)
+		createMovieReviewSection(reviews, currentUser)
 	);
 
 	return section;
